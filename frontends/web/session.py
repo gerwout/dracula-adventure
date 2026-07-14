@@ -27,15 +27,33 @@ class Session:
             if pending is not None and pending.get("kind") == "over":
                 pending = self._wait_start()
 
+    def _menu_flags(self, playing: bool) -> dict:
+        # Save/Load only make sense while a game is being played; Help needs a live engine
+        # (its text comes from the lexicon); New/Language are always available.
+        has_engine = self.engine is not None
+        return {"new": True, "language": True, "help": has_engine,
+                "save": playing, "load": playing}
+
+    def _send_help(self) -> None:
+        lex = self.engine.lex
+        intro = lex.ui("HELP_INTRO")
+        body = lex.ui("HELP_COMMANDS")
+        self.ch.send({"t": "help", "title": lex.ui("HELP_TITLE"),
+                      "body": f"{intro}\n\n{body}" if intro else body})
+
     def _wait_start(self):
         """Block until the client picks a language ('start'); None on disconnect."""
-        self.ch.send({"t": "await", "mode": "start"})
+        self.ch.send({"t": "await", "mode": "start", "menu": self._menu_flags(False)})
         while True:
             ev = self.ch.get()
-            if ev.get("kind") == "start":
+            kind = ev.get("kind")
+            if kind == "start":
                 return ev
-            if ev.get("kind") == "eof":
+            if kind == "eof":
                 return None
+            if kind == "menu" and ev.get("action") == "help" and self.engine is not None:
+                self._send_help()
+            # save/load/new-as-command are disabled in this state -> ignored
 
     def _play_one_game(self):
         self.engine = new_game(self.io, explore=True, lang=self.lang,
@@ -63,7 +81,7 @@ class Session:
             return {"kind": "over"}
 
     def _await_dismiss(self):
-        self.ch.send({"t": "await", "mode": "key", "menu": True})
+        self.ch.send({"t": "await", "mode": "key", "menu": self._menu_flags(False)})
         while True:
             ev = self.ch.get()
             kind = ev.get("kind")
@@ -73,11 +91,13 @@ class Session:
                 return ev
             if kind == "eof":
                 return None
-            # menu events at the title -> ignored (client keeps New/Language as 'start')
+            if kind == "menu" and ev.get("action") == "help":
+                self._send_help()
+            # save/load are disabled at the title -> ignored
 
     def _command_loop(self):
         while self.engine.running and not self.engine.restart:
-            self.ch.send({"t": "await", "mode": "line", "menu": True})
+            self.ch.send({"t": "await", "mode": "line", "menu": self._menu_flags(True)})
             ev = self.ch.get()
             kind = ev.get("kind")
             if kind == "line":
@@ -97,11 +117,7 @@ class Session:
         elif action == "load":
             self.engine.do_laad(None)                # calls WebSaveStore.load (blocks for reply)
         elif action == "help":
-            lex = self.engine.lex
-            intro = lex.ui("HELP_INTRO")
-            body = lex.ui("HELP_COMMANDS")
-            self.ch.send({"t": "help", "title": lex.ui("HELP_TITLE"),
-                          "body": f"{intro}\n\n{body}" if intro else body})
+            self._send_help()
         # "new" / "lang" are the client re-sending 'start' — handled by the loops above.
 
     def _send_menu_labels(self) -> None:

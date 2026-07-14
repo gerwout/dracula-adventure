@@ -84,9 +84,14 @@
     catch (e) { append("\n[Opslaan is niet beschikbaar in deze browser.]\n", "notice"); }
   }
 
-  function setMenuEnabled(on) {
+  function setMenu(flags) {
     menu.hidden = false;
-    menu.querySelectorAll("button,select").forEach(function (el) { el.disabled = !on; });
+    const f = (flags && typeof flags === "object") ? flags : {};
+    document.getElementById("m-new").disabled = !f.new;
+    document.getElementById("m-save").disabled = !f.save;
+    document.getElementById("m-load").disabled = !f.load;
+    document.getElementById("m-help").disabled = !f.help;
+    document.getElementById("m-lang").disabled = !f.language;
   }
   function showKeys(list) {
     keys.innerHTML = "";
@@ -132,11 +137,12 @@
         document.getElementById("m-save").textContent = L.save || "Bewaar";
         document.getElementById("m-load").textContent = L.load || "Laad";
         document.getElementById("m-help").textContent = L.help || "Help";
+        document.getElementById("m-lang").title = L.language || "Taal";
         if (msg.lang) document.getElementById("m-lang").value = msg.lang;
         break;
       case "await":
         awaitMode = msg.mode;
-        setMenuEnabled(!!msg.menu);
+        setMenu(msg.menu);
         if (msg.mode === "key") { showKeys(keysForContext()); inp.blur(); }
         else { hideKeys(); if (msg.mode === "line") inp.focus(); }
         break;
@@ -160,6 +166,12 @@
         send({ kind: "line", text: line });
       }
     } else if (awaitMode === "key" && e.key.length === 1) {
+      e.preventDefault();
+      send({ kind: "key", ch: e.key });
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (awaitMode === "key" && document.activeElement !== inp && e.key.length === 1) {
       e.preventDefault();
       send({ kind: "key", ch: e.key });
     }

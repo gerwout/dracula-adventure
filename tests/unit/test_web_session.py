@@ -79,3 +79,30 @@ def test_isolated_state_after_different_moves():
     # _a[1] (a Thread has no .close(), so closing _a[1] — not _a[2] — is what unblocks
     # each worker at teardown).
     _a[1].close(); _b[1].close()
+
+
+def test_menu_offers_new_and_language_after_game_over():
+    session, sent, ch, t = run_session([
+        {"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
+        {"kind": "line", "text": CHAIN}])          # play to the win -> game over
+
+    def game_over_start_await_enables_new():
+        for m in reversed(sent):
+            if m.get("t") == "await" and m.get("mode") == "start":
+                menu = m.get("menu")
+                return isinstance(menu, dict) and menu.get("new") and menu.get("language")
+        return False
+
+    assert wait_until(game_over_start_await_enables_new), \
+        "after game-over the menu must let the player start a new game (no soft-lock)"
+    ch.close(); t.join(timeout=5)
+
+
+def test_help_menu_works_at_the_title_screen():
+    session, sent, ch, t = run_session([
+        {"kind": "start", "lang": "nl"},
+        {"kind": "menu", "action": "help"},         # tapped at the title, before dismissing
+        {"kind": "key", "ch": " "}])
+    assert wait_until(lambda: any(m.get("t") == "help" for m in sent)), \
+        "Help must work at the title screen"
+    ch.close(); t.join(timeout=5)
