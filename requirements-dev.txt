@@ -1,0 +1,4 @@
+# Development / build dependencies. The game itself needs only the Python
+# standard library (+ tkinter for the GUI) — nothing here is required to play.
+pytest>=8.0        # test suite
+pyinstaller>=6.20  # build the standalone executables (see packaging/*.spec)

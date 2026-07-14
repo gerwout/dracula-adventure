@@ -1,0 +1,4276 @@
+{
+ "meta": {
+  "schema": 1,
+  "source": "DRACULA.TXT",
+  "source_length": 103168,
+  "sha256": "28b4ba4cda0ce19fd372308067e7a982653cc43b914ece3e3a1c946358835214"
+ },
+ "header": [
+  101,
+  201,
+  701,
+  801,
+  1289
+ ],
+ "rooms": {
+  "0": {
+   "exits": [
+    255,
+    1,
+    2,
+    11,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in je eigen huis. Er is een slaapkamer op het zuiden",
+    "en een kleine hal oostelijk. Er is een deur die naar het westen leidt. De",
+    "deur staat op een kier en een gure wind blaast zand en stof naar binnen.",
+    "Door een raam kan je een bos zien."
+   ],
+   "first_record": 101
+  },
+  "1": {
+   "exits": [
+    0,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in de slaapkamer. De enige uitgang is naar het",
+    "noorden, waar een rommelige kamer te zien is. Het is vrij donker",
+    "hier, maar door een klein raampje valt net voldoende licht binnen",
+    "om te kunnen zien."
+   ],
+   "first_record": 102
+  },
+  "2": {
+   "exits": [
+    255,
+    255,
+    255,
+    0,
+    255,
+    255,
+    0
+   ],
+   "lines": [
+    "Je staat nu in een kleine hal met een laag plafond. Er is een westelijke",
+    "uitgang, waarachter een rommelige en stoffige ruimte te zien is. In een",
+    "hoek staat een zware kist. Precies in het midden van de hal is de",
+    "houten vloer geschroeid in de vorm van een cirkel."
+   ],
+   "first_record": 103
+  },
+  "3": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    0,
+    255
+   ],
+   "lines": [
+    "Je bent nu op een zolder. Er is een gat in de vloer,",
+    "waaruit de punt van een ladder steekt. Je zou via",
+    "deze ladder naar beneden kunnen."
+   ],
+   "first_record": 104
+  },
+  "4": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    1,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een vochtige kelder. Het plafond",
+    "is hier zo laag dat je niet rechtop kunt staan.",
+    "Er zit een nauw gat in het plafond waardoor",
+    "je omhoog zou kunnen klimmen. De wanden lijken van",
+    "graniet, maar naar het noorden is de wand erg",
+    "zanderig. Je staat tot aan je enkels in modderig",
+    "water."
+   ],
+   "first_record": 105
+  },
+  "5": {
+   "exits": [
+    255,
+    4,
+    255,
+    255,
+    255,
+    255,
+    4
+   ],
+   "lines": [
+    "Je kruipt nu in een nauwe zandtunnel. De tunnel",
+    "loopt naar het zuiden, waar een flauw lichtschijnsel",
+    "te zien is. De grond is erg zacht, zodat je in",
+    "alle richtingen een gang zou kunnen graven. Het",
+    "water staat hier ongeveer een decimeter hoog. Naar",
+    "beneden graven is dus niet mogelijk."
+   ],
+   "first_record": 106
+  },
+  "6": {
+   "exits": [
+    8,
+    7,
+    7,
+    9,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu achter het huis. Er is een raampje",
+    "waardoor je het huis in kunt. Een donker woud strekt",
+    "zich naar alle kanten uit."
+   ],
+   "first_record": 107
+  },
+  "7": {
+   "exits": [
+    7,
+    8,
+    10,
+    9,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een donker woud. Overal om je heen",
+    "zie je bomen."
+   ],
+   "first_record": 108
+  },
+  "8": {
+   "exits": [
+    8,
+    9,
+    7,
+    11,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een donker woud. Overal om je heen",
+    "zie je bomen."
+   ],
+   "first_record": 109
+  },
+  "9": {
+   "exits": [
+    10,
+    9,
+    8,
+    9,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een donker woud. Overal om je heen",
+    "zie je bomen."
+   ],
+   "first_record": 110
+  },
+  "10": {
+   "exits": [
+    7,
+    9,
+    10,
+    17,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een donker woud. Overal om je heen",
+    "zie je bomen."
+   ],
+   "first_record": 111
+  },
+  "11": {
+   "exits": [
+    19,
+    8,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in de dorpsstraat van het dorp. Ver",
+    "naar het noorden kan je het kasteel van Lord Dracula",
+    "zien. Voor je is de herberg, terwijl links een klein",
+    "huisje staat. Een groot woud ligt zuidelijk van het",
+    "dorp."
+   ],
+   "first_record": 112
+  },
+  "12": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    11
+   ],
+   "lines": [
+    "Je bent nu in de herberg de zwarte hand. Er zitten mensen",
+    "aan een tafel te praten, terwijl de waard achter de",
+    "toonbank staat. Via een deur kan je uit de herberg komen."
+   ],
+   "first_record": 113
+  },
+  "13": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    11
+   ],
+   "lines": [
+    "Je zit nu aan een tafel in de herberg. Er zitten verschillende",
+    "mensen om je heen te praten. Een persoon kijkt angstig voor zich uit."
+   ],
+   "first_record": 114
+  },
+  "14": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    12,
+    255
+   ],
+   "lines": [
+    "Je bent nu op de donkere zolder van de herberg. Via",
+    "een trap kan je naar beneden. Er hangt een sterke geur,",
+    "alsof hier een lijk enige maanden heeft liggen rotten.",
+    "De vloer is vol bloedvlekken. Er is echter geen lijk",
+    "te zien. Een vreemd gevormde steen is in de",
+    "muur gemetseld."
+   ],
+   "first_record": 115
+  },
+  "15": {
+   "exits": [
+    8,
+    8,
+    16,
+    11,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een open gedeelte van het bos. Je hoort water",
+    "spatten in het oosten, waar je tussen de bomen door een",
+    "bron kunt zien. De grond heeft een vreemde trilling."
+   ],
+   "first_record": 116
+  },
+  "16": {
+   "exits": [
+    8,
+    9,
+    9,
+    15,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu op de top van een kleine heuvel",
+    "midden in het bos. In de verte boven de boomtoppen",
+    "kan je een toren van een kasteel zien. Enige tientallen",
+    "kilometers verder kan je de huizen van een stadje zien."
+   ],
+   "first_record": 117
+  },
+  "17": {
+   "exits": [
+    9,
+    7,
+    10,
+    9,
+    18,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een donker woud. Hoog in een zware",
+    "eikenboom is een kleine hut gebouwd. De takken van",
+    "de boom hangen laag genoeg om erin te kunnen klimmen.",
+    "Er zijn vele voetstappen in de grond te zien."
+   ],
+   "first_record": 118
+  },
+  "18": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    17,
+    17
+   ],
+   "lines": [
+    "Je bent nu in een kleine hut bovenin een boom. Een van de",
+    "planken, waaruit de vloer is opgebouwd, is afgebroken,",
+    "zodat je daardoor naar beneden kunt. Je hebt van hier uit een",
+    "prachtig uitzicht over het uitgestrekte bos. In de verte kan je",
+    "het dorpje met de herberg zien. Een smal pad vanuit het dorp",
+    "slingert het bos in. Ver links van het dorp kan je het kasteel",
+    "van Lord Dracula zien. Door een vreemd schijnsel ziet het kasteel",
+    "er spookachtig uit. Een smal pad loopt de heuvel op naar de ingang",
+    "van het kasteel. Verder is de wand rondom het kasteel zo",
+    "steil, dat het pad in feite de enige ingang vormt."
+   ],
+   "first_record": 119
+  },
+  "19": {
+   "exits": [
+    7,
+    7,
+    10,
+    10,
+    255,
+    11,
+    255
+   ],
+   "lines": [
+    "Je loopt nu op een lang pad in het bos. Het pad loopt",
+    "verder tot aan het kasteel op de heuvel. Het dorp",
+    "ligt beneden. Wanneer je het pad niet volgt kom je",
+    "in het woud terecht."
+   ],
+   "first_record": 120
+  },
+  "20": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    19,
+    255
+   ],
+   "lines": [
+    "Je staat nu voor de ingang van het kasteel. Een pad slingert",
+    "de heuvel af en verdwijnt dan in het dichte bos.",
+    "Boven de ingang staat een tekst met grote letters",
+    "in de grove stenen gekrast."
+   ],
+   "first_record": 121
+  },
+  "21": {
+   "exits": [
+    27,
+    255,
+    255,
+    22,
+    22,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een immense hal van het kasteel. Een brede trap loopt",
+    "naar boven. Onder de trap is een kleine deur naar het noorden,",
+    "Het is alsof er iemand aanwezig is, je ziet echter niemand.",
+    ""
+   ],
+   "first_record": 122
+  },
+  "22": {
+   "exits": [
+    255,
+    30,
+    21,
+    40,
+    255,
+    21,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een lange gang. Met veel moeite kan je een zeer nauwe",
+    "gang zuidwaards zien. Voor je is een deur met daarop een",
+    "bordje 'SLAAPKAMER 2'. De gang loopt oost/west."
+   ],
+   "first_record": 123
+  },
+  "23": {
+   "exits": [
+    255,
+    25,
+    255,
+    255,
+    255,
+    255,
+    40
+   ],
+   "lines": [
+    "Je bent in een slaapkamer van het kasteel. De wanden van deze kamer",
+    "zijn prachtig bewerkt met groen/bruine verf in een soort",
+    "oosters patroon. Naar het zuiden is een deur, waarachter",
+    "een balkon te zien is."
+   ],
+   "first_record": 124
+  },
+  "24": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    29,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een slaapkamer van het kasteel. De kamer is",
+    "op een deur na geheel afgesloten. Achterop de deur hangt",
+    "een bordje met 'SLAAPKAMER 2'. Er is hier een gedoofde haard",
+    "met een schoorsteen. Het is hier zeer stoffig en droog,",
+    "waarschijnlijk vanwege het roet, dat hier in dikke lagen",
+    "overal op zit."
+   ],
+   "first_record": 125
+  },
+  "25": {
+   "exits": [
+    23,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu op een breed balkon. Via een deur kan je",
+    "naar een noordelijk gelegen kamer toe. Als je over de",
+    "rand kijkt kan je ver beneden een rand zien die langs",
+    "het kasteel loopt. Naast de rand is een afgrond, het bos",
+    "is nog veel lager. Je hebt een prachtig uitzicht over het",
+    "woud en de omgeving. Het dorp is van hieruit niet te zien.",
+    ""
+   ],
+   "first_record": 126
+  },
+  "26": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je staat nu op een smalle rand, die langs het kasteel loopt.",
+    "De rand wordt echter naar beide zijden zo smal, dat een doortocht",
+    "niet mogelijk is. De heuvel loopt hier zeer steil naar beneden het bos in.",
+    "Afdaling is hier waarschijnlijk niet mogelijk. Er staan diepe sporen",
+    "die de heuvel af leiden."
+   ],
+   "first_record": 127
+  },
+  "27": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    21
+   ],
+   "lines": [
+    "Je bent nu in een grote eetkamer. Hier staat een zeer lange lege",
+    "tafel. Over de vloer liggen etensresten. Een deur vormt de",
+    "enige uitgang van deze kamer."
+   ],
+   "first_record": 128
+  },
+  "28": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    29,
+    255
+   ],
+   "lines": [
+    "Je staat nu op het glibberige dak van een van de torens van het",
+    "kasteel. Je hebt uitzicht op het bos, waarin je nu heel in de",
+    "verte een soort waterbron ziet, een eind weg van het dorp.",
+    "Naar beneden via het raam kom je weer in de toren."
+   ],
+   "first_record": 129
+  },
+  "29": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    30,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een kasteeltoren. Er zit een klein raampje in de",
+    "muur waardoor je het bos kunt zien in de verte. Een versleten",
+    "houten trap loopt omlaag."
+   ],
+   "first_record": 130
+  },
+  "30": {
+   "exits": [
+    22,
+    255,
+    255,
+    255,
+    29,
+    31,
+    255
+   ],
+   "lines": [
+    "Je staat nu op vertikaal stuk van een hoge wenteltrap.",
+    "De trap loopt zowel verder omhoog als naar beneden,",
+    "terwijl er een smalle opening naar het noorden is. Hoog, buiten",
+    "je bereik, lijkt een gat in de wand geslagen te zijn."
+   ],
+   "first_record": 131
+  },
+  "31": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    30,
+    32,
+    255
+   ],
+   "lines": [
+    "Je staat nu op een lange wenteltrap die",
+    "omhoog en naar beneden gaat. Voor je zie je een vreemd",
+    "gevormde deur in de wand met in het hout van de",
+    "deur 'DIT IS SESAM' gebrand. Een zwaar gebonk is achter de",
+    "deur hoorbaar."
+   ],
+   "first_record": 132
+  },
+  "32": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    31,
+    255,
+    255
+   ],
+   "lines": [
+    "Je staat in een klein gewelf onderaan een wenteltrap. Een lage trap",
+    "loopt naar beneden, langs een ijzeren hek. Achter",
+    "het hek kan je enkele grafkisten zien staan. Het is",
+    "echter te donker om de gehele onderliggende kamer te kunnen",
+    "zien. Voor je is een poortje, met daarachter een binnenplaats",
+    "die als kerkhof gebruikt wordt. Een wenteltrap leidt omhoog."
+   ],
+   "first_record": 133
+  },
+  "33": {
+   "exits": [
+    255,
+    255,
+    43,
+    42,
+    255,
+    30,
+    30
+   ],
+   "lines": [
+    "Je bent nu in de spionageruimte. De kamer is",
+    "rondom uitgehakt, met hier en daar wat losse stenen.",
+    "Twee zeer nauwe gangen zijn met deze kamer verbonden. De",
+    "ene gang loopt naar het oosten, de andere naar het westen.",
+    "Er is een gat in de wand geslagen met een ladder",
+    "aan de andere kant er tegenaan. Via deze ladder",
+    "kan je omlaag."
+   ],
+   "first_record": 134
+  },
+  "34": {
+   "exits": [
+    255,
+    255,
+    255,
+    31,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in de kruiskamer. De wanden zijn hier met",
+    "bloed besmeurd en er liggen hier restanten van dieren.",
+    "In de hoek ligt het geraamte van een onvoorzichtige avonturier.",
+    "Een groot vuur verspert de doorgang naar een ernaast liggende",
+    "kamer. Er is slechts 1 uitgang, de zware houten",
+    "deur."
+   ],
+   "first_record": 135
+  },
+  "35": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in de schatkamer. De wanden lijken licht",
+    "te geven door een vreemde weerkaatsing van de gloed van",
+    "het vuur. Hoog bovenin deze ruimte is een gat in de",
+    "muur in de vorm van een latijns kruis. Er komt lucht",
+    "door naar binnen."
+   ],
+   "first_record": 136
+  },
+  "36": {
+   "exits": [
+    255,
+    255,
+    255,
+    32,
+    255,
+    255,
+    32
+   ],
+   "lines": [
+    "Je bent nu op een binnenplaats van het kasteel dat als kerkhof dient doet.",
+    "Er zijn hier vele graven waarvan sommige open zijn. Van anderen is het graf-",
+    "deksel weggeschoven. De meeste graven zijn echter intact. De enige uitgang",
+    "is een poortje aan de westkant."
+   ],
+   "first_record": 137
+  },
+  "37": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een graftombe diep onder het kasteel.Een smalle",
+    "trap gaat omhoog, halverwege de trap is een ijzeren hek geplaatst.",
+    "Een ijzige tocht gaat door merg en been. Er staan enige houten",
+    "grafkisten in deze kamer, die allemaal op elkaar lijken."
+   ],
+   "first_record": 138
+  },
+  "38": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    99
+   ],
+   "lines": [
+    "Je bent nu in een afgesloten houten doodskist. Bloedstrepen",
+    "en een muffe geur verraden het feit dat deze kist al eens",
+    "gebruikt is..."
+   ],
+   "first_record": 139
+  },
+  "39": {
+   "exits": [
+    255,
+    5,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "De schep is op iets hards gestoten. Als je verder graaft",
+    "blijkt dat je op een muur gestoten bent. De stenen van de muur zijn",
+    "koud en vochtig. De uitgegraven gang loopt terug naar het zuiden."
+   ],
+   "first_record": 140
+  },
+  "40": {
+   "exits": [
+    255,
+    23,
+    22,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een lange gang. Voor je naar het zuiden",
+    "zie je een deur met opschrift 'SLAAPKAMER 1'. De gang heeft",
+    "ooit oost/west gelopen maar door een instorting is de westelijke",
+    "doorgang versperd."
+   ],
+   "first_record": 141
+  },
+  "41": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent nu in een smalle nis met een klein kijkgat in de wand. Door",
+    "het gat komt wat licht, net voldoende om een gang noord en een iets",
+    "lagere doorgang naar het westen te zien."
+   ],
+   "first_record": 142
+  },
+  "42": {
+   "exits": [
+    255,
+    255,
+    33,
+    255,
+    51,
+    255,
+    255
+   ],
+   "lines": [
+    "Je staat aan het einde van een nauwe, hoge gang. Deze gang moet precies",
+    "achter de verschillende kamers van het kasteel lopen. Boven je is",
+    "een gat. Uitgehouwen treden leiden recht omhoog er naartoe."
+   ],
+   "first_record": 143
+  },
+  "43": {
+   "exits": [
+    255,
+    255,
+    44,
+    33,
+    255,
+    52,
+    255
+   ],
+   "lines": [
+    "Je staat nu vlak voor een gat in de grond. De gang loopt nog verder door",
+    "naar het oosten maar wordt steeds smaller."
+   ],
+   "first_record": 144
+  },
+  "44": {
+   "exits": [
+    255,
+    255,
+    255,
+    43,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "De gang is verder onbegaanbaar. De gang is verderop nog slechts tien",
+    "centimeter breed. Wel is er een luchtstroom die oostwaarts de smalle",
+    "sleuf in stroomt."
+   ],
+   "first_record": 145
+  },
+  "45": {
+   "exits": [
+    44,
+    46,
+    45,
+    45,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 146
+  },
+  "46": {
+   "exits": [
+    48,
+    47,
+    48,
+    45,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 147
+  },
+  "47": {
+   "exits": [
+    45,
+    48,
+    46,
+    44,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 148
+  },
+  "48": {
+   "exits": [
+    47,
+    49,
+    47,
+    44,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 149
+  },
+  "49": {
+   "exits": [
+    48,
+    42,
+    53,
+    47,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 150
+  },
+  "50": {
+   "exits": [
+    45,
+    46,
+    47,
+    48,
+    51,
+    255,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 151
+  },
+  "51": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    42,
+    255
+   ],
+   "lines": [
+    "Je staat nu vlakbij een zeer nauwe nis, met in de muur een klein gat,",
+    "waar precies een vinger in zou passen. Boven het gat hangt een bordje met",
+    "daarop 'TORENKAMER'."
+   ],
+   "first_record": 152
+  },
+  "52": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    43,
+    255,
+    255
+   ],
+   "lines": [
+    "Je bent hier in een soort ventilatieruimte. Door een, met een rooster",
+    "afgesloten, gat heb je overzicht over de eetkamer. Een hoge, draaiende",
+    "ventilator aan de andere zijde van de ruimte zorgt hier voor een warme,",
+    "onaangename luchtstroom. Een gat boven je is de enige uitgang",
+    "hier."
+   ],
+   "first_record": 153
+  },
+  "53": {
+   "exits": [
+    43,
+    47,
+    44,
+    52,
+    255,
+    52,
+    255
+   ],
+   "lines": [
+    "...?..."
+   ],
+   "first_record": 154
+  },
+  "54": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    21
+   ],
+   "lines": [
+    "Je zit nu in het harnas. Door het vizier kun je zien wat er",
+    "gebeurt."
+   ],
+   "first_record": 155
+  },
+  "55": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 156
+  },
+  "56": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 157
+  },
+  "57": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 158
+  },
+  "58": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 159
+  },
+  "59": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 160
+  },
+  "60": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 161
+  },
+  "61": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 162
+  },
+  "62": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 163
+  },
+  "63": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 164
+  },
+  "64": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 165
+  },
+  "65": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 166
+  },
+  "66": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 167
+  },
+  "67": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 168
+  },
+  "68": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 169
+  },
+  "69": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 170
+  },
+  "70": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 171
+  },
+  "71": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 172
+  },
+  "72": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 173
+  },
+  "73": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 174
+  },
+  "74": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 175
+  },
+  "75": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 176
+  },
+  "76": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 177
+  },
+  "77": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 178
+  },
+  "78": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 179
+  },
+  "79": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 180
+  },
+  "80": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 181
+  },
+  "81": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 182
+  },
+  "82": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 183
+  },
+  "83": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 184
+  },
+  "84": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 185
+  },
+  "85": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 186
+  },
+  "86": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 187
+  },
+  "87": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 188
+  },
+  "88": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 189
+  },
+  "89": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 190
+  },
+  "90": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 191
+  },
+  "91": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 192
+  },
+  "92": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 193
+  },
+  "93": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 194
+  },
+  "94": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 195
+  },
+  "95": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 196
+  },
+  "96": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 197
+  },
+  "97": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 198
+  },
+  "98": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 199
+  },
+  "99": {
+   "exits": [
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+   ],
+   "lines": [
+    ""
+   ],
+   "first_record": 200
+  }
+ },
+ "messages": {
+  "0": [
+   "Doe niet zo achterlijk.."
+  ],
+  "1": [
+   "Dat gaat niet."
+  ],
+  "2": [
+   "Wou je dat met je blote handen proberen ??",
+   "Ik stel voor dat je wat gereedschap zoekt."
+  ],
+  "3": [
+   "Dat gaat niet, je zult het eerst moeten  pakken."
+  ],
+  "4": [
+   "Dat zou ik niet doen als ik jou was."
+  ],
+  "5": [
+   "Ja zeg, ik zeg dat als jij zegt dat ik dat",
+   "moet zeggen, dat ik dan zeg dat jij wil zeggen dat",
+   "ik zeggen moet zeggen."
+  ],
+  "6": [
+   "Ik geloof niet dat ik je helemaal goed begrijp.",
+   "( Ik ben ook maar een klein kompjoetertje en m'n geheugen",
+   "is ook al niet zo best de laatste tijd )"
+  ],
+  "7": [
+   "Ik geloof niet dat ik je helemaal goed begrijp."
+  ],
+  "8": [
+   "Ik begrijp er helemaal niets van."
+  ],
+  "9": [
+   "Eh, wat bedoel je ?"
+  ],
+  "10": [
+   "Daar kan je niet heen."
+  ],
+  "11": [
+   "Daar kan je niet bij. Het gat zit te hoog."
+  ],
+  "12": [
+   "De boom is te glad om in te klimmen en je kan de eerste takken",
+   "niet bereiken. Langzaam zak je omlaag..."
+  ],
+  "13": [
+   "De zware buitendeur is gesloten en met geen mogelijkheid",
+   "meer open te krijgen."
+  ],
+  "14": [
+   "Welke ladder ?",
+   ""
+  ],
+  "15": [
+   "Daar kan je niet bij, en de wand biedt geen",
+   "houvast."
+  ],
+  "16": [
+   "De steen waardoor je naar binnen kwam, slaat met een",
+   "slag dicht en is niet meer te onderscheiden."
+  ],
+  "17": [
+   "De steen is weer op zijn plaats geschoven."
+  ],
+  "18": [
+   "Ik denk niet dat je daarheen kan."
+  ],
+  "19": [
+   "Er is niets stoffigs hier."
+  ],
+  "20": [
+   "Onder het stof komt een boek tevoorschijn."
+  ],
+  "21": [
+   "Die is absoluut niet te tillen."
+  ],
+  "22": [
+   "Dat wordt te zwaar, je zult eerst iets moeten laten",
+   "vallen."
+  ],
+  "23": [
+   "Dat heb je helemaal niet bij je."
+  ],
+  "24": [
+   "De fles valt kapot op de grond."
+  ],
+  "25": [
+   "De ladder reikt tot aan het gat en staat stevig",
+   "genoeg om te beklimmen."
+  ],
+  "26": [
+   "Als je de munt in de bron gooit verandert het",
+   "water van de bron in een vreemde blauwe kleur. Het",
+   "water borrelt nu veel heftiger dan eerst. Een zwarte schaduw",
+   "schiet over de bodem, maar het water wordt langzaam weer",
+   "iets meer helder."
+  ],
+  "27": [
+   "De ladder komt net tot aan het gat."
+  ],
+  "28": [
+   "Ik zie helemaal geen bomen."
+  ],
+  "29": [
+   "De bijl is te bot geworden."
+  ],
+  "30": [
+   "Je kapt een groot stuk hout af."
+  ],
+  "31": [
+   "Je graaft alleen enkele botten op, maar die vergruizen  onmiddelijk",
+   "als je ze aanraakt."
+  ],
+  "32": [
+   "De grond is te hard om te graven."
+  ],
+  "33": [
+   "Geef een richting waarheen je wilt graven."
+  ],
+  "34": [
+   "Welke ladder bedoel je ?"
+  ],
+  "35": [
+   "Gloe..gloe..gloe..burpp..."
+  ],
+  "36": [
+   "Het blauwkleurige water is zeer giftig. Na enkele",
+   "seconden stokt je adem, dan kronkel je over de grond van",
+   "kramp. Je sterft na enkele minuten.."
+  ],
+  "37": [
+   "Er zit een vreemd smaakje aan."
+  ],
+  "38": [
+   "Mmmm, heerlijk. Ik was vrij hongerig van al dit",
+   "praten."
+  ],
+  "39": [
+   "Er zit een gat in het plafond, maar je kunt het niet bereiken.",
+   "Het gat is groot genoeg om er doorheen te klimmen."
+  ],
+  "40": [
+   "Via een ladder kan je naar boven klimmen."
+  ],
+  "41": [
+   "De zware deur van het kasteel \u0000is open."
+  ],
+  "42": [
+   "De zware deur naar buiten \u0000is open."
+  ],
+  "43": [
+   "De zware, met spinneweb bedekte, deur is gesloten."
+  ],
+  "44": [
+   "De zware deur naar buiten is gesloten."
+  ],
+  "45": [
+   "In de verte hoor je een vogel fluiten."
+  ],
+  "46": [
+   "Ver in het bos kan je een bron zien."
+  ],
+  "47": [
+   "Je ziet de smalle zoldertrap achter een kast."
+  ],
+  "48": [
+   "Plotseling beweegt de deur en slaat met een klap dicht."
+  ],
+  "49": [
+   "Dracula staat voor je en blokkeert alle uitgangen.",
+   "Hij kijkt je angstaanjagend aan. Als hij lacht zie",
+   "je een paar scherpe hoektanden die zijn bedoelingen",
+   "duidelijk maken."
+  ],
+  "50": [
+   "Het hek is open, je kan de trap af."
+  ],
+  "51": [
+   "Het ijzeren hek is gesloten."
+  ],
+  "52": [
+   "Voor de trap zit een ijzeren hek"
+  ],
+  "53": [
+   "Het ijzeren hek is gesloten."
+  ],
+  "54": [
+   "terwijl de deur, waardoor je eruit kan, geopend is."
+  ],
+  "55": [
+   "terwijl achterop een gesloten deur een tekst te",
+   "lezen is."
+  ],
+  "56": [
+   "Niemand geeft antwoord."
+  ],
+  "57": [
+   "Hij zegt 'Ben je doof of zo' en gaat door met zijn",
+   "werk."
+  ],
+  "58": [
+   "Hij sist 'Wegwezen, voordat ik echt boos ga worden'.",
+   "Je ziet hem iets pakken."
+  ],
+  "59": [
+   "Hij zegt ' Er is een zoldertrap achter die kast daar,'",
+   "en als je goed kijkt kan je de trap ook zien."
+  ],
+  "60": [
+   "Die zie je niet, maar misschien kijk je niet goed. De waard zou",
+   "trouwens ook wel eens meer kunnen weten, denk je niet?"
+  ],
+  "61": [
+   "De waard zegt 'Daar komt helemaal niets van in, mannetje'",
+   "en komt op je af."
+  ],
+  "62": [
+   "Iaaaaaaahhhh..."
+  ],
+  "63": [
+   "hop.....hop....hop.."
+  ],
+  "64": [
+   "Hij kijkt je kwaad aan."
+  ],
+  "65": [
+   "De steen wil niet verder draaien."
+  ],
+  "66": [
+   "Een van de stenen van de wand draait weg en je",
+   "ziet een grafkist achter de steen. Je kunt kruipen door het",
+   "gat dat nu is ontstaan."
+  ],
+  "67": [
+   "Er gebeurt helemaal niets."
+  ],
+  "68": [
+   "Het raam is al open."
+  ],
+  "69": [
+   "Ik zie geen 'luik'."
+  ],
+  "70": [
+   "Het luik is al open."
+  ],
+  "71": [
+   "Het luik kraakt en met veel moeite krijg je het",
+   "zover open dat je er net door kan."
+  ],
+  "72": [
+   "Het hek is al open."
+  ],
+  "73": [
+   "Het hek lijkt muurvast te zitten."
+  ],
+  "74": [
+   "Het hek gaat met de minste kracht open."
+  ],
+  "75": [
+   "De kist is open!"
+  ],
+  "76": [
+   "Je ziet een houten luik onderin."
+  ],
+  "77": [
+   "Ik zie geen luik."
+  ],
+  "78": [
+   "Het luik gaat open."
+  ],
+  "79": [
+   "Het luik zit muurvast."
+  ],
+  "80": [
+   "De doos is al open."
+  ],
+  "81": [
+   "Er valt een hamer uit."
+  ],
+  "82": [
+   "Ik zie niet goed hoe ik dat zou moeten openen."
+  ],
+  "83": [
+   "Ik denk niet dat dat nodig is."
+  ],
+  "84": [
+   "Je hebt het niet eens bij je."
+  ],
+  "85": [
+   "Waaraan ?"
+  ],
+  "86": [
+   "Het touw zit stevig vast aan het balkon."
+  ],
+  "87": [
+   "Pakke wat je pakke kan."
+  ],
+  "88": [
+   "Heb je geen slaap na deze opwindende avonturen?"
+  ],
+  "89": [
+   "Geen paniek..geen paniek.."
+  ],
+  "90": [
+   "Dat moet je dan wel bij je hebben."
+  ],
+  "91": [
+   "      -------  V A M P I E R   H A N D B O E C K -------",
+   "",
+   "Vampieren sijn al sedert menschenheugenisse ende tiden die",
+   "parasieten der menschen. Si hebben elcken daghe",
+   "versch bloed nodigh en hebben so al vele liden",
+   "vermoert ende omgebracht. In die loop der tiden",
+   "sijn enighe eighenschappen des vampier bekent geworden. So",
+   "is de vampier seer angstigh voor het almagtig cruice, het beste",
+   "van hout gemaackt. Sij kunnen het dageligt nauelijcks sien",
+   "ende verdhragen. Cnoflooc schijnt een vampier",
+   "alsmede ooc af te schricken. Ooit hevet eenen ondersoecer",
+   "waar na later tiden nie ofte nimmer meer iet van es",
+   "gehoort, geprobeert die vampier in sijnen dagheslaap eenen",
+   "houten pen door den harte te slaan. Die lieden seghen dit soude",
+   "connen doden die vampier geheel ende al. Later sijn in deser wijse",
+   "die meesten vampieren gedodet, maar het stercste geslagte des",
+   "vampiers dracula hevet dit cunnen overlev...",
+   "",
+   "   -- de tekst wordt verder onleesbaar --"
+  ],
+  "92": [
+   "Ik zie geen tekst."
+  ],
+  "93": [
+   "Er valt hier eigenlijk niet zoveel op te",
+   "lezen."
+  ],
+  "94": [
+   "",
+   "   ULVU  ++  *NR*",
+   "   CEKW  ++  *D**",
+   "",
+   "    ++  TBTA  ++",
+   "    ++  LOAO  ++",
+   "",
+   "   A*OD  ++  *ORA",
+   "   *OEN  ++  RWNA",
+   ""
+  ],
+  "95": [
+   "Hoe wou je dat vullen ?"
+  ],
+  "96": [
+   "Waarmee ?"
+  ],
+  "97": [
+   "Er zit al melk in."
+  ],
+  "98": [
+   "De fles zit nog vol met water."
+  ],
+  "99": [
+   "Je hebt geen fles bij je."
+  ],
+  "100": [
+   "De fles vult zich langzaam.."
+  ],
+  "101": [
+   "Ik zie geen tak hier."
+  ],
+  "102": [
+   "Met de tak valt niks te beginnen."
+  ],
+  "103": [
+   "Ik zie geen hout."
+  ],
+  "104": [
+   "Na enig snijwerk krijgt het stuk hout de vorm",
+   "van een kruis."
+  ],
+  "105": [
+   "Je hebt daar een stuk hout voor nodig."
+  ],
+  "106": [
+   "Er dwarrelen wat snippertjes af."
+  ],
+  "107": [
+   "Dat heeft geen zin."
+  ],
+  "108": [
+   "De wig is erg scherp...."
+  ],
+  "109": [
+   "Het is een oud, zwaar, dik, gehavend boek met lederen",
+   "omslag. Sommige pagina's zijn eruit gescheurd en andere geheel",
+   "verbleekt."
+  ],
+  "110": [
+   "Je kan met het kapmes hout snijden en bewerken."
+  ],
+  "111": [
+   "Je zou er precies inpassen."
+  ],
+  "112": [
+   "Het touw is stevig genoeg om er een olifant mee op te tillen."
+  ],
+  "113": [
+   "De kist zit vol met zeer oude, toendertijd waardevolle munten."
+  ],
+  "114": [
+   "Welk bed had je in gedachten ?"
+  ],
+  "115": [
+   "Het bed is zwaar en niet zomaar te tillen of",
+   "te verplaatsen. Voor de rest is er zo op het eerste",
+   "gezicht niets bijzonders mee..."
+  ],
+  "116": [
+   "Onder het bed is een klein houten luik te zien. Een",
+   "ijzeren ring is aan het luik vastgenageld zodat je",
+   "'m zo open zou moeten kunnen maken."
+  ],
+  "117": [
+   "Het luik kan simpel opengemaakt worden door aan",
+   "de ijzeren ring, die aan het luik vastgeklonken zit",
+   "te trekken."
+  ],
+  "118": [
+   "Het luik is zeer stevig en is waarschijnlijk",
+   "niet kapot te krijgen."
+  ],
+  "119": [
+   "Je kan zien wat er in de kasteeltoren gebeurt, je ziet",
+   "een houten kist staan. Door een klein raampje komt licht",
+   "naar binnen. Even later zie je een man met een zwarte mantel",
+   "de trap op komen. Hij kijkt even gevaarlijk jouw richting op.",
+   "Dan lacht hij en opent de kist. Even later stapt hij",
+   "in de kist en het deksel valt dicht."
+  ],
+  "120": [
+   "Je kunt van hieruit zien wat er in de eetkamer gebeurt. Er staat",
+   "een grote tafel. Er is een klein bochelig kereltje, dat in de eetkamer",
+   "met een kandelaar rondloopt. Als hij de kamer uitgaat wordt het daar",
+   "pikdonker en je ziet niets meer..."
+  ],
+  "121": [
+   "Zover ik het kan beoordelen is er niets bijzonders mee."
+  ],
+  "122": [
+   "Ik zie er niets bijzonders aan."
+  ],
+  "123": [
+   "Je kunt hier moeilijk in slaap komen doordat de",
+   "grond erg hard is."
+  ],
+  "124": [
+   "Je wordt 's morgens vroeg weer fit wakker."
+  ],
+  "125": [
+   "Je wordt midden in de nacht wakker door gerommel,",
+   "dat vanonder het bed lijkt te komen. Als je uit het bed",
+   "stapt verdwijnt het gebonk als bij toverslag."
+  ],
+  "126": [
+   "Je raakt helemaal de weg kwijt..."
+  ],
+  "127": [
+   "Welk luik bedoel je ?"
+  ],
+  "128": [
+   "Ik zie geen knoflook."
+  ],
+  "129": [
+   "De waard zegt ' Wat moet dat daar ? ' Hij komt",
+   "op je af en slaat het knoflook uit je handen. Hij pakt",
+   "het op en legt het terug waar het lag. De mensen in de",
+   "herberg kijken je verstoord aan."
+  ],
+  "130": [
+   "Dan stroopt de waard een mouw op en slaat je midden in",
+   "je gezicht. Het bloed stroomt uit je neus. De sfeer",
+   "wordt zeer gespannen."
+  ],
+  "131": [
+   "Ik zie geen knoflook."
+  ],
+  "132": [
+   "Je kan het gewoon pakken hoor.."
+  ],
+  "133": [
+   "De waard gromt en lijkt wat rustiger te worden. Verschillende",
+   "mensen draaien zich weer met de rug naar je toe."
+  ],
+  "134": [
+   "De waard zegt 'Je mag het knoflook wel hebben hoor,",
+   "we hebben er genoeg van.' Hij geeft de streng aan jou."
+  ],
+  "135": [
+   "... absolute stilte ..."
+  ],
+  "136": [
+   "Twee mannen zitten te praten :",
+   "",
+   " '..... Nou, gisteren was het weer eens goed raak,he ??",
+   "",
+   " 'Zeg dat wel, twee in een keer. En er is niets dat we",
+   "  eraan kunnen doen.. oh, eh, goeiedag vreemdeling..'",
+   "",
+   " Je weet natuurlijk niet waarover het gaat en zegt niets terug.",
+   " De twee vervolgen hun gesprek:",
+   "",
+   " 'Weet je, er moet hier op de zolder van deze herberg ook wat",
+   "  voorgevallen zijn '",
+   "",
+   " 'Ja, dat hoorde ik, de waard is er niet erg over te spreken. Hij",
+   "  spreekt eigenlijk sindsdien helemaal niet meer zo...'"
+  ],
+  "137": [
+   "De twee mannen zitten nog te praten:",
+   "",
+   " '... He! Dat is toch degene die hier vorige keer ook",
+   "  zat te luisteren ?'",
+   "",
+   " 'Volgens mij wel.' Hij draait zich naar je toe en zegt:",
+   "",
+   " 'Zoek jij moeilijkheden ??"
+  ],
+  "138": [
+   "Iedereen die aan de tafel zit gaat staan en",
+   "loopt naar een andere tafel. Je zit nu alleen aan de tafel."
+  ],
+  "139": [
+   "Welk touw ?"
+  ],
+  "140": [
+   "De waard wordt zeer kwaad en slaat je direkt op je kaak, en",
+   "je deinst terug. Dan storm je op hem af en trapt hem op het",
+   "moment dat hij een mes wil gooien. Het mes suist langs je oren",
+   "en schampt je schouder. De waard, die ineengekrompen was komt",
+   "weer langzaam overeind, pakt zijn mes terug en wacht.."
+  ],
+  "141": [
+   "De waard slaat naar achter tegen een tafel als je hem in z'n maag slaat. Hij",
+   "komt echter direkt terug, grijpt je bij je kraag en gooit",
+   "je de lucht in. Als je neerkomt sla je met je kaak op de toon-",
+   "bank. Half bewusteloos zie je de waard op je afkomen."
+  ],
+  "142": [
+   "De waard pakt een mes en steekt dat met enorme kracht in je",
+   "hand. Je valt neer en als je kreunend van de pijn probeert op",
+   "te staan trapt de waard je tegen de grond, trekt het mes uit je",
+   "hand en snijdt je strot door. Je probeert nog iets te zeggen, maar",
+   "je raakt na enkele seconden buiten westen."
+  ],
+  "143": [
+   "De waard loopt even weg en komt terug met een zware houten",
+   "balk. Een van de mannen in de herberg staat op en pakt je vast.",
+   "De waard haalt uit en als hij je in het gezicht wil slaan schiet je",
+   "naar onderen. De balk raakt de kerel die je vasthield met een doffe",
+   "slag in z'n nek. Bloedend rent hij de herberg uit terwijl de waard",
+   "opnieuw uithaalt. De balk komt met grote kracht op je knie terecht",
+   "als je probeert de slag te ontwijken. Snel sta je op en",
+   "je geeft de waard een dusdanige slag in z'n gezicht dat hij",
+   "langaam achteruit wankelt. Hij herstelt echter snel.."
+  ],
+  "144": [
+   "De waard rent weg en lijkt bang. Hij pakt echter een",
+   "vleesmes en komt nu dreigend op je af. Je ziet kans het",
+   "mes uit z'n hand te trappen, maar hij duwt je weg en je",
+   "belant met je rug tegen de harde muur en hij pakt het mes weer."
+  ],
+  "145": [
+   "Die is hier niet."
+  ],
+  "146": [
+   "Deze tekst WAS het VOORLOPIGE einde van het adventure.."
+  ],
+  "147": [
+   "Dracula komt langzaam dichterbij."
+  ],
+  "148": [
+   "Dracula kijkt je aan en begint te lachen. Terwijl hij",
+   "dichterbij komt hoor je hem iets mompelen over ontbijt",
+   "of iets dergelijks."
+  ],
+  "149": [
+   "Dracula valt je nu aan en slaat zijn mantel dreigend in de",
+   "lucht. Zijn scherpe hoektanden zijn nu zichtbaar, je loopt voor-",
+   "zichtig achteruit. Dan valt hij aan en probeert in je nek te bijten.",
+   "Plotseling verstijft hij en valt neer op de grond. Zijn lichaam wordt",
+   "eerst grijs en zwarte rook omgeeft hem. Als de rook optrekt is er niets",
+   "meer van zijn lichaam overgebleven.",
+   "Je hoort echter in de verte een sinistere lach."
+  ],
+  "150": [
+   "Dracula ontwijkt met gemak alle aanvallen.",
+   "Een vreemde blik in zijn ogen doet je verstijven en",
+   "dracula begint te grinniken."
+  ],
+  "151": [
+   "Als Dracula op je afkomt probeer je weg te rennen.",
+   "Hij schijnt echter steeds van plaats te wisselen en staat elke",
+   "keer weer voor je. Dan bijt hij en je valt neer... Een vreemd gevoel",
+   "overvalt je, herinneringen worden vager...je..je weet van niets meer",
+   "en hebt geen controle meer over jezelf. Een andere geest schijnt de",
+   "controle over jouw lichaam te hebben overgenomen. Vaag weet je iets",
+   "van jouw huidige gewoontes, zoals slapen in een vreemde, houten kist. Je",
+   "hebt ergens het gevoel dat je de zon nooit meer ziet. In feite weet je",
+   "niet eens meer of je wel leeft......."
+  ],
+  "152": [
+   "Dracula valt je direkt aan en bijt je in je nek. Je valt",
+   "neer en kan niets meer bewegen. Je ziet hem nog net knielen.",
+   "Langzaam bloedt je leeg terwijl dracula lacht (en drinkt). Ik geloof zelfs",
+   "dat Dracula geen zin had een opvolger van jouw te maken, vermoedelijk",
+   "was je slechts z'n lunch."
+  ],
+  "153": [
+   "AAAAAAAAAAAARGGGHHHH"
+  ],
+  "154": [
+   "Wat  een stuitende taal in dit verblijf.."
+  ],
+  "155": [
+   "krijg nou snel de vleermuizenziekte."
+  ],
+  "156": [
+   "Stuitend!"
+  ],
+  "157": [
+   "Zeker christelijke opvoeding gehad ?  \u0000Dacht ik al."
+  ],
+  "158": [
+   "Ik weiger verder dit soort beledigingen aan te moeten",
+   "horen."
+  ],
+  "159": [
+   "Er zit geen deksel op de kist."
+  ],
+  "160": [
+   "Wat voor kist ?"
+  ],
+  "161": [
+   "De kasteeldeur is met geen mogelijkheid te bewegen."
+  ],
+  "162": [
+   "Er zit geen slot op de deur en de wind blaast de deur weer open.",
+   ""
+  ],
+  "163": [
+   "De deur valt met een slag in het slot."
+  ],
+  "164": [
+   "De deur valt dicht, maar draait langzaam weer open."
+  ],
+  "165": [
+   "Er is geen beweging in te krijgen."
+  ],
+  "166": [
+   "",
+   "      +++ Welkom in het dodenrijk +++",
+   "",
+   "Wil je dat ik je reincarneer ? (toets J of N)"
+  ],
+  "167": [
+   "Ok, maar neem me niet kwalijk als er iets fout gaa..",
+   "",
+   "         --- P O E F F ---",
+   "",
+   "Je wordt omgeven door oranje rook en als die optrekt",
+   "ben je......."
+  ],
+  "168": [
+   "Het luik zit muurvast."
+  ],
+  "169": [
+   "Wat voor luik ?"
+  ],
+  "170": [
+   "Dracula ontwijkt met gemak alle aanvallen. Een vreemde",
+   "blik in zijn ogen doet je verstijven terwijl Dracula",
+   "begint te grinniken."
+  ],
+  "171": [
+   "Dracula neemt je rustig op en verroert geen vin.",
+   "Jouw aanvallen lijken niets uit te halen."
+  ],
+  "172": [
+   "'Ik hou wel van pittige hapjes' grinnikt Dracula en",
+   "komt naar je toe. Vreemd genoeg halen jouw aanvallen",
+   "niets uit."
+  ],
+  "173": [
+   "Dracula sist en deinst achteruit. Hij wordt duidelijk",
+   "afgeschrikt door de geur van de knoflook. Hij kan zich",
+   "echter tamelijk snel herstellen."
+  ],
+  "174": [
+   "Hij verdraagt het licht slecht en valt neer. Met zijn handen",
+   "voor zijn ogen probeert hij weer op te staan."
+  ],
+  "175": [
+   "Je hebt de lamp niet bij je!"
+  ],
+  "176": [
+   "Je ziet een verlaten  kasteeltoren die schaars verlicht wordt",
+   "door een klein raampje. Een zware houten kist staat langs de",
+   "kant."
+  ],
+  "177": [
+   ""
+  ],
+  "178": [
+   ""
+  ],
+  "179": [
+   "Dat is zeer vrijgevig, maar je moet wel vermelden",
+   "wat je wilt geven."
+  ],
+  "180": [
+   "Het wordt niet aangepakt."
+  ],
+  "181": [
+   "Je hebt de munt niet bij je."
+  ],
+  "182": [
+   "De waard pakt de munt en zegt:",
+   "",
+   "  ' Dank je, maar de munt is totaal niet waardevol '"
+  ],
+  "183": [
+   "Bugje",
+   "",
+   "Je wilt dus kommentaar geven op de gang van zaken.",
+   "Dat kan. tiep eerst je naam in..."
+  ],
+  "184": [
+   "Typ nu in wat je op je lever hebt. Geef een lege",
+   "regel met alleen '.' in om te stoppen."
+  ],
+  "185": [
+   "Ik zet nu alle gegevens in DRACULA.SAV....."
+  ],
+  "186": [
+   "Ik haal nu alle gegevens uit DRACULA.SAV......"
+  ],
+  "187": [
+   "Wil je nu met het spel stoppen ?",
+   "Moet ik het spel snel even bewaren, zodat je",
+   "later verder kunt gaan waar je gebleven was? (toets J of N)"
+  ],
+  "188": [
+   "Een stem zegt ' Vtoc error on @Acct 31/5.8: Can't access file '",
+   "Dat zal ik even voor je vertalen, want die kompjoeters van tegenwoordig",
+   "spreken de vreemdste talen. Hij probeert te zeggen dat je niet meer terug",
+   "kan naar een oude plaats die je bewaard hebt met het 'bewaar' kommando.",
+   "Misschien moet je een andere schijf erin doen, of heb je helemaal niks",
+   "bewaard? Dan wordt het wel moeilijk voor mij."
+  ],
+  "189": [
+   "Het lijkt alsof de waard wat rustiger wordt."
+  ],
+  "190": [
+   "De bijl suist langs de waard z'n hoofd en hij wordt razend.",
+   "Hij pakt de bijl en gooit die met ongelofelijke kracht terug.",
+   "Je wijkt echter uit en de bijl raakt iemand achter je. Deze loopt",
+   "gillend de herberg uit en verdwijnt snel."
+  ],
+  "191": [
+   "De waard ontwijkt snel het mes en raapt het op. Hij bekijkt het",
+   "rustig,geeft het terug en zegt 'Dat zou ik niet nog een keer",
+   "doen..'"
+  ],
+  "192": [
+   "De bijl mist de waard op een meter. Hij pakt hem en",
+   "gooit hem terug. De bijl slaat in een houten pilaar. Met veel moeite trek",
+   "je de bijl weer uit het hout."
+  ],
+  "193": [
+   "De bijl van op de grond."
+  ],
+  "194": [
+   "De bijl raakt iemand en suist tegen de muur. De man die",
+   "geraakt was rent gillend de herberg uit."
+  ],
+  "195": [
+   "Het mes komt trillend in een houten balk terecht."
+  ],
+  "196": [
+   "Het mes komt op de grond terecht."
+  ],
+  "197": [
+   "De waard wordt licht geraakt en het mes ligt nu op de grond."
+  ],
+  "198": [
+   "Dracula ontwijkt het wapen met gemak en het valt",
+   "op de grond. Dracula vertrekt geen spier.."
+  ],
+  "199": [
+   "Ik zou natuurlijk ook wel willen weten wat je zou willen pakken."
+  ],
+  "200": [
+   "Moet ik soms bepalen wat je weg wilt gooien ?"
+  ],
+  "201": [
+   "        ******* Spelregels van DRACULA ADVENTURE *******",
+   "",
+   "Velen hebben reeds getracht de schat van Lord Dracula te vinden, weinigen zijn",
+   "teruggekomen. Jij wilt het dus ook proberen...dan moet je het volgende weten:",
+   "",
+   "Typ kommando's in na de -> en gebruik twee woorden. Wil je bijvoorbeeld",
+   "naar het westen toe, typ dan GA WEST in en druk de RETURN toets in. Als",
+   "je wilt zien waar je bent typ je bijvoorbeeld KIJK. Ik ken een aantal",
+   "nederlandse woorden waarmee je zinnen van maximaal twee woorden moet maken.",
+   "Doel van het spel is de grote schatten te vinden. Vanzelf blijkt wel of je",
+   "aan het einde van het avontuur bent of niet. Als je ergens naartoe wilt lopen",
+   "kan je, als dat aangegeven is, in de windroos  richtingen lopen,",
+   "dus GA NOORD,ZUID,OOST,WEST,OMHOOG,OMLAAG of ERUIT.",
+   "Dan kan je, als de richting niet duidelijk is ook naar een",
+   "bepaald objekt toe. Als er bv een huis staat, dan kan je",
+   "BETREED HUIS of GA HUIS proberen. Andere opdrachten zijn:",
+   "INVENTARIS, om te zien wat je bij je hebt, BEKIJK of ONDERZOEK, om iets",
+   "nauwkeurig te onderzoeken, BEWAAR SPEL, om huidige toestand op te slaan en",
+   "LAAD SPEL om weer terug te halen. Verder kan je verschillende opdrachten",
+   "afkorten. Zo is I hetzelfde als INVENTARIS, K hetzelfde als KIJK en",
+   "bijvoorbeeld W hetzelfde als GA WEST. Je kan op 1 regel meerdere kommando's",
+   "geven als je ze scheidt door een punt, dus bv. GA NOORD.PAK KERSTBOOM.",
+   "",
+   "                      * * * * veel sukses * * * *"
+  ],
+  "202": [
+   "Welk papier ?"
+  ],
+  "203": [
+   "Het raampje is te klein om erdoor te kunnen klimmen."
+  ],
+  "204": [
+   "Een geloogd massief eiken bed pakken ?? Ik denk",
+   "dat je het niet eens kan tillen!"
+  ],
+  "205": [
+   "Mhhhhhnnnnggggg...Nee, het lukt niet."
+  ],
+  "206": [
+   "Er zit geen deksel op de kist."
+  ],
+  "207": [
+   "Puur vakmanschap. Het schrijnwerk is uitgehouwen \u0000in prachtige",
+   "motieven met voorstellingen van fruit, verschillende gebruiks-",
+   "voorwerpen en aan de voorzijde een inscriptie in een vreemde taal."
+  ],
+  "208": [
+   "Eigenlijk niets bijzonders, als je bedenkt dat hier vroeger",
+   "waarschijnlijk een kachel heeft gestaan."
+  ],
+  "209": [
+   "Er staat \"set pen eos tiam nnmai tsoen eptes\" geschreven."
+  ],
+  "210": [
+   "Leuk geprobeerd, maar dat is een oud en uitgewerkt toverwoord."
+  ],
+  "211": [
+   "pffffff"
+  ],
+  "212": [
+   "Ik schat...b-positief",
+   "(alhoewel je dat natuurlijk nooit zeker weet)"
+  ],
+  "213": [
+   "Als je iets wil lezen weet ik echt wel, dat je alleen in de",
+   "inhoud geinteresseerd bent. Oftewel: doe geen moeite!"
+  ],
+  "214": [
+   "",
+   "         I N C O R E  A U T O M A T I S E R I N G",
+   "",
+   "              Uw leverancier van kwaliteitssoftware",
+   "",
+   "                 *",
+   "         *              *",
+   "                               *              *",
+   "",
+   "",
+   "",
+   "                                 *           *",
+   "",
+   "                   Surf naar www.cosninix.com/dracula"
+  ],
+  "215": [
+   ".. tijd verstrijkt ..."
+  ],
+  "216": [
+   "       +--------------------------------+",
+   "       !  D R A C U L A   C A S T L E   !",
+   "       !                                !",
+   "       ! Melden bij portier, bloedgroep !",
+   "       ! opgeven graag. Openingstijden: !",
+   "       !                                !",
+   "       !  Maandag-zaterdag 0.00-6.00    !",
+   "       !      Zondags gesloten          !",
+   "       +--------------------------------+"
+  ],
+  "217": [
+   "Het zijn zware laarsafdrukken, en hier en daar pootafdrukken",
+   "van verschillende dieren."
+  ],
+  "218": [
+   "Iaaaaaahhhhhhhhhhh.....",
+   "",
+   "        >>>>> B A F F <<<<<",
+   "",
+   "Helaas, ik denk dat deze sprong iets teveel van je gevergd heeft.",
+   "Je sterft na enige ogenblikken."
+  ],
+  "219": [
+   "Je ziet het bos, verlicht door een volle maan, die net achter",
+   "de wolken vandaan komt."
+  ],
+  "220": [
+   "Het is buiten pikkedonker. Met veel moeite kan je de contouren",
+   "van het bos zien en enig licht dat uit de richting van het dorp schijnt",
+   "te komen."
+  ],
+  "221": [
+   "De maan komt net achter de wolken vandaan en verlicht het bos. Heel",
+   "in de verte aan de horizon zie je het weerlichten."
+  ],
+  "222": [
+   "Je hoort een zwaar, monotoon gebonk. Af en toe lijkt het geluid zwakker",
+   "te worden, om even later het gewelf weer te laten beven van het lawaai."
+  ],
+  "223": [
+   "Een lange ladder staat tegen de wand en reikt tot aan een gat, dat",
+   "hoog bovenin de wand is geslagen."
+  ],
+  "224": [
+   "                 >>>> BAF <<<<",
+   "",
+   "Je bezeert je enkel maar het valt gelukkig erg mee."
+  ],
+  "225": [
+   "De hal is verlaten."
+  ],
+  "226": [
+   "Je ziet een man met een zwarte mantel de trap afkomen. Beneden",
+   "gekomen wacht hij en kijkt in jouw richting. Dan knipt hij met",
+   "zijn vingers en is onmiddellijk verdwenen. De hal is nu verlaten."
+  ],
+  "227": [
+   "Het lijkt alsof je nu in het woud bent, alhoewel het beeld zeer wazig is.",
+   "Kaboutertjes lopen voor je langs en zwaaien naar je. Het beeld wordt waziger",
+   "en tenslotte zwart. Dan zie je de hal van het kasteel en een man die snel",
+   "de trap oploopt."
+  ],
+  "228": [
+   "Lord Dracula komt direkt voor je staan. Je kan er niet door."
+  ],
+  "229": [
+   "Het waait direkt weer uit je hand."
+  ],
+  "230": [
+   "Ik geloof, dat je niet helemaal begrijpt wat de bedoeling is.",
+   "Je moet steeds opdrachten geven van 2 woorden, je kan bijvoorbeeld",
+   "nu intypen:",
+   "            SLUIT RAAM ,om het raam te sluiten",
+   "            GA ZUID    ,om naar die slaapkamer te gaan",
+   "            KLIM GAT   ,om te proberen dat gat boven je te bereiken",
+   "            INVENTARIS ,om te zien wat je bij je hebt",
+   "            LEES BRIEF ,om dat briefje wat op de grond ligt te lezen.",
+   "            KIJK       ,om nog eens te zien waar je bent en wat je kan doen."
+  ],
+  "231": [
+   "Het raam is nu gesloten.",
+   ""
+  ],
+  "232": [
+   "Het raam is nu open."
+  ],
+  "233": [
+   "Het is al dicht.",
+   ""
+  ],
+  "234": [
+   "Het raam is al open."
+  ],
+  "235": [
+   "Dat gaat niet, het raam is dicht."
+  ],
+  "236": [
+   "De kist is te zwaar om te tillen. Het lijkt alsof er",
+   "iets in zit."
+  ],
+  "237": [
+   "De kist is zo onhandig om te tillen en zo zwaar dat je eerst",
+   "alles moet laten vallen wil je de kist kunnen dragen."
+  ],
+  "238": [
+   "Met veel moeite pak je de kist."
+  ],
+  "239": [
+   "Je tilt de kist enkele centimeters op, maar er ligt niets onder."
+  ],
+  "240": [
+   "De kist is al gesloten."
+  ],
+  "241": [
+   "De kist gaat niet meer dicht."
+  ],
+  "242": [
+   "Je opent de kist met veel moeite...  Als je erin probeert te",
+   "kijken, zie je het levenloze lichaam van Dracula. Na enige tijd",
+   "piept een digitale kerkklok ...."
+  ],
+  "243": [
+   ".. het eerst levenloze lichaam beweegt en opent de ogen. Dracula",
+   "   kijkt je vervolgens aan, maakt een sissend geluid, springt op",
+   "   en duwt je met kracht naar achter."
+  ],
+  "244": [
+   "De kist is al open."
+  ],
+  "245": [
+   "Een loodzware kist met in fraaie oud gothische letters de tekst",
+   "               ' D  R  A  C  U  L  A'",
+   "uitgebeiteld. Op de kist ligt een zwaar en stoffig deksel. De kist is",
+   "bedekt met spinnewebben en lijkt in tijden niet gebruikt of aangeraakt."
+  ],
+  "246": [
+   "Het is een zware open kist met aan de voorkant de tekst",
+   "                    ' D R A C U L A '",
+   "in bloedrode letters. Binnenin de kist ligt niets dan wat stof. In de",
+   "onderkant van de kist zijn diepe groeven gesleten, alsof de kist ergens",
+   "vanaf is gegleden."
+  ],
+  "247": [
+   "Dat heb je al in je handen."
+  ],
+  "248": [
+   "Ben je gek? Dat kost je je vingers."
+  ],
+  "249": [
+   "Je ziet Dracula, die duidelijk met angst om een lichtvlek in de",
+   "vorm van een kruis heen loopt. Hij opent de deur van slaapkamer 2",
+   "en gaat naar binnen."
+  ],
+  "250": [
+   "Je ziet nog net een schaduw in de smalle noordelijke gang."
+  ],
+  "251": [
+   "Als je boven bent staat Lord Dracula te wachten voor de zware deur.",
+   "Dan lacht hij en loopt snel verder omhoog."
+  ],
+  "252": [
+   "Dracula loopt de trap op en kijkt nog even achterom, het lijkt alsof",
+   "hij wil weten of je hem volgt."
+  ],
+  "253": [
+   "Dracula verdwijnt via de trap."
+  ],
+  "254": [
+   "Dracula komt dichterbij en staat op het punt om je aan te vallen. Hij",
+   "ziet er uit alsof hij zeer zeker van zijn zaak is."
+  ],
+  "255": [
+   "Dracula schiet op je af en haalt uit."
+  ],
+  "256": [
+   "Dracula valt nu definitief aan en met een simpel gebaar wurgt hij je.",
+   "Voordat je bewusteloos wordt zie je hem weglopen. Hij lijkt niet eens",
+   "onder de indruk."
+  ],
+  "257": [
+   "De deur zit muurvast in het slot."
+  ],
+  "258": [
+   "Deze pogingen halen niets meer uit. Dracula lijkt verveeld door",
+   "het gebrek aan fantasie."
+  ],
+  "259": [
+   "Er gebeurt niets."
+  ],
+  "260": [
+   "'Aaaargghhhh'! Van schrik deinst de vampier achteruit.",
+   "Hij gaat tegen een muur staan en houdt zijn handen voor z'n ogen."
+  ],
+  "261": [
+   "Je hebt geen hamer."
+  ],
+  "262": [
+   "Lijkt me vrij nutteloos. Als je de wig zo bekijkt is deze alleen maar",
+   "geschikt om vampieren mee af te maken."
+  ],
+  "263": [
+   "Pinnen in vampieren slaan kan alleen maar als ze in een tamelijk",
+   "gekalmeerde toestand verkeren. Deze is meer in de tegenovergestelde",
+   "toestand en is er toe in staat jou af te maken in plaats van andersom."
+  ],
+  "264": [
+   "De vampier gilt en valt neer. Even blijft het lichaam roerloos, om",
+   "dan plotseling te worden omgeven door zwarte rook. Een zeer snel",
+   "verouderingsproces begint en na enkele seconden lijkt het alsof er",
+   "een eeuwenoud lijk voor je ligt. Dan vergaat het en blijft er slechts",
+   "stof over."
+  ],
+  "265": [
+   "De ruimte wordt plotseling geheel stil...Het blijft geruime tijd",
+   "rustig totdat een luide kreet van diep onder in het kasteel de stilte",
+   "doorbreekt. Het lijkt alsof de deur nu zwaar uitademt, maar in ieder",
+   "geval klinkt daarna weer het oude geluid. De deur blijft gesloten."
+  ],
+  "266": [
+   "Een zware slag en de deur piept en knarst. Langzaam draait de deur open,",
+   "de toegang vrijmakend naar een duistere kamer."
+  ],
+  "267": [
+   "Een holle lach klinkt achter de deur. Verder gebeurt er niets."
+  ],
+  "268": [
+   "De deur zit dicht en zelfs honderd paarden zouden de deur niet open",
+   "kunnen trekken."
+  ],
+  "269": [
+   "De spin komt snel op je af en loopt over je been. Daar dit soort",
+   "spinnen de vervelende gewoonte hebben om hun gif in hun prooi te",
+   "spuiten gaat het op het ogenblik niet zo best met je en.. ze valt nu aan."
+  ],
+  "270": [
+   "De spin komt op je af."
+  ],
+  "271": [
+   "Het gif stroomt uit de fles en de spin, die natuurlijk uitgedroogd",
+   "was van al die jaren wachten op een prooitje, vliegt op de vloeistof af.",
+   "Op het moment dat ze het gif aanraakt sterft de spin."
+  ],
+  "272": [
+   "De spin ontwijkt handig elke beweging."
+  ],
+  "273": [
+   "Je ziet van hieruit de kruiskamer. De wanden zijn hier met",
+   "bloed besmeurd en er liggen hier restanten van dieren.",
+   "In de hoek zie je een geraamte. Een groot vuur verspert de doorgang",
+   "naar een hiernaast gelegen kamer. De zware houten deur is open. Het",
+   "lijkt alsof je vanuit het harnas de hitte van het vuur minder voelt.",
+   "Ook blijkt er nu enige beweging in het harnas te zitten."
+  ],
+  "274": [
+   "Je ziet van hieruit de schatkamer. De wanden lijken licht te geven",
+   "door een vreemde weerkaatsing van het vuur. Licht valt door een gat",
+   "hoog bovenin deze ruimte. Doordat je in het harnas zit voel je de warmte",
+   "van het vuur een stuk minder."
+  ],
+  "275": [
+   "Onmogelijkheid, foutje in Dracula of zo, want als je het harnas bij",
+   "je hebt zou je er niet in mogen kunnen."
+  ],
+  "276": [
+   "Ik zie geen harnas hier."
+  ],
+  "277": [
+   "Met veel moeite kan je het harnas bewegen. Je voelt een ongelofelijke",
+   "hitte als je door het vuur loopt, maar het harnas biedt net voldoende",
+   "bescherming. Je bent nu in een andere kamer."
+  ],
+  "278": [
+   "Het vuur lijkt nu feller dan ooit maar je komt er door met wat gebrande",
+   "billen. Je kunt dus dadelijk op je blaren gaan zitten, maar eerst moet",
+   "je nog even de laatste loodjes van dit avontuur afleggen. (Het kasteel",
+   "begint nu namelijk te beven en persoonlijk ben ik van mening dat de",
+   "fundamenten van het kasteel daar niet zo tegen kunnen)"
+  ],
+  "279": [
+   "De kist begint te glijden en je schiet met grote snelheid omlaag.",
+   "De kist volgt het uitgesleten spoor en na een dodenrit van een kwartiertje",
+   "kom je het dorp ingegleden. Dan stopt de kist.."
+  ],
+  "280": [
+   "De desintegratietemperatuur van de gemiddelde avonturier ligt ver",
+   "beneden de waarde die nu bereikt is. Het effekt is weinig hoopvol."
+  ],
+  "281": [
+   "Alle dorpelingen en ook de TROS (Transylvania Radio Omroep Stichting) zijn",
+   "aanwezig om je te feliciteren. Er zijn ook enkele heren van de belasting-",
+   "dienst aanwezig die willen weten wat er in de kist zit die je bij je hebt.",
+   "Ook blijkt dat zojuist de vampieren tot de beschermde diersoorten worden",
+   "gerekend zodat je je binnenkort voor de rechter moet verantwoorden. Er",
+   "zijn enkele leden van de aktiegroep 'Stop de Vampierenmoord' aanwezig, die",
+   "je aggressief bejegenen. Het blijkt dat ze allemaal een zwarte jas aan",
+   "hebben.................."
+  ],
+  "282": [
+   "De deur staat ver genoeg open om erdoor te kunnen.",
+   "(Je kan door de deur lopen door GA DEUR in te toetsen)"
+  ],
+  "283": [
+   "In de deur staat \"DIT IS SESAM\" gebrand."
+  ],
+  "284": [
+   ""
+  ],
+  "285": [
+   ""
+  ],
+  "286": [
+   ""
+  ],
+  "287": [
+   ""
+  ],
+  "288": [
+   ""
+  ],
+  "289": [
+   ""
+  ],
+  "290": [
+   ""
+  ],
+  "291": [
+   ""
+  ],
+  "292": [
+   ""
+  ],
+  "293": [
+   ""
+  ],
+  "294": [
+   ""
+  ],
+  "295": [
+   ""
+  ],
+  "296": [
+   ""
+  ],
+  "297": [
+   ""
+  ],
+  "298": [
+   ""
+  ],
+  "299": [
+   ""
+  ],
+  "300": [
+   ""
+  ],
+  "301": [
+   ""
+  ],
+  "302": [
+   ""
+  ],
+  "303": [
+   ""
+  ],
+  "304": [
+   ""
+  ],
+  "305": [
+   ""
+  ],
+  "306": [
+   ""
+  ],
+  "307": [
+   ""
+  ],
+  "308": [
+   ""
+  ],
+  "309": [
+   ""
+  ],
+  "310": [
+   ""
+  ],
+  "311": [
+   ""
+  ],
+  "312": [
+   ""
+  ],
+  "313": [
+   ""
+  ],
+  "314": [
+   ""
+  ],
+  "315": [
+   ""
+  ],
+  "316": [
+   ""
+  ],
+  "317": [
+   ""
+  ],
+  "318": [
+   ""
+  ],
+  "319": [
+   ""
+  ],
+  "320": [
+   ""
+  ],
+  "321": [
+   ""
+  ],
+  "322": [
+   ""
+  ],
+  "323": [
+   ""
+  ],
+  "324": [
+   ""
+  ],
+  "325": [
+   ""
+  ],
+  "326": [
+   ""
+  ],
+  "327": [
+   ""
+  ],
+  "328": [
+   ""
+  ],
+  "329": [
+   ""
+  ],
+  "330": [
+   ""
+  ],
+  "331": [
+   ""
+  ],
+  "332": [
+   ""
+  ],
+  "333": [
+   ""
+  ],
+  "334": [
+   ""
+  ],
+  "335": [
+   ""
+  ],
+  "336": [
+   ""
+  ],
+  "337": [
+   ""
+  ],
+  "338": [
+   ""
+  ],
+  "339": [
+   ""
+  ],
+  "340": [
+   ""
+  ],
+  "341": [
+   ""
+  ],
+  "342": [
+   ""
+  ],
+  "343": [
+   ""
+  ],
+  "344": [
+   ""
+  ],
+  "345": [
+   ""
+  ],
+  "346": [
+   ""
+  ],
+  "347": [
+   ""
+  ],
+  "348": [
+   ""
+  ],
+  "349": [
+   ""
+  ],
+  "350": [
+   ""
+  ],
+  "351": [
+   ""
+  ],
+  "352": [
+   ""
+  ],
+  "353": [
+   ""
+  ],
+  "354": [
+   ""
+  ],
+  "355": [
+   ""
+  ],
+  "356": [
+   ""
+  ],
+  "357": [
+   ""
+  ],
+  "358": [
+   ""
+  ],
+  "359": [
+   ""
+  ],
+  "360": [
+   ""
+  ],
+  "361": [
+   ""
+  ],
+  "362": [
+   ""
+  ],
+  "363": [
+   ""
+  ],
+  "364": [
+   ""
+  ],
+  "365": [
+   ""
+  ],
+  "366": [
+   ""
+  ],
+  "367": [
+   ""
+  ],
+  "368": [
+   ""
+  ],
+  "369": [
+   ""
+  ],
+  "370": [
+   ""
+  ],
+  "371": [
+   ""
+  ],
+  "372": [
+   ""
+  ],
+  "373": [
+   ""
+  ],
+  "374": [
+   ""
+  ],
+  "375": [
+   ""
+  ],
+  "376": [
+   ""
+  ],
+  "377": [
+   ""
+  ],
+  "378": [
+   ""
+  ],
+  "379": [
+   ""
+  ],
+  "380": [
+   ""
+  ],
+  "381": [
+   ""
+  ],
+  "382": [
+   ""
+  ],
+  "383": [
+   ""
+  ],
+  "384": [
+   ""
+  ],
+  "385": [
+   ""
+  ],
+  "386": [
+   ""
+  ],
+  "387": [
+   ""
+  ],
+  "388": [
+   ""
+  ],
+  "389": [
+   ""
+  ],
+  "390": [
+   ""
+  ],
+  "391": [
+   ""
+  ],
+  "392": [
+   ""
+  ],
+  "393": [
+   ""
+  ],
+  "394": [
+   ""
+  ],
+  "395": [
+   ""
+  ],
+  "396": [
+   ""
+  ],
+  "397": [
+   ""
+  ],
+  "398": [
+   ""
+  ],
+  "399": [
+   ""
+  ],
+  "400": [
+   ""
+  ],
+  "401": [
+   ""
+  ],
+  "402": [
+   ""
+  ],
+  "403": [
+   ""
+  ],
+  "404": [
+   ""
+  ],
+  "405": [
+   ""
+  ],
+  "406": [
+   ""
+  ],
+  "407": [
+   ""
+  ],
+  "408": [
+   ""
+  ],
+  "409": [
+   ""
+  ],
+  "410": [
+   ""
+  ],
+  "411": [
+   ""
+  ],
+  "412": [
+   ""
+  ],
+  "413": [
+   ""
+  ],
+  "414": [
+   ""
+  ],
+  "415": [
+   ""
+  ],
+  "416": [
+   ""
+  ],
+  "417": [
+   ""
+  ],
+  "418": [
+   ""
+  ],
+  "419": [
+   ""
+  ],
+  "420": [
+   ""
+  ],
+  "421": [
+   ""
+  ],
+  "422": [
+   ""
+  ],
+  "423": [
+   ""
+  ],
+  "424": [
+   ""
+  ],
+  "425": [
+   ""
+  ],
+  "426": [
+   ""
+  ],
+  "427": [
+   ""
+  ],
+  "428": [
+   ""
+  ],
+  "429": [
+   ""
+  ],
+  "430": [
+   ""
+  ],
+  "431": [
+   ""
+  ],
+  "432": [
+   ""
+  ],
+  "433": [
+   ""
+  ],
+  "434": [
+   ""
+  ],
+  "435": [
+   ""
+  ],
+  "436": [
+   ""
+  ],
+  "437": [
+   ""
+  ],
+  "438": [
+   ""
+  ],
+  "439": [
+   ""
+  ],
+  "440": [
+   ""
+  ],
+  "441": [
+   ""
+  ],
+  "442": [
+   ""
+  ],
+  "443": [
+   ""
+  ],
+  "444": [
+   ""
+  ],
+  "445": [
+   ""
+  ],
+  "446": [
+   ""
+  ],
+  "447": [
+   ""
+  ],
+  "448": [
+   ""
+  ],
+  "449": [
+   ""
+  ],
+  "450": [
+   ""
+  ],
+  "451": [
+   ""
+  ],
+  "452": [
+   ""
+  ],
+  "453": [
+   ""
+  ],
+  "454": [
+   ""
+  ],
+  "455": [
+   ""
+  ],
+  "456": [
+   ""
+  ],
+  "457": [
+   ""
+  ],
+  "458": [
+   ""
+  ],
+  "459": [
+   ""
+  ],
+  "460": [
+   ""
+  ],
+  "461": [
+   ""
+  ],
+  "462": [
+   ""
+  ],
+  "463": [
+   ""
+  ],
+  "464": [
+   ""
+  ],
+  "465": [
+   ""
+  ],
+  "466": [
+   ""
+  ],
+  "467": [
+   ""
+  ],
+  "468": [
+   ""
+  ],
+  "469": [
+   ""
+  ],
+  "470": [
+   ""
+  ],
+  "471": [
+   ""
+  ],
+  "472": [
+   ""
+  ],
+  "473": [
+   ""
+  ],
+  "474": [
+   ""
+  ],
+  "475": [
+   ""
+  ],
+  "476": [
+   ""
+  ],
+  "477": [
+   ""
+  ],
+  "478": [
+   ""
+  ],
+  "479": [
+   ""
+  ],
+  "480": [
+   ""
+  ],
+  "481": [
+   ""
+  ],
+  "482": [
+   ""
+  ],
+  "483": [
+   ""
+  ],
+  "484": [
+   ""
+  ],
+  "485": [
+   ""
+  ],
+  "486": [
+   ""
+  ],
+  "487": [
+   ""
+  ],
+  "488": [
+   ""
+  ],
+  "489": [
+   ""
+  ],
+  "490": [
+   ""
+  ],
+  "491": [
+   ""
+  ],
+  "492": [
+   ""
+  ],
+  "493": [
+   ""
+  ],
+  "494": [
+   ""
+  ],
+  "495": [
+   ""
+  ],
+  "496": [
+   ""
+  ],
+  "497": [
+   ""
+  ],
+  "498": [
+   ""
+  ],
+  "499": [
+   ""
+  ]
+ },
+ "objects": {
+  "0": {
+   "tokens": [
+    "LANT",
+    "BRAN",
+    "LAMP"
+   ],
+   "name": "kleine brandende lantaren",
+   "attribute": 40,
+   "location": 1,
+   "raw_text": "/LANT/BRAN/LAMPkleine brandende lantaren"
+  },
+  "1": {
+   "tokens": [
+    "TOUW"
+   ],
+   "name": "stuk dik touw",
+   "attribute": 18,
+   "location": 3,
+   "raw_text": "/TOUWstuk dik touw"
+  },
+  "2": {
+   "tokens": [
+    "WIG"
+   ],
+   "name": "houten wig",
+   "attribute": 15,
+   "location": 18,
+   "raw_text": "/WIG houten wig"
+  },
+  "3": {
+   "tokens": [
+    "KNOF",
+    "STRE"
+   ],
+   "name": "streng knoflook",
+   "attribute": 25,
+   "location": 12,
+   "raw_text": "/KNOF/STREstreng knoflook"
+  },
+  "4": {
+   "tokens": [
+    "BOEK"
+   ],
+   "name": "dik gehavend boek",
+   "attribute": 22,
+   "location": 99,
+   "raw_text": "/BOEKdik gehavend boek"
+  },
+  "5": {
+   "tokens": [
+    "KAPM",
+    "MES"
+   ],
+   "name": "zwaar kapmes",
+   "attribute": 22,
+   "location": 18,
+   "raw_text": "/KAPM/MES zwaar kapmes"
+  },
+  "6": {
+   "tokens": [
+    "LADD"
+   ],
+   "name": "lange ladder",
+   "attribute": 17,
+   "location": 36,
+   "raw_text": "/LADDlange ladder"
+  },
+  "7": {
+   "tokens": [
+    "HOUT"
+   ],
+   "name": "stuk hout",
+   "attribute": 14,
+   "location": 99,
+   "raw_text": "/HOUTstuk hout"
+  },
+  "8": {
+   "tokens": [
+    "TAK"
+   ],
+   "name": "gesneden tak",
+   "attribute": 17,
+   "location": 99,
+   "raw_text": "/TAK gesneden tak"
+  },
+  "9": {
+   "tokens": [
+    "KRUI"
+   ],
+   "name": "houten kruis",
+   "attribute": 17,
+   "location": 99,
+   "raw_text": "/KRUIhouten kruis"
+  },
+  "10": {
+   "tokens": [
+    "BIJL"
+   ],
+   "name": "vlijmsscherpe bijl",
+   "attribute": 23,
+   "location": 4,
+   "raw_text": "/BIJLvlijmsscherpe bijl"
+  },
+  "11": {
+   "tokens": [],
+   "name": "Overbodig voorwerp",
+   "attribute": 18,
+   "location": 99,
+   "raw_text": "Overbodig voorwerp"
+  },
+  "12": {
+   "tokens": [],
+   "name": "stuk dik touw, vastgebonden aan het balkon",
+   "attribute": 42,
+   "location": 99,
+   "raw_text": "stuk dik touw, vastgebonden aan het balkon"
+  },
+  "13": {
+   "tokens": [
+    "SCHA",
+    "KIST"
+   ],
+   "name": "schatkist, vol met gouden munten",
+   "attribute": 42,
+   "location": 35,
+   "raw_text": "/SCHA/KISTschatkist, vol met gouden munten"
+  },
+  "14": {
+   "tokens": [
+    "BROO",
+    "SNEE"
+   ],
+   "name": "sneetje brood",
+   "attribute": 23,
+   "location": 2,
+   "raw_text": "/BROO/SNEEsneetje brood"
+  },
+  "15": {
+   "tokens": [
+    "MUNT",
+    "DUIV"
+   ],
+   "name": "gouden duivelaarsmunt",
+   "attribute": 31,
+   "location": 2,
+   "raw_text": "/MUNT/DUIVgouden duivelaarsmunt"
+  },
+  "16": {
+   "tokens": [
+    "FLES",
+    "MELK"
+   ],
+   "name": "fles melk (zonder statiegeld)",
+   "attribute": 39,
+   "location": 2,
+   "raw_text": "/FLES/MELKfles melk (zonder statiegeld)"
+  },
+  "17": {
+   "tokens": [
+    "FLES"
+   ],
+   "name": "lege fles",
+   "attribute": 14,
+   "location": 99,
+   "raw_text": "/FLESlege fles"
+  },
+  "18": {
+   "tokens": [
+    "FLES",
+    "WATE"
+   ],
+   "name": "fles water",
+   "attribute": 20,
+   "location": 99,
+   "raw_text": "/FLES/WATEfles water"
+  },
+  "19": {
+   "tokens": [
+    "HALS"
+   ],
+   "name": "gouden halsband",
+   "attribute": 20,
+   "location": 24,
+   "raw_text": "/HALSgouden halsband"
+  },
+  "20": {
+   "tokens": [],
+   "name": "zwaar eikenhouten bed",
+   "attribute": 21,
+   "location": 1,
+   "raw_text": "zwaar eikenhouten bed"
+  },
+  "21": {
+   "tokens": [],
+   "name": "zware gesloten kist",
+   "attribute": 19,
+   "location": 29,
+   "raw_text": "zware gesloten kist"
+  },
+  "22": {
+   "tokens": [],
+   "name": "zware geopende kist met een gesloten luik onderin",
+   "attribute": 49,
+   "location": 99,
+   "raw_text": "zware geopende kist met een gesloten luik onderin"
+  },
+  "23": {
+   "tokens": [],
+   "name": "zware geopende kist met een geopend luik onderin",
+   "attribute": 48,
+   "location": 99,
+   "raw_text": "zware geopende kist met een geopend luik onderin"
+  },
+  "24": {
+   "tokens": [],
+   "name": "zware kist met een dikke laag stof op de bodem",
+   "attribute": 46,
+   "location": 14,
+   "raw_text": "zware kist met een dikke laag stof op de bodem"
+  },
+  "25": {
+   "tokens": [],
+   "name": "zware kist met een boek onderin",
+   "attribute": 31,
+   "location": 99,
+   "raw_text": "zware kist met een boek onderin"
+  },
+  "26": {
+   "tokens": [],
+   "name": "zware lege kist",
+   "attribute": 15,
+   "location": 99,
+   "raw_text": "zware lege kist"
+  },
+  "27": {
+   "tokens": [],
+   "name": "@scherven",
+   "attribute": 9,
+   "location": 99,
+   "raw_text": "@scherven"
+  },
+  "28": {
+   "tokens": [
+    "BIJL"
+   ],
+   "name": "botte bijl",
+   "attribute": 15,
+   "location": 99,
+   "raw_text": "/BIJLbotte bijl"
+  },
+  "29": {
+   "tokens": [
+    "SCHE"
+   ],
+   "name": "schep",
+   "attribute": 10,
+   "location": 6,
+   "raw_text": "/SCHEschep"
+  },
+  "30": {
+   "tokens": [],
+   "name": "ondiepe waterbron",
+   "attribute": 17,
+   "location": 16,
+   "raw_text": "ondiepe waterbron"
+  },
+  "31": {
+   "tokens": [
+    "DOOS"
+   ],
+   "name": "kleine houten doos",
+   "attribute": 23,
+   "location": 4,
+   "raw_text": "/DOOSkleine houten doos"
+  },
+  "32": {
+   "tokens": [
+    "HAME"
+   ],
+   "name": "houten hamer",
+   "attribute": 17,
+   "location": 99,
+   "raw_text": "/HAMEhouten hamer"
+  },
+  "33": {
+   "tokens": [
+    "FLES"
+   ],
+   "name": "fles gevuld met blauw,giftig water",
+   "attribute": 39,
+   "location": 99,
+   "raw_text": "/FLESfles gevuld met blauw,giftig water"
+  },
+  "34": {
+   "tokens": [],
+   "name": "gevaarlijke kruisspin",
+   "attribute": 21,
+   "location": 34,
+   "raw_text": "gevaarlijke kruisspin"
+  },
+  "35": {
+   "tokens": [
+    "BRIE"
+   ],
+   "name": "klein briefje",
+   "attribute": 18,
+   "location": 0,
+   "raw_text": "/BRIEklein briefje"
+  },
+  "36": {
+   "tokens": [
+    "HARN",
+    "IJZE",
+    "GROO"
+   ],
+   "name": "groot ijzeren harnas",
+   "attribute": 35,
+   "location": 21,
+   "raw_text": "/HARN/IJZE/GROOgroot ijzeren harnas"
+  },
+  "37": {
+   "tokens": [],
+   "name": "zware doodskist met in gothische letters de tekst 'D R A C U L A'",
+   "attribute": 65,
+   "location": 37,
+   "raw_text": "zware doodskist met in gothische letters de tekst 'D R A C U L A'"
+  },
+  "38": {
+   "tokens": [
+    "KIST",
+    "DOOD"
+   ],
+   "name": "zware geopende doodskist met op de zijkant de tekst 'DRACULA'",
+   "attribute": 71,
+   "location": 99,
+   "raw_text": "/KIST/DOODzware geopende doodskist met op de zijkant de tekst 'DRACULA'"
+  },
+  "39": {
+   "tokens": [],
+   "name": "~De vreemd gevormde deur is nu open",
+   "attribute": 35,
+   "location": 99,
+   "raw_text": "~De vreemd gevormde deur is nu open"
+  },
+  "40": {
+   "tokens": [
+    "SPIN",
+    "KRUI"
+   ],
+   "name": "dode kruisspin",
+   "attribute": 24,
+   "location": 99,
+   "raw_text": "/SPIN/KRUIdode kruisspin"
+  },
+  "41": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "42": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "43": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "44": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "45": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "46": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "47": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "48": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "49": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "50": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "51": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "52": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "53": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "54": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "55": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "56": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "57": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "58": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "59": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "60": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "61": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "62": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "63": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "64": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "65": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "66": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "67": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "68": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "69": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "70": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "71": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "72": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "73": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "74": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "75": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "76": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "77": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "78": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "79": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "80": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "81": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "82": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "83": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "84": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "85": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "86": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "87": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "88": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "89": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "90": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "91": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "92": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "93": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "94": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "95": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "96": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "97": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "98": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  },
+  "99": {
+   "tokens": [],
+   "name": "",
+   "attribute": 0,
+   "location": 0,
+   "raw_text": ""
+  }
+ }
+}

@@ -1,0 +1,40 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts (PyInstaller / packaging)
+build/
+dist/
+*.egg-info/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
+
+# Created while playing
+dracula_save.json
+DRACULA.SAV
+DRACULA.BUG
+*.SAV
+*.BUG
+TESTER
+TESTER.OLD
+
+# The 1982 game is freeware and its 4 playable files are mirrored under original/.
+# Keep only the tiny DOS launch batch out of the repo.
+original/SPEEL.BAT
+
+# Internal notes / planning — not part of the public repo
+docs/re-notes/
+docs/superpowers/
+.superpowers/

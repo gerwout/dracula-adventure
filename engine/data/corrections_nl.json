@@ -1,0 +1,19 @@
+{
+  "_about": "Curated spelling corrections to the original 1982 DRACULA.TXT Dutch (source) text. Applied at load time to the DISPLAYED text only (messages / room descriptions / object names); the ORIGINAL is always preserved -- untouched in World.raw and in the original DRACULA.TXT file, and each [wrong, right] pair below records the original word. This is the 'Gemoderniseerde versie'; the true 1982 text is still available by loading with corrections disabled (load_file(corrections=False) / run_cli.py --faithful). Only clear typos are fixed here; the era-standard k-spellings (direkt, kommando, ...), the computer-persona jokes (tiep, kompjoeter), and the intentional stylings (msg 91/94/209, sound effects) are deliberately left as the original.",
+  "messages": {
+    "31":  [["onmiddelijk", "onmiddellijk"]],
+    "143": [["langaam", "langzaam"]],
+    "144": [["belant", "belandt"]],
+    "152": [["van jouw te maken", "van jou te maken"]],
+    "166": [["reincarneer", "reïncarneer"]],
+    "213": [["geinteresseerd", "geïnteresseerd"]],
+    "281": [["aggressief", "agressief"]]
+  },
+  "rooms": {
+    "22": [["zuidwaards", "zuidwaarts"]],
+    "36": [["dient doet", "dienst doet"]]
+  },
+  "objects": {
+    "10": [["vlijmsscherpe", "vlijmscherpe"]]
+  }
+}

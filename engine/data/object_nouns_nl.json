@@ -1,0 +1,32 @@
+{
+  "_about": "The full Dutch words the player TYPES to refer to each object. The parser matches a typed noun by its first 4 characters, so the engine derives each object's parser token as word[:4].upper() (knoflook -> KNOF). Translating a word here (knoflook -> garlic) lets the engine derive the target-language token (GARL) so object nouns are typeable in that language. Verified: for every object, word[:4].upper() reproduces DRACULA.TXT's original tokens, so the Dutch build is unchanged. Objects with no parser tokens (fixtures / state records) are omitted.",
+  "nouns": {
+    "0":  ["lantaren", "brandende", "lamp"],
+    "1":  ["touw"],
+    "2":  ["wig"],
+    "3":  ["knoflook", "streng"],
+    "4":  ["boek"],
+    "5":  ["kapmes", "mes"],
+    "6":  ["ladder"],
+    "7":  ["hout"],
+    "8":  ["tak"],
+    "9":  ["kruis"],
+    "10": ["bijl"],
+    "13": ["schatkist", "kist"],
+    "14": ["brood", "sneetje"],
+    "15": ["munt", "duivelaarsmunt"],
+    "16": ["fles", "melk"],
+    "17": ["fles"],
+    "18": ["fles", "water"],
+    "19": ["halsband"],
+    "28": ["bijl"],
+    "29": ["schep"],
+    "31": ["doos"],
+    "32": ["hamer"],
+    "33": ["fles"],
+    "35": ["briefje"],
+    "36": ["harnas", "ijzeren", "groot"],
+    "38": ["kist", "doodskist"],
+    "40": ["spin", "kruisspin"]
+  }
+}

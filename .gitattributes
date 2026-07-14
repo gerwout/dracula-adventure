@@ -1,0 +1,8 @@
+# Normalize line endings; keep LF in the repo.
+* text=auto eol=lf
+*.png binary
+*.ico binary
+
+# The mirrored original 1982 game files are preserved byte-for-byte (no EOL
+# normalization), so the archive matches the original release exactly.
+original/** binary

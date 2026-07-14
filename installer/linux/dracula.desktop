@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Dracula Adventure
+Comment=A faithful reimplementation of the 1982 Dutch text adventure Dracula Avontuur
+Exec=dracula-gui
+Icon=dracula-adventure
+Terminal=false
+Categories=Game;AdventureGame;
+Keywords=adventure;text;dracula;retro;

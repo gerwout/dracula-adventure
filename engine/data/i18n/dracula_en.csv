@@ -1,0 +1,1725 @@
+﻿id,type,room,room_name,object,dutch,en
+msg:0,message,any,,,Doe niet zo achterlijk..,Don't be so daft..
+msg:1,message,any,,,Dat gaat niet.,That won't work.
+msg:2,message,any,,,"Wou je dat met je blote handen proberen ??
+Ik stel voor dat je wat gereedschap zoekt.","Were you going to try that with your bare hands ??
+I suggest you find some tools."
+msg:3,message,any,,,"Dat gaat niet, je zult het eerst moeten  pakken.","That won't work, you'll have to pick it up first."
+msg:4,message,any,,,Dat zou ik niet doen als ik jou was.,I wouldn't do that if I were you.
+msg:5,message,any,,,"Ja zeg, ik zeg dat als jij zegt dat ik dat
+moet zeggen, dat ik dan zeg dat jij wil zeggen dat
+ik zeggen moet zeggen.","Well now, I say that if you say that I should say that,
+then I say that you want to say that I
+must say to say."
+msg:6,message,any,,,"Ik geloof niet dat ik je helemaal goed begrijp.
+( Ik ben ook maar een klein kompjoetertje en m'n geheugen
+is ook al niet zo best de laatste tijd )","I don't believe I quite understand you.
+( I'm only a little compewter you know, and my memory
+hasn't been so great lately either )"
+msg:7,message,any,,,Ik geloof niet dat ik je helemaal goed begrijp.,I don't believe I quite understand you.
+msg:8,message,any,,,Ik begrijp er helemaal niets van.,I can't make any sense of that at all.
+msg:9,message,any,,,"Eh, wat bedoel je ?","Eh, what do you mean ?"
+msg:10,message,any,,,Daar kan je niet heen.,You can't go there.
+msg:11,message,0,Eigen huis,,Daar kan je niet bij. Het gat zit te hoog.,You can't reach that. The hole is too high up.
+msg:12,message,7-10,Donker woud,,"De boom is te glad om in te klimmen en je kan de eerste takken
+niet bereiken. Langzaam zak je omlaag...","The tree is too smooth to climb and you can't reach the first
+branches. Slowly you slide back down..."
+msg:13,message,20-21,Kasteel (ingang) / Kasteelhal,,"De zware buitendeur is gesloten en met geen mogelijkheid
+meer open te krijgen.","The heavy outer door is shut and there is no way
+left to get it open."
+msg:14,message,30,Wenteltrap (vertikaal),lange ladder,"Welke ladder ?
+",Which ladder ?
+msg:15,message,30,Wenteltrap (vertikaal),,"Daar kan je niet bij, en de wand biedt geen
+houvast.","You can't reach it, and the wall offers no
+handhold."
+msg:16,message,39,Gegraven gat,,"De steen waardoor je naar binnen kwam, slaat met een
+slag dicht en is niet meer te onderscheiden.","The stone through which you came in slams
+shut and can no longer be made out."
+msg:17,message,37,Graftombe,,De steen is weer op zijn plaats geschoven.,The stone has slid back into place.
+msg:18,message,any,,,Ik denk niet dat je daarheen kan.,I don't think you can go there.
+msg:19,message,14,Zolder (herberg),,Er is niets stoffigs hier.,There is nothing dusty here.
+msg:20,message,14,Zolder (herberg),dik gehavend boek,Onder het stof komt een boek tevoorschijn.,From under the dust a book appears.
+msg:21,message,"2, 14, 29",Hal / Zolder (herberg) / Kasteeltoren,,Die is absoluut niet te tillen.,That is absolutely impossible to lift.
+msg:22,message,any,,,"Dat wordt te zwaar, je zult eerst iets moeten laten
+vallen.","That's getting too heavy, you'll have to drop
+something first."
+msg:23,message,any,,,Dat heb je helemaal niet bij je.,You aren't carrying that at all.
+msg:24,message,any,,"fles melk (zonder statiegeld) / lege fles / fles water / fles gevuld met blauw,giftig water",De fles valt kapot op de grond.,The bottle shatters on the ground.
+msg:25,message,0,Eigen huis,lange ladder,"De ladder reikt tot aan het gat en staat stevig
+genoeg om te beklimmen.","The ladder reaches up to the hole and stands firmly
+enough to climb."
+msg:26,message,16,Heuvel,gouden duivelaarsmunt,"Als je de munt in de bron gooit verandert het
+water van de bron in een vreemde blauwe kleur. Het
+water borrelt nu veel heftiger dan eerst. Een zwarte schaduw
+schiet over de bodem, maar het water wordt langzaam weer
+iets meer helder.","When you throw the coin into the well the water
+of the well turns a strange blue colour. The
+water now bubbles far more fiercely than before. A black shadow
+darts across the bottom, but the water slowly grows
+a little clearer again."
+msg:27,message,30,Wenteltrap (vertikaal),lange ladder,De ladder komt net tot aan het gat.,The ladder just reaches the hole.
+msg:28,message,any,,,Ik zie helemaal geen bomen.,I don't see any trees at all.
+msg:29,message,"7-10, 15, 17-18",various,botte bijl,De bijl is te bot geworden.,The axe has become too blunt.
+msg:30,message,"7-10, 15, 17-18",various,stuk hout,Je kapt een groot stuk hout af.,You chop off a large piece of wood.
+msg:31,message,36,Binnenplaats/kerkhof,,"Je graaft alleen enkele botten op, maar die vergruizen  onmiddellijk
+als je ze aanraakt.","You only dig up a few bones, but they crumble to dust
+the moment you touch them."
+msg:32,message,any,,,De grond is te hard om te graven.,The ground is too hard to dig.
+msg:33,message,"4-5, 39",Kelder / Zandtunnel / Gegraven gat,,Geef een richting waarheen je wilt graven.,Give a direction in which you want to dig.
+msg:34,message,0,Eigen huis,lange ladder,Welke ladder bedoel je ?,Which ladder do you mean ?
+msg:35,message,any,,fles melk (zonder statiegeld),Gloe..gloe..gloe..burpp...,Glug..glug..glug..burpp...
+msg:36,message,any,,"fles gevuld met blauw,giftig water","Het blauwkleurige water is zeer giftig. Na enkele
+seconden stokt je adem, dan kronkel je over de grond van
+kramp. Je sterft na enkele minuten..","The blue-coloured water is highly poisonous. After a few
+seconds your breath catches, then you writhe on the ground with
+cramp. You die after a few minutes.."
+msg:37,message,any,,fles water,Er zit een vreemd smaakje aan.,It has a strange aftertaste.
+msg:38,message,any,,sneetje brood,"Mmmm, heerlijk. Ik was vrij hongerig van al dit
+praten.","Mmmm, delicious. I was rather hungry from all this
+talking."
+msg:39,message,0,Eigen huis,,"Er zit een gat in het plafond, maar je kunt het niet bereiken.
+Het gat is groot genoeg om er doorheen te klimmen.","There is a hole in the ceiling, but you can't reach it.
+The hole is big enough to climb through."
+msg:40,message,0,Eigen huis,,Via een ladder kan je naar boven klimmen.,By way of a ladder you could climb up.
+msg:41,message,20,Kasteel (ingang),,De zware deur van het kasteel  is open.,The heavy door of the castle is open.
+msg:42,message,21,Kasteelhal,,De zware deur naar buiten  is open.,The heavy door to the outside is open.
+msg:43,message,20,Kasteel (ingang),,"De zware, met spinneweb bedekte, deur is gesloten.","The heavy, cobweb-covered door is shut."
+msg:44,message,21,Kasteelhal,,De zware deur naar buiten is gesloten.,The heavy door to the outside is shut.
+msg:45,message,7-11,Donker woud / Dorpsstraat,,In de verte hoor je een vogel fluiten.,In the distance you hear a bird whistling.
+msg:46,message,11,Dorpsstraat,,Ver in het bos kan je een bron zien.,Far off in the forest you can see a well.
+msg:47,message,12,Herberg,,Je ziet de smalle zoldertrap achter een kast.,You see the narrow attic stairs behind a cupboard.
+msg:48,message,20,Kasteel (ingang),,Plotseling beweegt de deur en slaat met een klap dicht.,Suddenly the door moves and slams shut with a bang.
+msg:49,message,any,,,"Dracula staat voor je en blokkeert alle uitgangen.
+Hij kijkt je angstaanjagend aan. Als hij lacht zie
+je een paar scherpe hoektanden die zijn bedoelingen
+duidelijk maken.","Dracula stands before you and blocks every exit.
+He stares at you terrifyingly. When he smiles you
+see a pair of sharp fangs that make his intentions
+quite clear."
+msg:50,message,32,Gewelf,,"Het hek is open, je kan de trap af.","The gate is open, you can go down the stairs."
+msg:51,message,32,Gewelf,,Het ijzeren hek is gesloten.,The iron gate is shut.
+msg:52,message,37,Graftombe,,Voor de trap zit een ijzeren hek,In front of the stairs is an iron gate
+msg:53,message,37,Graftombe,,Het ijzeren hek is gesloten.,The iron gate is shut.
+msg:54,message,23,Kasteelslaapkamer,,"terwijl de deur, waardoor je eruit kan, geopend is.",while the door through which you can get out is open.
+msg:55,message,23,Kasteelslaapkamer,,"terwijl achterop een gesloten deur een tekst te
+lezen is.","while on a closed door at the back a text can be
+read."
+msg:56,message,any,,,Niemand geeft antwoord.,Nobody answers.
+msg:57,message,12,Herberg,,"Hij zegt 'Ben je doof of zo' en gaat door met zijn
+werk.","He says 'Are you deaf or something' and goes on with his
+work."
+msg:58,message,12,Herberg,,"Hij sist 'Wegwezen, voordat ik echt boos ga worden'.
+Je ziet hem iets pakken.","He hisses 'Clear off, before I really lose my temper'.
+You see him grab something."
+msg:59,message,12,Herberg,,"Hij zegt ' Er is een zoldertrap achter die kast daar,'
+en als je goed kijkt kan je de trap ook zien.","He says ' There's an attic staircase behind that cupboard there,'
+and if you look closely you can see the stairs too."
+msg:60,message,12,Herberg,,"Die zie je niet, maar misschien kijk je niet goed. De waard zou
+trouwens ook wel eens meer kunnen weten, denk je niet?","You don't see it, but perhaps you're not looking properly. The innkeeper
+might well know more, too, don't you think?"
+msg:61,message,12,Herberg,,"De waard zegt 'Daar komt helemaal niets van in, mannetje'
+en komt op je af.","The innkeeper says 'Nothing doing, little man'
+and comes at you."
+msg:62,message,18,Boomhut,,Iaaaaaaahhhh...,Iaaaaaaahhhh...
+msg:63,message,any,,,hop.....hop....hop..,hop.....hop....hop..
+msg:64,message,12,Herberg,,Hij kijkt je kwaad aan.,He glares at you angrily.
+msg:65,message,39,Gegraven gat,,De steen wil niet verder draaien.,The stone won't turn any further.
+msg:66,message,39,Gegraven gat,,"Een van de stenen van de wand draait weg en je
+ziet een grafkist achter de steen. Je kunt kruipen door het
+gat dat nu is ontstaan.","One of the stones in the wall turns away and you
+see a coffin behind the stone. You can crawl through the
+hole that has now appeared."
+msg:67,message,any,,,Er gebeurt helemaal niets.,Nothing at all happens.
+msg:68,message,any,,,Het raam is al open.,The window is already open.
+msg:69,message,1,Slaapkamer,,Ik zie geen 'luik'.,I don't see a 'hatch'.
+msg:70,message,1,Slaapkamer,,Het luik is al open.,The hatch is already open.
+msg:71,message,1,Slaapkamer,,"Het luik kraakt en met veel moeite krijg je het
+zover open dat je er net door kan.","The hatch creaks and with great effort you get it
+open far enough to just squeeze through."
+msg:72,message,"32, 37",Gewelf / Graftombe,,Het hek is al open.,The gate is already open.
+msg:73,message,32,Gewelf,,Het hek lijkt muurvast te zitten.,The gate seems to be stuck fast.
+msg:74,message,"32, 37",Gewelf / Graftombe,,Het hek gaat met de minste kracht open.,The gate opens at the slightest push.
+msg:75,message,14,Zolder (herberg),,De kist is open!,The chest is open!
+msg:76,message,29,Kasteeltoren,zware gesloten kist,Je ziet een houten luik onderin.,You see a wooden hatch at the bottom.
+msg:77,message,any,,,Ik zie geen luik.,I don't see a hatch.
+msg:78,message,29,Kasteeltoren,,Het luik gaat open.,The hatch opens.
+msg:79,message,29,Kasteeltoren,,Het luik zit muurvast.,The hatch is stuck fast.
+msg:80,message,any,,kleine houten doos,De doos is al open.,The box is already open.
+msg:81,message,any,,kleine houten doos / houten hamer,Er valt een hamer uit.,A hammer falls out.
+msg:82,message,any,,,Ik zie niet goed hoe ik dat zou moeten openen.,I don't quite see how I'd open that.
+msg:83,message,any,,,Ik denk niet dat dat nodig is.,I don't think that's necessary.
+msg:84,message,any,,,Je hebt het niet eens bij je.,You aren't even carrying it.
+msg:85,message,any,,,Waaraan ?,To what ?
+msg:86,message,25,Balkon,stuk dik touw,Het touw zit stevig vast aan het balkon.,The rope is firmly tied to the balcony.
+msg:87,message,21-38,various,,Pakke wat je pakke kan.,Grab what ye can grab.
+msg:88,message,any,,,Heb je geen slaap na deze opwindende avonturen?,Aren't you sleepy after these thrilling adventures?
+msg:89,message,any,,,Geen paniek..geen paniek..,Don't panic..don't panic..
+msg:90,message,any,,,Dat moet je dan wel bij je hebben.,"You do have to be carrying that, then."
+msg:91,message,any,,dik gehavend boek,"      -------  V A M P I E R   H A N D B O E C K -------
+
+Vampieren sijn al sedert menschenheugenisse ende tiden die
+parasieten der menschen. Si hebben elcken daghe
+versch bloed nodigh en hebben so al vele liden
+vermoert ende omgebracht. In die loop der tiden
+sijn enighe eighenschappen des vampier bekent geworden. So
+is de vampier seer angstigh voor het almagtig cruice, het beste
+van hout gemaackt. Sij kunnen het dageligt nauelijcks sien
+ende verdhragen. Cnoflooc schijnt een vampier
+alsmede ooc af te schricken. Ooit hevet eenen ondersoecer
+waar na later tiden nie ofte nimmer meer iet van es
+gehoort, geprobeert die vampier in sijnen dagheslaap eenen
+houten pen door den harte te slaan. Die lieden seghen dit soude
+connen doden die vampier geheel ende al. Later sijn in deser wijse
+die meesten vampieren gedodet, maar het stercste geslagte des
+vampiers dracula hevet dit cunnen overlev...
+
+   -- de tekst wordt verder onleesbaar --","      -------  V A M P Y R E   H A N D B O O K E -------
+
+Vampyres have beene, sithence the memorie of manne and tymes of olde,
+the parasytes of mankinde. They have neede everie daye
+of freshe bloode, and have thus alreadie manie folke
+slayne and done to deathe. In the course of tymes
+certeyne propertyes of the vampyre are becomme knowne. Thus
+is the vampyre sore afeard of the almightie crosse, the whiche is best
+fashioned of woode. They can scarce abyde nor endure
+the light of daye. Garlicke doth likewyse seeme to
+affright a vampyre. Once did a certeyne seeker,
+whereof in later tymes never no more was
+herde, essaye to smyte the vampyre in his daye-slumber with a
+woodden pinne through the herte. The folke doe saye this myghte
+slaye the vampyre wholie and entyrelie. Later were in this wyse
+the moste of vampyres slayne, but the strongeste kindred of the
+vampyres, dracula, hath beene able to survyv...
+
+   -- the text groweth further illegible --"
+msg:92,message,any,,,Ik zie geen tekst.,I don't see any text.
+msg:93,message,dead,(onbereikbaar — nooit getoond in het spel),,"Er valt hier eigenlijk niet zoveel op te
+lezen.",There's really not much to read here.
+msg:94,message,23,Kasteelslaapkamer,,"
+   ULVU  ++  *NR*
+   CEKW  ++  *D**
+
+    ++  TBTA  ++
+    ++  LOAO  ++
+
+   A*OD  ++  *ORA
+   *OEN  ++  RWNA
+","
+   ULVU  ++  *NR*
+   CEKW  ++  *D**
+
+    ++  TBTA  ++
+    ++  LOAO  ++
+
+   A*OD  ++  *ORA
+   *OEN  ++  RWNA
+"
+msg:95,message,any,,,Hoe wou je dat vullen ?,How did you mean to fill that ?
+msg:96,message,any,,,Waarmee ?,With what ?
+msg:97,message,16,Heuvel,fles melk (zonder statiegeld),Er zit al melk in.,There's already milk in it.
+msg:98,message,16,Heuvel,fles water,De fles zit nog vol met water.,The bottle is still full of water.
+msg:99,message,16,Heuvel,lege fles,Je hebt geen fles bij je.,You aren't carrying a bottle.
+msg:100,message,16,Heuvel,lege fles,De fles vult zich langzaam..,The bottle slowly fills..
+msg:101,message,any,,gesneden tak,Ik zie geen tak hier.,I don't see a branch here.
+msg:102,message,any,,gesneden tak,Met de tak valt niks te beginnen.,There's nothing to be done with the branch.
+msg:103,message,any,,stuk hout,Ik zie geen hout.,I don't see any wood.
+msg:104,message,any,,stuk hout / houten kruis,"Na enig snijwerk krijgt het stuk hout de vorm
+van een kruis.","After some carving the piece of wood takes the shape
+of a cross."
+msg:105,message,any,,stuk hout,Je hebt daar een stuk hout voor nodig.,You need a piece of wood for that.
+msg:106,message,any,,,Er dwarrelen wat snippertjes af.,A few shavings flutter off.
+msg:107,message,any,,,Dat heeft geen zin.,That's pointless.
+msg:108,message,any,,houten wig,De wig is erg scherp....,The wedge is very sharp....
+msg:109,message,any,,dik gehavend boek,"Het is een oud, zwaar, dik, gehavend boek met lederen
+omslag. Sommige pagina's zijn eruit gescheurd en andere geheel
+verbleekt.","It is an old, heavy, thick, battered book with a leather
+cover. Some pages have been torn out and others are entirely
+faded."
+msg:110,message,any,,zwaar kapmes,Je kan met het kapmes hout snijden en bewerken.,With the machete you can cut and work wood.
+msg:111,message,any,,groot ijzeren harnas,Je zou er precies inpassen.,You would fit inside it exactly.
+msg:112,message,any,,stuk dik touw,Het touw is stevig genoeg om er een olifant mee op te tillen.,The rope is strong enough to hoist an elephant with.
+msg:113,message,any,,"schatkist, vol met gouden munten","De kist zit vol met zeer oude, toendertijd waardevolle munten.","The chest is full of very old coins, valuable in their day."
+msg:114,message,any,,zwaar eikenhouten bed,Welk bed had je in gedachten ?,Which bed did you have in mind ?
+msg:115,message,1,Slaapkamer,zwaar eikenhouten bed,"Het bed is zwaar en niet zomaar te tillen of
+te verplaatsen. Voor de rest is er zo op het eerste
+gezicht niets bijzonders mee...","The bed is heavy and not so easily lifted or
+moved. For the rest there is, at first
+glance, nothing special about it..."
+msg:116,message,1,Slaapkamer,zwaar eikenhouten bed,"Onder het bed is een klein houten luik te zien. Een
+ijzeren ring is aan het luik vastgenageld zodat je
+'m zo open zou moeten kunnen maken.","Under the bed a small wooden hatch can be seen. An
+iron ring is nailed to the hatch so you
+should be able to open it easily."
+msg:117,message,1,Slaapkamer,,"Het luik kan simpel opengemaakt worden door aan
+de ijzeren ring, die aan het luik vastgeklonken zit
+te trekken.","The hatch can be opened simply by pulling on
+the iron ring that is riveted to the hatch."
+msg:118,message,29,Kasteeltoren,,"Het luik is zeer stevig en is waarschijnlijk
+niet kapot te krijgen.","The hatch is very sturdy and probably
+can't be broken."
+msg:119,message,51,Nauwe nis,,"Je kan zien wat er in de kasteeltoren gebeurt, je ziet
+een houten kist staan. Door een klein raampje komt licht
+naar binnen. Even later zie je een man met een zwarte mantel
+de trap op komen. Hij kijkt even gevaarlijk jouw richting op.
+Dan lacht hij en opent de kist. Even later stapt hij
+in de kist en het deksel valt dicht.","You can see what is happening in the castle tower, you see
+a wooden chest standing. Light comes in through a small
+window. A moment later you see a man in a black cloak
+coming up the stairs. He glances dangerously in your direction.
+Then he laughs and opens the chest. A moment later he steps
+into the chest and the lid falls shut."
+msg:120,message,52,Ventilatieruimte,,"Je kunt van hieruit zien wat er in de eetkamer gebeurt. Er staat
+een grote tafel. Er is een klein bochelig kereltje, dat in de eetkamer
+met een kandelaar rondloopt. Als hij de kamer uitgaat wordt het daar
+pikdonker en je ziet niets meer...","From here you can see what is happening in the dining room. There is
+a large table. There is a small hunched little fellow walking about the
+dining room with a candlestick. When he leaves the room it goes
+pitch dark there and you see nothing more..."
+msg:121,message,any,,,Zover ik het kan beoordelen is er niets bijzonders mee.,As far as I can tell there's nothing special about it.
+msg:122,message,any,,,Ik zie er niets bijzonders aan.,I see nothing special about it.
+msg:123,message,any,,,"Je kunt hier moeilijk in slaap komen doordat de
+grond erg hard is.","It's hard to fall asleep here because the
+ground is very hard."
+msg:124,message,1,Slaapkamer,,Je wordt 's morgens vroeg weer fit wakker.,"You wake early in the morning, fit again."
+msg:125,message,1,Slaapkamer,,"Je wordt midden in de nacht wakker door gerommel,
+dat vanonder het bed lijkt te komen. Als je uit het bed
+stapt verdwijnt het gebonk als bij toverslag.","You wake in the middle of the night from a rumbling
+that seems to come from under the bed. When you step out
+of the bed the thumping vanishes as if by magic."
+msg:126,message,11,Dorpsstraat,,Je raakt helemaal de weg kwijt...,You lose your way completely...
+msg:127,message,1,Slaapkamer,,Welk luik bedoel je ?,Which hatch do you mean ?
+msg:128,message,any,,streng knoflook,Ik zie geen knoflook.,I don't see any garlic.
+msg:129,message,12,Herberg,streng knoflook,"De waard zegt ' Wat moet dat daar ? ' Hij komt
+op je af en slaat het knoflook uit je handen. Hij pakt
+het op en legt het terug waar het lag. De mensen in de
+herberg kijken je verstoord aan.","The innkeeper says ' What's that doing there ? ' He comes
+at you and knocks the garlic out of your hands. He picks
+it up and puts it back where it lay. The people in the
+inn look at you with annoyance."
+msg:130,message,12,Herberg,,"Dan stroopt de waard een mouw op en slaat je midden in
+je gezicht. Het bloed stroomt uit je neus. De sfeer
+wordt zeer gespannen.","Then the innkeeper rolls up a sleeve and hits you square in
+your face. Blood streams from your nose. The mood
+turns very tense."
+msg:131,message,any,,streng knoflook,Ik zie geen knoflook.,I don't see any garlic.
+msg:132,message,any,,,Je kan het gewoon pakken hoor..,"You can just pick it up, you know.."
+msg:133,message,12,Herberg,,"De waard gromt en lijkt wat rustiger te worden. Verschillende
+mensen draaien zich weer met de rug naar je toe.","The innkeeper growls and seems to grow a little calmer. Several
+people turn their backs to you again."
+msg:134,message,12,Herberg,streng knoflook,"De waard zegt 'Je mag het knoflook wel hebben hoor,
+we hebben er genoeg van.' Hij geeft de streng aan jou.","The innkeeper says 'You can have the garlic, you know,
+we've got plenty of it.' He hands the string to you."
+msg:135,message,any,,,... absolute stilte ...,... absolute silence ...
+msg:136,message,13,Herberg (tafel),,"Twee mannen zitten te praten :
+
+ '..... Nou, gisteren was het weer eens goed raak,he ??
+
+ 'Zeg dat wel, twee in een keer. En er is niets dat we
+  eraan kunnen doen.. oh, eh, goeiedag vreemdeling..'
+
+ Je weet natuurlijk niet waarover het gaat en zegt niets terug.
+ De twee vervolgen hun gesprek:
+
+ 'Weet je, er moet hier op de zolder van deze herberg ook wat
+  voorgevallen zijn '
+
+ 'Ja, dat hoorde ik, de waard is er niet erg over te spreken. Hij
+  spreekt eigenlijk sindsdien helemaal niet meer zo...'","Two men sit talking :
+
+ '..... Well, yesterday was another good haul, eh ??
+
+ 'You can say that again, two at once. And there's nothing we
+  can do about it.. oh, eh, good day stranger..'
+
+ Of course you have no idea what it's about and say nothing back.
+ The two carry on with their conversation:
+
+ 'You know, something must have happened up in the attic of this
+  inn as well '
+
+ 'Yes, I heard about that, the innkeeper isn't keen to talk about it. He
+  hasn't really spoken the same since...'"
+msg:137,message,13,Herberg (tafel),,"De twee mannen zitten nog te praten:
+
+ '... He! Dat is toch degene die hier vorige keer ook
+  zat te luisteren ?'
+
+ 'Volgens mij wel.' Hij draait zich naar je toe en zegt:
+
+ 'Zoek jij moeilijkheden ??","The two men are still talking:
+
+ '... Hey! Isn't that the one who was sitting here listening
+  last time too ?'
+
+ 'I think so.' He turns toward you and says:
+
+ 'Are you looking for trouble ??"
+msg:138,message,13,Herberg (tafel),,"Iedereen die aan de tafel zit gaat staan en
+loopt naar een andere tafel. Je zit nu alleen aan de tafel.","Everyone sitting at the table gets up and
+walks to another table. You are now sitting alone at the table."
+msg:139,message,25-26,Balkon / Smalle rand,stuk dik touw,Welk touw ?,Which rope ?
+msg:140,message,12,Herberg,,"De waard wordt zeer kwaad en slaat je direkt op je kaak, en
+je deinst terug. Dan storm je op hem af en trapt hem op het
+moment dat hij een mes wil gooien. Het mes suist langs je oren
+en schampt je schouder. De waard, die ineengekrompen was komt
+weer langzaam overeind, pakt zijn mes terug en wacht..","The innkeeper grows very angry and hits you straight on the jaw, and
+you reel back. Then you charge at him and kick him just as
+he's about to throw a knife. The knife whizzes past your ears
+and grazes your shoulder. The innkeeper, who had doubled over, slowly
+straightens up again, takes back his knife and waits.."
+msg:141,message,12,Herberg,,"De waard slaat naar achter tegen een tafel als je hem in z'n maag slaat. Hij
+komt echter direkt terug, grijpt je bij je kraag en gooit
+je de lucht in. Als je neerkomt sla je met je kaak op de toon-
+bank. Half bewusteloos zie je de waard op je afkomen.","The innkeeper is knocked back against a table when you hit him in the stomach. He
+comes right back, however, grabs you by the collar and throws
+you into the air. When you come down you strike your jaw on the
+counter. Half unconscious you see the innkeeper coming at you."
+msg:142,message,12,Herberg,,"De waard pakt een mes en steekt dat met enorme kracht in je
+hand. Je valt neer en als je kreunend van de pijn probeert op
+te staan trapt de waard je tegen de grond, trekt het mes uit je
+hand en snijdt je strot door. Je probeert nog iets te zeggen, maar
+je raakt na enkele seconden buiten westen.","The innkeeper grabs a knife and drives it with enormous force into your
+hand. You fall down and as you try, groaning with pain, to get
+up the innkeeper kicks you to the ground, pulls the knife out of your
+hand and slits your throat. You try to say something, but
+after a few seconds you pass out."
+msg:143,message,12,Herberg,,"De waard loopt even weg en komt terug met een zware houten
+balk. Een van de mannen in de herberg staat op en pakt je vast.
+De waard haalt uit en als hij je in het gezicht wil slaan schiet je
+naar onderen. De balk raakt de kerel die je vasthield met een doffe
+slag in z'n nek. Bloedend rent hij de herberg uit terwijl de waard
+opnieuw uithaalt. De balk komt met grote kracht op je knie terecht
+als je probeert de slag te ontwijken. Snel sta je op en
+je geeft de waard een dusdanige slag in z'n gezicht dat hij
+langzaam achteruit wankelt. Hij herstelt echter snel..","The innkeeper walks off for a moment and comes back with a heavy wooden
+beam. One of the men in the inn stands up and grabs hold of you.
+The innkeeper swings and as he tries to hit you in the face you duck
+down. The beam strikes the fellow holding you with a dull
+blow to the neck. Bleeding, he runs out of the inn while the innkeeper
+swings again. The beam lands with great force on your knee
+as you try to dodge the blow. You quickly get up and
+give the innkeeper such a blow to the face that he
+slowly staggers backward. He recovers quickly, however.."
+msg:144,message,12,Herberg,,"De waard rent weg en lijkt bang. Hij pakt echter een
+vleesmes en komt nu dreigend op je af. Je ziet kans het
+mes uit z'n hand te trappen, maar hij duwt je weg en je
+belandt met je rug tegen de harde muur en hij pakt het mes weer.","The innkeeper runs off and seems afraid. He grabs a
+meat knife, however, and now comes at you menacingly. You manage to kick the
+knife out of his hand, but he shoves you away and you
+land with your back against the hard wall and he grabs the knife again."
+msg:145,message,any,,,Die is hier niet.,That one isn't here.
+msg:146,message,dead,(onbereikbaar — nooit getoond in het spel),,Deze tekst WAS het VOORLOPIGE einde van het adventure..,This text WAS the PROVISIONAL ending of the adventure..
+msg:147,message,any,,,Dracula komt langzaam dichterbij.,Dracula slowly comes closer.
+msg:148,message,any,,,"Dracula kijkt je aan en begint te lachen. Terwijl hij
+dichterbij komt hoor je hem iets mompelen over ontbijt
+of iets dergelijks.","Dracula looks at you and begins to laugh. As he
+comes closer you hear him mutter something about breakfast
+or some such."
+msg:149,message,any,,,"Dracula valt je nu aan en slaat zijn mantel dreigend in de
+lucht. Zijn scherpe hoektanden zijn nu zichtbaar, je loopt voor-
+zichtig achteruit. Dan valt hij aan en probeert in je nek te bijten.
+Plotseling verstijft hij en valt neer op de grond. Zijn lichaam wordt
+eerst grijs en zwarte rook omgeeft hem. Als de rook optrekt is er niets
+meer van zijn lichaam overgebleven.
+Je hoort echter in de verte een sinistere lach.","Dracula now attacks and sweeps his cloak menacingly through the
+air. His sharp fangs are now visible; you back away
+carefully. Then he attacks and tries to bite your neck.
+Suddenly he stiffens and falls to the ground. His body first turns
+grey and black smoke surrounds him. When the smoke clears nothing
+of his body remains.
+Far off, however, you hear a sinister laugh."
+msg:150,message,any,,,"Dracula ontwijkt met gemak alle aanvallen.
+Een vreemde blik in zijn ogen doet je verstijven en
+dracula begint te grinniken.","Dracula dodges every attack with ease.
+A strange look in his eyes makes you freeze and
+dracula begins to snicker."
+msg:151,message,any,,,"Als Dracula op je afkomt probeer je weg te rennen.
+Hij schijnt echter steeds van plaats te wisselen en staat elke
+keer weer voor je. Dan bijt hij en je valt neer... Een vreemd gevoel
+overvalt je, herinneringen worden vager...je..je weet van niets meer
+en hebt geen controle meer over jezelf. Een andere geest schijnt de
+controle over jouw lichaam te hebben overgenomen. Vaag weet je iets
+van jouw huidige gewoontes, zoals slapen in een vreemde, houten kist. Je
+hebt ergens het gevoel dat je de zon nooit meer ziet. In feite weet je
+niet eens meer of je wel leeft.......","As Dracula comes at you, you try to run away.
+He seems to keep changing places, however, and each
+time stands before you again. Then he bites and you fall down... A strange feeling
+comes over you, memories grow fainter...you..you know nothing more
+and no longer have any control over yourself. Another spirit seems to have
+taken control of your body. Vaguely you're aware of
+your present habits, such as sleeping in a strange, wooden chest. Somewhere
+you have the feeling you'll never see the sun again. In fact you no longer
+even know whether you're alive......."
+msg:152,message,any,,,"Dracula valt je direkt aan en bijt je in je nek. Je valt
+neer en kan niets meer bewegen. Je ziet hem nog net knielen.
+Langzaam bloedt je leeg terwijl dracula lacht (en drinkt). Ik geloof zelfs
+dat Dracula geen zin had een opvolger van jou te maken, vermoedelijk
+was je slechts z'n lunch.","Dracula attacks you at once and bites your neck. You fall
+down and can no longer move. You just catch him kneeling.
+Slowly you bleed dry while dracula laughs (and drinks). I even believe
+Dracula had no wish to make a successor of you; presumably
+you were merely his lunch."
+msg:153,message,any,,,AAAAAAAAAAAARGGGHHHH,AAAAAAAAAAAARGGGHHHH
+msg:154,message,any,,,Wat  een stuitende taal in dit verblijf..,What appalling language in this establishment..
+msg:155,message,any,,,krijg nou snel de vleermuizenziekte.,why don't you go and catch the bat-plague.
+msg:156,message,any,,,Stuitend!,Appalling!
+msg:157,message,any,,,Zeker christelijke opvoeding gehad ?   Dacht ik al.,"Had a Christian upbringing, no doubt ?   That's what I thought."
+msg:158,message,any,,,"Ik weiger verder dit soort beledigingen aan te moeten
+horen.","I refuse to listen to any more insults of this
+kind."
+msg:159,message,14,Zolder (herberg),,Er zit geen deksel op de kist.,There is no lid on the chest.
+msg:160,message,any,,,Wat voor kist ?,What kind of chest ?
+msg:161,message,20-21,Kasteel (ingang) / Kasteelhal,,De kasteeldeur is met geen mogelijkheid te bewegen.,The castle door cannot be moved by any means.
+msg:162,message,"0, 11",Eigen huis / Dorpsstraat,,"Er zit geen slot op de deur en de wind blaast de deur weer open.
+",There is no lock on the door and the wind blows the door open again.
+msg:163,message,23,Kasteelslaapkamer,,De deur valt met een slag in het slot.,The door slams shut into the lock.
+msg:164,message,40,Lange gang (kelder),,"De deur valt dicht, maar draait langzaam weer open.","The door falls shut, but slowly swings open again."
+msg:165,message,any,,,Er is geen beweging in te krijgen.,It won't budge at all.
+msg:166,message,any,,,"
+      +++ Welkom in het dodenrijk +++
+
+Wil je dat ik je reïncarneer ? (toets J of N)","
+      +++ Welcome to the realm of the dead +++
+
+Do you want me to reincarnate you ? (press Y or N)"
+msg:167,message,any,,,"Ok, maar neem me niet kwalijk als er iets fout gaa..
+
+         --- P O E F F ---
+
+Je wordt omgeven door oranje rook en als die optrekt
+ben je.......","Ok, but don't blame me if something goes wro..
+
+         --- P O O F F ---
+
+You are surrounded by orange smoke and as it clears
+you are......."
+msg:168,message,29,Kasteeltoren,,Het luik zit muurvast.,The hatch is stuck fast.
+msg:169,message,any,,,Wat voor luik ?,What kind of hatch ?
+msg:170,message,any,,,"Dracula ontwijkt met gemak alle aanvallen. Een vreemde
+blik in zijn ogen doet je verstijven terwijl Dracula
+begint te grinniken.","Dracula dodges every attack with ease. A strange
+look in his eyes makes you freeze while Dracula
+begins to snicker."
+msg:171,message,any,,,"Dracula neemt je rustig op en verroert geen vin.
+Jouw aanvallen lijken niets uit te halen.","Dracula sizes you up calmly and doesn't stir a muscle.
+Your attacks seem to have no effect."
+msg:172,message,any,,,"'Ik hou wel van pittige hapjes' grinnikt Dracula en
+komt naar je toe. Vreemd genoeg halen jouw aanvallen
+niets uit.","'I do like a spicy little snack' Dracula snickers and
+comes toward you. Strangely enough your attacks have
+no effect."
+msg:173,message,any,,streng knoflook,"Dracula sist en deinst achteruit. Hij wordt duidelijk
+afgeschrikt door de geur van de knoflook. Hij kan zich
+echter tamelijk snel herstellen.","Dracula hisses and recoils. He is clearly
+repelled by the smell of the garlic. He recovers,
+however, fairly quickly."
+msg:174,message,any,,,"Hij verdraagt het licht slecht en valt neer. Met zijn handen
+voor zijn ogen probeert hij weer op te staan.","He can hardly bear the light and falls down. With his hands
+over his eyes he tries to get up again."
+msg:175,message,any,,kleine brandende lantaren,Je hebt de lamp niet bij je!,You aren't carrying the lamp!
+msg:176,message,51,Nauwe nis,,"Je ziet een verlaten  kasteeltoren die schaars verlicht wordt
+door een klein raampje. Een zware houten kist staat langs de
+kant.","You see a deserted castle tower, dimly lit
+by a small window. A heavy wooden chest stands to one
+side."
+msg:179,message,any,,,"Dat is zeer vrijgevig, maar je moet wel vermelden
+wat je wilt geven.","That's very generous, but you do have to mention
+what you want to give."
+msg:180,message,any,,,Het wordt niet aangepakt.,It is not accepted.
+msg:181,message,12,Herberg,gouden duivelaarsmunt,Je hebt de munt niet bij je.,You aren't carrying the coin.
+msg:182,message,12,Herberg,gouden duivelaarsmunt,"De waard pakt de munt en zegt:
+
+  ' Dank je, maar de munt is totaal niet waardevol '","The innkeeper takes the coin and says:
+
+  ' Thanks, but the coin isn't worth anything at all '"
+msg:183,message,any,,,"Bugje
+
+Je wilt dus kommentaar geven op de gang van zaken.
+Dat kan. tiep eerst je naam in...","Little bug
+
+So you want to comment on how things are going.
+That's fine. type in your name first..."
+msg:184,message,any,,,"Typ nu in wat je op je lever hebt. Geef een lege
+regel met alleen '.' in om te stoppen.","Now type in what's on your mind. Give an empty
+line with only '.' on it to stop."
+msg:185,message,any,,,Ik zet nu alle gegevens in DRACULA.SAV.....,I'm now putting all the data into DRACULA.SAV.....
+msg:186,message,any,,,Ik haal nu alle gegevens uit DRACULA.SAV......,I'm now fetching all the data from DRACULA.SAV......
+msg:187,message,any,,,"Wil je nu met het spel stoppen ?
+Moet ik het spel snel even bewaren, zodat je
+later verder kunt gaan waar je gebleven was? (toets J of N)","Do you want to stop playing now ?
+Shall I quickly save the game for you, so that you
+can carry on later where you left off? (press Y or N)"
+msg:188,message,any,,,"Een stem zegt ' Vtoc error on @Acct 31/5.8: Can't access file '
+Dat zal ik even voor je vertalen, want die kompjoeters van tegenwoordig
+spreken de vreemdste talen. Hij probeert te zeggen dat je niet meer terug
+kan naar een oude plaats die je bewaard hebt met het 'bewaar' kommando.
+Misschien moet je een andere schijf erin doen, of heb je helemaal niks
+bewaard? Dan wordt het wel moeilijk voor mij.","A voice says ' Vtoc error on @Acct 31/5.8: Can't access file '
+I'll just translate that for you, because those compewters these days
+speak the strangest tongues. He's trying to say that you can't go back
+to an old spot that you saved with the 'save' command.
+Maybe you should put a different disk in, or did you not save anything
+at all? Then it gets rather difficult for me."
+msg:189,message,12,Herberg,,Het lijkt alsof de waard wat rustiger wordt.,It seems the innkeeper is growing a little calmer.
+msg:190,message,12,Herberg,vlijmscherpe bijl / botte bijl,"De bijl suist langs de waard z'n hoofd en hij wordt razend.
+Hij pakt de bijl en gooit die met ongelofelijke kracht terug.
+Je wijkt echter uit en de bijl raakt iemand achter je. Deze loopt
+gillend de herberg uit en verdwijnt snel.","The axe whizzes past the innkeeper's head and he goes berserk.
+He grabs the axe and hurls it back with unbelievable force.
+You dodge, however, and the axe hits someone behind you. That person runs
+screaming out of the inn and quickly vanishes."
+msg:191,message,12,Herberg,zwaar kapmes,"De waard ontwijkt snel het mes en raapt het op. Hij bekijkt het
+rustig,geeft het terug en zegt 'Dat zou ik niet nog een keer
+doen..'","The innkeeper quickly dodges the knife and picks it up. He examines it
+calmly, hands it back and says 'I wouldn't do that
+again..'"
+msg:192,message,12,Herberg,vlijmscherpe bijl / botte bijl,"De bijl mist de waard op een meter. Hij pakt hem en
+gooit hem terug. De bijl slaat in een houten pilaar. Met veel moeite trek
+je de bijl weer uit het hout.","The axe misses the innkeeper by a metre. He grabs it and
+throws it back. The axe strikes a wooden pillar. With great effort you pull
+the axe out of the wood again."
+msg:193,message,12,Herberg,vlijmscherpe bijl / botte bijl,De bijl van op de grond.,The axe off the ground.
+msg:194,message,12,Herberg,vlijmscherpe bijl / botte bijl,"De bijl raakt iemand en suist tegen de muur. De man die
+geraakt was rent gillend de herberg uit.","The axe hits someone and clangs against the wall. The man who
+was hit runs screaming out of the inn."
+msg:195,message,12,Herberg,zwaar kapmes,Het mes komt trillend in een houten balk terecht.,The knife lands quivering in a wooden beam.
+msg:196,message,12,Herberg,zwaar kapmes,Het mes komt op de grond terecht.,The knife lands on the ground.
+msg:197,message,12,Herberg,zwaar kapmes,De waard wordt licht geraakt en het mes ligt nu op de grond.,The innkeeper is lightly hit and the knife now lies on the ground.
+msg:198,message,dead,(onbereikbaar — nooit getoond in het spel),,"Dracula ontwijkt het wapen met gemak en het valt
+op de grond. Dracula vertrekt geen spier..","Dracula dodges the weapon with ease and it falls
+to the ground. Dracula doesn't move a muscle.."
+msg:199,message,any,,,Ik zou natuurlijk ook wel willen weten wat je zou willen pakken.,I would of course also like to know what you'd want to take.
+msg:200,message,any,,,Moet ik soms bepalen wat je weg wilt gooien ?,Am I supposed to decide what you want to throw away ?
+msg:201,message,any,,klein briefje,"        ******* Spelregels van DRACULA ADVENTURE *******
+
+Velen hebben reeds getracht de schat van Lord Dracula te vinden, weinigen zijn
+teruggekomen. Jij wilt het dus ook proberen...dan moet je het volgende weten:
+
+Typ kommando's in na de -> en gebruik twee woorden. Wil je bijvoorbeeld
+naar het westen toe, typ dan GA WEST in en druk de RETURN toets in. Als
+je wilt zien waar je bent typ je bijvoorbeeld KIJK. Ik ken een aantal
+nederlandse woorden waarmee je zinnen van maximaal twee woorden moet maken.
+Doel van het spel is de grote schatten te vinden. Vanzelf blijkt wel of je
+aan het einde van het avontuur bent of niet. Als je ergens naartoe wilt lopen
+kan je, als dat aangegeven is, in de windroos  richtingen lopen,
+dus GA NOORD,ZUID,OOST,WEST,OMHOOG,OMLAAG of ERUIT.
+Dan kan je, als de richting niet duidelijk is ook naar een
+bepaald objekt toe. Als er bv een huis staat, dan kan je
+BETREED HUIS of GA HUIS proberen. Andere opdrachten zijn:
+INVENTARIS, om te zien wat je bij je hebt, BEKIJK of ONDERZOEK, om iets
+nauwkeurig te onderzoeken, BEWAAR SPEL, om huidige toestand op te slaan en
+LAAD SPEL om weer terug te halen. Verder kan je verschillende opdrachten
+afkorten. Zo is I hetzelfde als INVENTARIS, K hetzelfde als KIJK en
+bijvoorbeeld W hetzelfde als GA WEST. Je kan op 1 regel meerdere kommando's
+geven als je ze scheidt door een punt, dus bv. GA NOORD.PAK KERSTBOOM.
+
+                      * * * * veel sukses * * * *","        ******* Rules of DRACULA ADVENTURE *******
+
+Many have already tried to find the treasure of Lord Dracula, few have
+returned. So you want to try it too...then you need to know the following:
+
+Type commands after the -> and use two words. If for example you want
+to go west, type GO WEST and press the RETURN key. If
+you want to see where you are, type for example LOOK. I know a number
+of english words with which you must make sentences of at most two words.
+The aim of the game is to find the great treasures. It will become clear whether
+you're at the end of the adventure or not. If you want to walk somewhere
+you can, where it is indicated, walk in the compass directions,
+so GO NORTH,SOUTH,EAST,WEST,UP,DOWN or OUT.
+Then, if the direction is not clear, you can also go toward a
+certain object. If for example there is a house, you can try
+ENTER HOUSE or GO HOUSE. Other commands are:
+INVENTORY, to see what you're carrying, EXAMINE or INSPECT, to look at something
+closely, SAVE GAME, to store the current state and
+LOAD GAME to fetch it back again. You can also abbreviate various commands.
+Thus I is the same as INVENTORY, L the same as LOOK and
+for example W the same as GO WEST. You can give several commands on one
+line if you separate them with a period, so e.g. GO NORTH.TAKE CHRISTMASTREE.
+
+                      * * * * good luck * * * *"
+msg:202,message,any,,klein briefje,Welk papier ?,Which paper ?
+msg:203,message,1,Slaapkamer,,Het raampje is te klein om erdoor te kunnen klimmen.,The little window is too small to climb through.
+msg:204,message,1,Slaapkamer,zwaar eikenhouten bed,"Een geloogd massief eiken bed pakken ?? Ik denk
+dat je het niet eens kan tillen!","Take a leached solid oak bed ?? I don't think
+you could even lift it!"
+msg:205,message,1,Slaapkamer,zwaar eikenhouten bed,"Mhhhhhnnnnggggg...Nee, het lukt niet.","Mhhhhhnnnnggggg...No, it won't work."
+msg:206,message,2,Hal,,Er zit geen deksel op de kist.,There is no lid on the chest.
+msg:207,message,2,Hal,,"Puur vakmanschap. Het schrijnwerk is uitgehouwen  in prachtige
+motieven met voorstellingen van fruit, verschillende gebruiks-
+voorwerpen en aan de voorzijde een inscriptie in een vreemde taal.","Pure craftsmanship. The joinery is carved in beautiful
+motifs depicting fruit, various household
+objects and, on the front, an inscription in a strange language."
+msg:208,message,2,Hal,,"Eigenlijk niets bijzonders, als je bedenkt dat hier vroeger
+waarschijnlijk een kachel heeft gestaan.","Nothing special really, considering that there was
+probably a stove standing here once."
+msg:209,message,2,Hal,,"Er staat ""set pen eos tiam nnmai tsoen eptes"" geschreven.","It reads ""set pen eos tiam nnmai tsoen eptes""."
+msg:210,message,any,,,"Leuk geprobeerd, maar dat is een oud en uitgewerkt toverwoord.","Nice try, but that's an old and worn-out magic word."
+msg:211,message,any,,,pffffff,pffffff
+msg:212,message,14,Zolder (herberg),,"Ik schat...b-positief
+(alhoewel je dat natuurlijk nooit zeker weet)","I reckon...B-positive
+(though of course you can never be quite sure)"
+msg:213,message,any,,dik gehavend boek,"Als je iets wil lezen weet ik echt wel, dat je alleen in de
+inhoud geïnteresseerd bent. Oftewel: doe geen moeite!","If you want to read something I know full well you're only
+interested in the contents. In other words: don't bother!"
+msg:214,message,14,Zolder (herberg),,"
+         I N C O R E  A U T O M A T I S E R I N G
+
+              Uw leverancier van kwaliteitssoftware
+
+                 *
+         *              *
+                               *              *
+
+
+
+                                 *           *
+
+                   Surf naar www.cosninix.com/dracula","
+         I N C O R E  A U T O M A T I S E R I N G
+
+              Your supplier of quality software
+
+                 *
+         *              *
+                               *              *
+
+
+
+                                 *           *
+
+                   Surf to www.cosninix.com/dracula"
+msg:215,message,any,,,.. tijd verstrijkt ...,.. time passes ...
+msg:216,message,20,Kasteel (ingang),,"       +--------------------------------+
+       !  D R A C U L A   C A S T L E   !
+       !                                !
+       ! Melden bij portier, bloedgroep !
+       ! opgeven graag. Openingstijden: !
+       !                                !
+       !  Maandag-zaterdag 0.00-6.00    !
+       !      Zondags gesloten          !
+       +--------------------------------+","       +--------------------------------+
+       !  D R A C U L A   C A S T L E   !
+       !                                !
+       ! Report to porter, please give  !
+       ! your blood type. Opening hours:!
+       !                                !
+       !  Monday-Saturday 0.00-6.00     !
+       !      Closed on Sundays         !
+       +--------------------------------+"
+msg:217,message,17,Donker woud (boom),,"Het zijn zware laarsafdrukken, en hier en daar pootafdrukken
+van verschillende dieren.","They are heavy bootprints, and here and there pawprints
+of various animals."
+msg:218,message,"25, 28",Balkon / Torendak,,"Iaaaaaahhhhhhhhhhh.....
+
+        >>>>> B A F F <<<<<
+
+Helaas, ik denk dat deze sprong iets teveel van je gevergd heeft.
+Je sterft na enige ogenblikken.","Iaaaaaahhhhhhhhhhh.....
+
+        >>>>> B A F F <<<<<
+
+Alas, I think this jump asked a bit too much of you.
+You die after a few moments."
+msg:219,message,29,Kasteeltoren,,"Je ziet het bos, verlicht door een volle maan, die net achter
+de wolken vandaan komt.","You see the forest, lit by a full moon just emerging
+from behind the clouds."
+msg:220,message,29,Kasteeltoren,,"Het is buiten pikkedonker. Met veel moeite kan je de contouren
+van het bos zien en enig licht dat uit de richting van het dorp schijnt
+te komen.","It is pitch dark outside. With great effort you can make out the contours
+of the forest and some light that seems to come from the direction of the village."
+msg:221,message,29,Kasteeltoren,,"De maan komt net achter de wolken vandaan en verlicht het bos. Heel
+in de verte aan de horizon zie je het weerlichten.","The moon just emerges from behind the clouds and lights the forest. Far
+off on the horizon you see sheet lightning."
+msg:222,message,31,Wenteltrap,,"Je hoort een zwaar, monotoon gebonk. Af en toe lijkt het geluid zwakker
+te worden, om even later het gewelf weer te laten beven van het lawaai.","You hear a heavy, monotonous thumping. Now and then the sound seems to grow
+weaker, only to make the vault tremble with the noise again a moment later."
+msg:223,message,30,Wenteltrap (vertikaal),,"Een lange ladder staat tegen de wand en reikt tot aan een gat, dat
+hoog bovenin de wand is geslagen.","A long ladder stands against the wall and reaches up to a hole struck
+high up in the wall."
+msg:224,message,33,Spionageruimte,,"                 >>>> BAF <<<<
+
+Je bezeert je enkel maar het valt gelukkig erg mee.","                 >>>> BAF <<<<
+
+You hurt your ankle but luckily it's not too bad."
+msg:225,message,54,Harnas,,De hal is verlaten.,The hall is deserted.
+msg:226,message,54,Harnas,,"Je ziet een man met een zwarte mantel de trap afkomen. Beneden
+gekomen wacht hij en kijkt in jouw richting. Dan knipt hij met
+zijn vingers en is onmiddellijk verdwenen. De hal is nu verlaten.","You see a man in a black cloak coming down the stairs. Having reached
+the bottom he waits and looks in your direction. Then he snaps
+his fingers and is instantly gone. The hall is now deserted."
+msg:227,message,54,Harnas,,"Het lijkt alsof je nu in het woud bent, alhoewel het beeld zeer wazig is.
+Kaboutertjes lopen voor je langs en zwaaien naar je. Het beeld wordt waziger
+en tenslotte zwart. Dan zie je de hal van het kasteel en een man die snel
+de trap oploopt.","It seems as if you're now in the woods, though the image is very blurry.
+Little gnomes walk past in front of you and wave at you. The image grows blurrier
+and finally black. Then you see the hall of the castle and a man quickly
+running up the stairs."
+msg:228,message,any,,,Lord Dracula komt direkt voor je staan. Je kan er niet door.,Lord Dracula plants himself right in front of you. You can't get past.
+msg:229,message,0,Eigen huis,,Het waait direkt weer uit je hand.,It blows straight out of your hand again.
+msg:230,message,0,Eigen huis,,"Ik geloof, dat je niet helemaal begrijpt wat de bedoeling is.
+Je moet steeds opdrachten geven van 2 woorden, je kan bijvoorbeeld
+nu intypen:
+            SLUIT RAAM ,om het raam te sluiten
+            GA ZUID    ,om naar die slaapkamer te gaan
+            KLIM GAT   ,om te proberen dat gat boven je te bereiken
+            INVENTARIS ,om te zien wat je bij je hebt
+            LEES BRIEF ,om dat briefje wat op de grond ligt te lezen.
+            KIJK       ,om nog eens te zien waar je bent en wat je kan doen.","I believe you don't quite understand what the idea is.
+You must always give commands of 2 words, you could for example
+type now:
+            CLOSE WINDOW ,to close the window
+            GO SOUTH     ,to go to that bedroom
+            CLIMB HOLE   ,to try to reach that hole above you
+            INVENTORY    ,to see what you're carrying
+            READ NOTE    ,to read that note lying on the ground.
+            LOOK         ,to see once more where you are and what you can do."
+msg:231,message,"0, 6",Eigen huis / Achter het huis,,"Het raam is nu gesloten.
+",The window is now closed.
+msg:232,message,"0, 6",Eigen huis / Achter het huis,,Het raam is nu open.,The window is now open.
+msg:233,message,"0, 6",Eigen huis / Achter het huis,,"Het is al dicht.
+",It's already shut.
+msg:234,message,"0, 6",Eigen huis / Achter het huis,,Het raam is al open.,The window is already open.
+msg:235,message,"0, 6",Eigen huis / Achter het huis,,"Dat gaat niet, het raam is dicht.","That won't work, the window is shut."
+msg:236,message,37,Graftombe,zware doodskist met in gothische letters de tekst 'D R A C U L A',"De kist is te zwaar om te tillen. Het lijkt alsof er
+iets in zit.","The chest is too heavy to lift. It seems as if
+there's something inside it."
+msg:237,message,37,Graftombe,zware geopende doodskist met op de zijkant de tekst 'DRACULA',"De kist is zo onhandig om te tillen en zo zwaar dat je eerst
+alles moet laten vallen wil je de kist kunnen dragen.","The chest is so awkward to lift and so heavy that you must first
+drop everything if you want to be able to carry the chest."
+msg:238,message,37,Graftombe,zware geopende doodskist met op de zijkant de tekst 'DRACULA',Met veel moeite pak je de kist.,With great effort you pick up the chest.
+msg:239,message,37,Graftombe,zware doodskist met in gothische letters de tekst 'D R A C U L A',"Je tilt de kist enkele centimeters op, maar er ligt niets onder.","You lift the chest a few centimetres, but there's nothing beneath it."
+msg:240,message,37,Graftombe,zware doodskist met in gothische letters de tekst 'D R A C U L A',De kist is al gesloten.,The chest is already closed.
+msg:241,message,37,Graftombe,zware geopende doodskist met op de zijkant de tekst 'DRACULA',De kist gaat niet meer dicht.,The chest won't close any more.
+msg:242,message,37,Graftombe,zware doodskist met in gothische letters de tekst 'D R A C U L A',"Je opent de kist met veel moeite...  Als je erin probeert te
+kijken, zie je het levenloze lichaam van Dracula. Na enige tijd
+piept een digitale kerkklok ....","You open the chest with great effort...  When you try to look
+inside, you see the lifeless body of Dracula. After a while
+a digital church clock beeps ...."
+msg:243,message,37,Graftombe,,".. het eerst levenloze lichaam beweegt en opent de ogen. Dracula
+   kijkt je vervolgens aan, maakt een sissend geluid, springt op
+   en duwt je met kracht naar achter.",".. the once lifeless body moves and opens its eyes. Dracula
+   then looks at you, makes a hissing sound, springs up
+   and shoves you back with force."
+msg:244,message,37,Graftombe,zware geopende doodskist met op de zijkant de tekst 'DRACULA',De kist is al open.,The chest is already open.
+msg:245,message,37,Graftombe,zware doodskist met in gothische letters de tekst 'D R A C U L A',"Een loodzware kist met in fraaie oud gothische letters de tekst
+               ' D  R  A  C  U  L  A'
+uitgebeiteld. Op de kist ligt een zwaar en stoffig deksel. De kist is
+bedekt met spinnewebben en lijkt in tijden niet gebruikt of aangeraakt.","A lead-heavy chest with the text
+               ' D  R  A  C  U  L  A'
+chiselled in fine old gothic letters. On the chest lies a heavy, dusty lid. The chest is
+covered in cobwebs and seems not to have been used or touched in ages."
+msg:246,message,37,Graftombe,zware geopende doodskist met op de zijkant de tekst 'DRACULA',"Het is een zware open kist met aan de voorkant de tekst
+                    ' D R A C U L A '
+in bloedrode letters. Binnenin de kist ligt niets dan wat stof. In de
+onderkant van de kist zijn diepe groeven gesleten, alsof de kist ergens
+vanaf is gegleden.","It is a heavy open chest with on the front the text
+                    ' D R A C U L A '
+in blood-red letters. Inside the chest lies nothing but some dust. In the
+bottom of the chest deep grooves are worn, as if the chest has slid down
+from somewhere."
+msg:247,message,any,,,Dat heb je al in je handen.,You've already got that in your hands.
+msg:248,message,any,,scherven,Ben je gek? Dat kost je je vingers.,Are you crazy? That'll cost you your fingers.
+msg:249,message,22,Lange gang,,"Je ziet Dracula, die duidelijk met angst om een lichtvlek in de
+vorm van een kruis heen loopt. Hij opent de deur van slaapkamer 2
+en gaat naar binnen.","You see Dracula, who clearly walks with fear around a patch of light in the
+shape of a cross. He opens the door of bedroom 2
+and goes inside."
+msg:250,message,30,Wenteltrap (vertikaal),,Je ziet nog net een schaduw in de smalle noordelijke gang.,You just catch sight of a shadow in the narrow northern corridor.
+msg:251,message,31,Wenteltrap,,"Als je boven bent staat Lord Dracula te wachten voor de zware deur.
+Dan lacht hij en loopt snel verder omhoog.","When you reach the top, Lord Dracula stands waiting before the heavy door.
+Then he laughs and quickly walks on upward."
+msg:252,message,32,Gewelf,,"Dracula loopt de trap op en kijkt nog even achterom, het lijkt alsof
+hij wil weten of je hem volgt.","Dracula walks up the stairs and glances back for a moment, as if
+he wants to know whether you're following him."
+msg:253,message,37,Graftombe,,Dracula verdwijnt via de trap.,Dracula disappears up the stairs.
+msg:254,message,24,Kasteelslaapkamer 2,,"Dracula komt dichterbij en staat op het punt om je aan te vallen. Hij
+ziet er uit alsof hij zeer zeker van zijn zaak is.","Dracula comes closer and is about to attack you. He
+looks as if he's very sure of himself."
+msg:255,message,24,Kasteelslaapkamer 2,,Dracula schiet op je af en haalt uit.,Dracula darts at you and lashes out.
+msg:256,message,24,Kasteelslaapkamer 2,,"Dracula valt nu definitief aan en met een simpel gebaar wurgt hij je.
+Voordat je bewusteloos wordt zie je hem weglopen. Hij lijkt niet eens
+onder de indruk.","Dracula now attacks for good and with a simple gesture he strangles you.
+Before you pass out you see him walk away. He doesn't even seem
+impressed."
+msg:257,message,"22, 24",Lange gang / Kasteelslaapkamer 2,,De deur zit muurvast in het slot.,The door is stuck fast in the lock.
+msg:258,message,any,,,"Deze pogingen halen niets meer uit. Dracula lijkt verveeld door
+het gebrek aan fantasie.","These attempts achieve nothing more. Dracula seems bored by
+the lack of imagination."
+msg:259,message,any,,,Er gebeurt niets.,Nothing happens.
+msg:260,message,24,Kasteelslaapkamer 2,,"'Aaaargghhhh'! Van schrik deinst de vampier achteruit.
+Hij gaat tegen een muur staan en houdt zijn handen voor z'n ogen.","'Aaaargghhhh'! The vampire recoils in fright.
+He backs against a wall and holds his hands over his eyes."
+msg:261,message,24,Kasteelslaapkamer 2,houten hamer,Je hebt geen hamer.,You don't have a hammer.
+msg:262,message,24,Kasteelslaapkamer 2,houten wig,"Lijkt me vrij nutteloos. Als je de wig zo bekijkt is deze alleen maar
+geschikt om vampieren mee af te maken.","Seems fairly useless to me. Looking at the wedge like this it's only
+good for finishing off vampires."
+msg:263,message,24,Kasteelslaapkamer 2,,"Pinnen in vampieren slaan kan alleen maar als ze in een tamelijk
+gekalmeerde toestand verkeren. Deze is meer in de tegenovergestelde
+toestand en is er toe in staat jou af te maken in plaats van andersom.","Driving stakes into vampires only works when they're in a fairly
+calmed state. This one is rather in the opposite
+state and is capable of finishing you off instead of the other way around."
+msg:264,message,24,Kasteelslaapkamer 2,,"De vampier gilt en valt neer. Even blijft het lichaam roerloos, om
+dan plotseling te worden omgeven door zwarte rook. Een zeer snel
+verouderingsproces begint en na enkele seconden lijkt het alsof er
+een eeuwenoud lijk voor je ligt. Dan vergaat het en blijft er slechts
+stof over.","The vampire screams and falls down. For a moment the body lies motionless, then
+is suddenly surrounded by black smoke. A very rapid
+ageing process begins and after a few seconds it seems as if
+an age-old corpse lies before you. Then it decays and only
+dust remains."
+msg:265,message,31,Wenteltrap,,"De ruimte wordt plotseling geheel stil...Het blijft geruime tijd
+rustig totdat een luide kreet van diep onder in het kasteel de stilte
+doorbreekt. Het lijkt alsof de deur nu zwaar uitademt, maar in ieder
+geval klinkt daarna weer het oude geluid. De deur blijft gesloten.","The room suddenly falls completely silent...It stays quiet for
+quite some time until a loud cry from deep in the castle breaks
+the silence. It seems as if the door now exhales heavily, but in any
+case the old sound returns afterward. The door stays shut."
+msg:266,message,31,Wenteltrap,,"Een zware slag en de deur piept en knarst. Langzaam draait de deur open,
+de toegang vrijmakend naar een duistere kamer.","A heavy blow and the door squeaks and grinds. Slowly the door swings open,
+clearing the way into a dark room."
+msg:267,message,31,Wenteltrap,,Een holle lach klinkt achter de deur. Verder gebeurt er niets.,A hollow laugh sounds behind the door. Nothing else happens.
+msg:268,message,31,Wenteltrap,,"De deur zit dicht en zelfs honderd paarden zouden de deur niet open
+kunnen trekken.","The door is shut and even a hundred horses couldn't pull the door
+open."
+msg:269,message,34,Kruiskamer,gevaarlijke kruisspin,"De spin komt snel op je af en loopt over je been. Daar dit soort
+spinnen de vervelende gewoonte hebben om hun gif in hun prooi te
+spuiten gaat het op het ogenblik niet zo best met je en.. ze valt nu aan.","The spider quickly comes at you and crawls over your leg. Since this kind of
+spider has the nasty habit of injecting its venom into its prey,
+things aren't going too well for you at the moment and.. she now attacks."
+msg:270,message,34,Kruiskamer,gevaarlijke kruisspin,De spin komt op je af.,The spider comes at you.
+msg:271,message,34,Kruiskamer,"fles gevuld met blauw,giftig water / gevaarlijke kruisspin","Het gif stroomt uit de fles en de spin, die natuurlijk uitgedroogd
+was van al die jaren wachten op een prooitje, vliegt op de vloeistof af.
+Op het moment dat ze het gif aanraakt sterft de spin.","The poison streams out of the bottle and the spider, naturally parched
+from all those years waiting for a bit of prey, darts at the liquid.
+The moment she touches the poison the spider dies."
+msg:272,message,34,Kruiskamer,gevaarlijke kruisspin,De spin ontwijkt handig elke beweging.,The spider deftly dodges every move.
+msg:273,message,54,Harnas,,"Je ziet van hieruit de kruiskamer. De wanden zijn hier met
+bloed besmeurd en er liggen hier restanten van dieren.
+In de hoek zie je een geraamte. Een groot vuur verspert de doorgang
+naar een hiernaast gelegen kamer. De zware houten deur is open. Het
+lijkt alsof je vanuit het harnas de hitte van het vuur minder voelt.
+Ook blijkt er nu enige beweging in het harnas te zitten.","From here you see the cross room. The walls here are smeared
+with blood and there are remains of animals lying about.
+In the corner you see a skeleton. A great fire blocks the passage
+to an adjacent room. The heavy wooden door is open. It
+seems that from inside the armour you feel the heat of the fire less.
+There also appears to be some movement in the armour now."
+msg:274,message,54,Harnas,,"Je ziet van hieruit de schatkamer. De wanden lijken licht te geven
+door een vreemde weerkaatsing van het vuur. Licht valt door een gat
+hoog bovenin deze ruimte. Doordat je in het harnas zit voel je de warmte
+van het vuur een stuk minder.","From here you see the treasure chamber. The walls seem to give off light
+through a strange reflection of the fire. Light falls through a hole
+high up in this chamber. Because you're inside the armour you feel the heat
+of the fire a good deal less."
+msg:275,message,54,Harnas,,"Onmogelijkheid, foutje in Dracula of zo, want als je het harnas bij
+je hebt zou je er niet in mogen kunnen.","Impossibility, a bug in Dracula or something, because if you're carrying
+the armour you shouldn't be able to get in it."
+msg:276,message,any,,groot ijzeren harnas,Ik zie geen harnas hier.,I don't see any armour here.
+msg:277,message,54,Harnas,groot ijzeren harnas,"Met veel moeite kan je het harnas bewegen. Je voelt een ongelofelijke
+hitte als je door het vuur loopt, maar het harnas biedt net voldoende
+bescherming. Je bent nu in een andere kamer.","With great effort you can move the armour. You feel an incredible
+heat as you walk through the fire, but the armour offers just enough
+protection. You are now in another room."
+msg:278,message,54,Harnas,,"Het vuur lijkt nu feller dan ooit maar je komt er door met wat gebrande
+billen. Je kunt dus dadelijk op je blaren gaan zitten, maar eerst moet
+je nog even de laatste loodjes van dit avontuur afleggen. (Het kasteel
+begint nu namelijk te beven en persoonlijk ben ik van mening dat de
+fundamenten van het kasteel daar niet zo tegen kunnen)","The fire seems fiercer now than ever but you get through it with a somewhat
+scorched behind. So you'll soon be sitting on your blisters, but first you
+still have to see out the home stretch of this adventure. (The castle,
+you see, is now beginning to tremble and personally I'm of the opinion that the
+foundations of the castle can't take too much of that)"
+msg:279,message,26,Smalle rand,zware geopende doodskist met op de zijkant de tekst 'DRACULA',"De kist begint te glijden en je schiet met grote snelheid omlaag.
+De kist volgt het uitgesleten spoor en na een dodenrit van een kwartiertje
+kom je het dorp ingegleden. Dan stopt de kist..","The chest begins to slide and you shoot downward at great speed.
+The chest follows the worn track and after a fifteen-minute death-ride
+you come sliding into the village. Then the chest stops.."
+msg:280,message,34-35,Kruiskamer / Schatkamer,,"De desintegratietemperatuur van de gemiddelde avonturier ligt ver
+beneden de waarde die nu bereikt is. Het effekt is weinig hoopvol.","The disintegration temperature of the average adventurer lies far
+below the value now reached. The effect is hardly hopeful."
+msg:281,message,11,Dorpsstraat,"schatkist, vol met gouden munten","Alle dorpelingen en ook de TROS (Transylvania Radio Omroep Stichting) zijn
+aanwezig om je te feliciteren. Er zijn ook enkele heren van de belasting-
+dienst aanwezig die willen weten wat er in de kist zit die je bij je hebt.
+Ook blijkt dat zojuist de vampieren tot de beschermde diersoorten worden
+gerekend zodat je je binnenkort voor de rechter moet verantwoorden. Er
+zijn enkele leden van de aktiegroep 'Stop de Vampierenmoord' aanwezig, die
+je agressief bejegenen. Het blijkt dat ze allemaal een zwarte jas aan
+hebben..................","All the villagers and also the CNN (Coffin News Network) are
+present to congratulate you. A few gentlemen from the tax
+office are also present, wanting to know what's in the chest you're carrying.
+It also turns out that vampires have just been classed among the protected
+species, so you'll shortly have to answer for yourself in court. A few
+members of the action group 'Stop the Vampire Slaughter' are present, treating
+you aggressively. It turns out that they're all wearing a black coat
+.................."
+msg:282,message,0,Eigen huis,,"De deur staat ver genoeg open om erdoor te kunnen.
+(Je kan door de deur lopen door GA DEUR in te toetsen)","The door is open far enough to get through.
+(You can walk through the door by typing GO DOOR)"
+msg:283,message,31,Wenteltrap,,"In de deur staat ""DIT IS SESAM"" gebrand.","Branded into the door it reads ""THIS IS SESAME""."
+verb:GA,verb,any,actie: ga,,ga,go
+verb:BETRE,verb,any,actie: ga,,betreed,enter
+verb:KRUIP,verb,any,actie: ga,,kruip,crawl
+verb:LOOP,verb,any,actie: ga,,loop,walk
+verb:KLIM,verb,any,actie: ga,,klim,climb
+verb:VOLG,verb,any,actie: ga,,volg,follow
+verb:KIJK,verb,any,actie: kijk,,kijk,look
+verb:K,verb,any,actie: kijk,,k,l
+verb:BEKIJ,verb,any,actie: bekijk,,bekijk,examine
+verb:BESCHRIJF,verb,any,actie: bekijk,,beschrijf,describe
+verb:ONDER,verb,any,actie: bekijk,,onderzoek,inspect
+verb:PAK,verb,any,actie: pak,,pak,take
+verb:GRIJP,verb,any,actie: pak,,grijp,grab
+verb:NEEM,verb,any,actie: pak,,neem,get
+verb:RAAP,verb,any,actie: pak,,raap,fetch
+verb:LEG,verb,any,actie: leg,,leg,drop
+verb:ZET,verb,any,actie: leg,,zet,put
+verb:DROP,verb,any,actie: leg,,drop,lay
+verb:GOOI,verb,any,actie: gooi,,gooi,throw
+verb:WERP,verb,any,actie: gooi,,werp,hurl
+verb:SHOW,verb,any,actie: toon,,show,show
+verb:TOON,verb,any,actie: toon,,toon,display
+verb:HOUDT,verb,any,actie: toon,,houdt,hold
+verb:GEEF,verb,any,actie: geef,,geef,give
+verb:SCHIJ,verb,any,actie: schijn,,schijn,shine
+verb:BESCHIJN,verb,any,actie: schijn,,beschijn,illuminate
+verb:SLAAP,verb,any,actie: slaap,,slaap,sleep
+verb:DOOD,verb,any,actie: dood,,dood,kill
+verb:VERMO,verb,any,actie: dood,,vermoord,murder
+verb:LIQUI,verb,any,actie: dood,,liquideer,liquidate
+verb:SLA,verb,any,actie: sla,,sla,hit
+verb:STOMP,verb,any,actie: sla,,stomp,punch
+verb:SCHOP,verb,any,actie: sla,,schop,kick
+verb:TRAP,verb,any,actie: sla,,trap,stomp
+verb:HAK,verb,any,actie: hak,,hak,chop
+verb:KAP,verb,any,actie: hak,,kap,hew
+verb:VRAAG,verb,any,actie: vraag,,vraag,ask
+verb:PAS,verb,any,actie: pas,,pas,fit
+verb:DRAAG,verb,any,actie: draag,,draag,wear
+verb:FOUT,verb,any,actie: bug,,fout,fault
+verb:BUG,verb,any,actie: bug,,bug,bug
+verb:COMMA,verb,any,actie: commentaar,,comma,comment
+verb:KOMMA,verb,any,actie: commentaar,,komma,remark
+verb:BREEK,verb,any,actie: breek,,breek,break
+verb:SCHEU,verb,any,actie: breek,,scheur,tear
+verb:VERNI,verb,any,actie: breek,,vernietig,destroy
+verb:GRAAF,verb,any,actie: graaf,,graaf,dig
+verb:SCHEP,verb,any,actie: graaf,,schep,scoop
+verb:SPRIN,verb,any,actie: spring,,spring,jump
+verb:DRUK,verb,any,actie: duw,,druk,press
+verb:DUW,verb,any,actie: duw,,duw,push
+verb:BLAAS,verb,any,actie: blaas,,blaas,blow
+verb:GIL,verb,any,actie: gil,,gil,scream
+verb:ROEP,verb,any,actie: gil,,roep,shout
+verb:SCHRE,verb,any,actie: gil,,schreeuw,yell
+verb:BRUL,verb,any,actie: gil,,brul,roar
+verb:GODVE,verb,any,actie: vloek,,godverdomme,goddammit
+verb:SHIT,verb,any,actie: vloek,,shit,shit
+verb:KUT,verb,any,actie: vloek,,kut,bollocks
+verb:KLOOT,verb,any,actie: vloek,,klootzak,bastard
+verb:KANKE,verb,any,actie: vloek,,kanker,damn
+verb:GOD,verb,any,actie: vloek,,god,god
+verb:FUCK,verb,any,actie: vloek,,fuck,fuck
+verb:GEDVE,verb,any,actie: vloek,,gedverdomme,blast
+verb:SLUIT,verb,any,actie: sluit,,sluit,close
+verb:TIL,verb,any,actie: til,,til,lift
+verb:TREK,verb,any,actie: trek,,trek,pull
+verb:OPEN,verb,any,actie: open,,open,open
+verb:SAVE,verb,any,actie: bewaar,,save,save
+verb:BEWAA,verb,any,actie: bewaar,,bewaar,store
+verb:SPEL,verb,any,actie: bewaar,,spel,game
+verb:LOAD,verb,any,actie: laad,,load,load
+verb:LAAD,verb,any,actie: laad,,laad,reload
+verb:QUIT,verb,any,actie: stop,,quit,quit
+verb:EIND,verb,any,actie: stop,,einde,end
+verb:STOP,verb,any,actie: stop,,stop,stop
+verb:HOU,verb,any,actie: stop,,hou,halt
+verb:OP,verb,any,actie: stop,,op,abort
+verb:WACHT,verb,any,actie: wacht,,wacht,wait
+verb:RUST,verb,any,actie: wacht,,rust,rest
+verb:BEVES,verb,any,actie: bevestig,,bevestig,attach
+verb:HANG,verb,any,actie: hang,,hang,hang
+verb:KNOOP,verb,any,actie: knoop,,knoop,tie
+verb:ZEG,verb,any,actie: zeg,,zeg,say
+verb:HELP,verb,any,actie: help,,help,help
+verb:HULP,verb,any,actie: help,,hulp,aid
+verb:LIJST,verb,any,actie: inventaris,,lijst,items
+verb:INVEN,verb,any,actie: inventaris,,inventaris,inventory
+verb:I,verb,any,actie: inventaris,,i,i
+verb:LEES,verb,any,actie: lees,,lees,read
+verb:SESAM,verb,any,actie: sesam,,sesam,sesame
+verb:HOKUS,verb,any,actie: sesam,,hokus,hocus
+verb:HOCUS,verb,any,actie: sesam,,hocus,pocus
+verb:VUL,verb,any,actie: vul,,vul,fill
+verb:EET,verb,any,actie: eet,,eet,eat
+verb:DRINK,verb,any,actie: drink,,drink,drink
+verb:SNIJ,verb,any,actie: snij,,snijd,cut
+verb:KOOP,verb,any,actie: koop,,koop,buy
+verb:LUIST,verb,any,actie: luister,,luister,listen
+verb:STA,verb,any,actie: sta,,sta,stand
+verb:/,verb,any,actie: tester,,/,/
+dir:NOOR,verb,any,richting,,noord,north
+dir:N,verb,any,richting,,n,n
+dir:ZUID,verb,any,richting,,zuid,south
+dir:Z,verb,any,richting,,z,s
+dir:OOST,verb,any,richting,,oost,east
+dir:O,verb,any,richting,,o,e
+dir:WEST,verb,any,richting,,west,west
+dir:W,verb,any,richting,,w,w
+dir:OMHO,verb,any,richting,,omhoog,up
+dir:HOOG,verb,any,richting,,hoog,up
+dir:H,verb,any,richting,,h,u
+dir:OMLA,verb,any,richting,,omlaag,down
+dir:LAAG,verb,any,richting,,laag,down
+dir:L,verb,any,richting,,l,d
+dir:ERUI,verb,any,richting,,eruit,out
+dir:UIT,verb,any,richting,,uit,out
+dir:E,verb,any,richting,,e,o
+noun:ALLE,noun,any,omgeving/voorwerp,,alles,all
+noun:DEUR,noun,any,omgeving/voorwerp,,deur,door
+noun:LUIK,noun,any,omgeving/voorwerp,,luik,hatch
+noun:RAAM,noun,any,omgeving/voorwerp,,raam,window
+noun:HEK,noun,any,omgeving/voorwerp,,hek,gate
+noun:GAT,noun,any,omgeving/voorwerp,,gat,hole
+noun:STEE,noun,any,omgeving/voorwerp,,steen,stone
+noun:BOOM,noun,any,omgeving/voorwerp,,boom,tree
+noun:GRON,noun,any,omgeving/voorwerp,,grond,ground
+noun:ZAND,noun,any,omgeving/voorwerp,,zand,sand
+noun:STOF,noun,any,omgeving/voorwerp,,stof,dust
+noun:BLOE,noun,any,omgeving/voorwerp,,bloed,blood
+noun:VLEK,noun,any,omgeving/voorwerp,,vlek,stain
+noun:VOET,noun,any,omgeving/voorwerp,,voetstappen,footprints
+noun:SPOR,noun,any,omgeving/voorwerp,,sporen,tracks
+noun:CIRK,noun,any,omgeving/voorwerp,,cirkel,circle
+noun:VIZI,noun,any,omgeving/voorwerp,,vizier,visor
+noun:TEKS,noun,any,omgeving/voorwerp,,tekst,text
+noun:INSC,noun,any,omgeving/voorwerp,,inscriptie,inscription
+noun:VREE,noun,any,omgeving/voorwerp,,vreemde,strange
+noun:TORE,noun,any,omgeving/voorwerp,,toren,tower
+noun:EETK,noun,any,omgeving/voorwerp,,eetkamer,dining
+noun:ROOS,noun,any,omgeving/voorwerp,,rooster,grating
+noun:SESA,noun,any,omgeving/voorwerp,,sesam,sesame
+noun:BED,noun,any,omgeving/voorwerp,,bed,bed
+noun:SLAP,noun,any,omgeving/voorwerp,,slapen,sleep
+noun:SLAA,noun,any,omgeving/voorwerp,,slaapkamer,bedroom
+noun:ZITT,noun,any,omgeving/voorwerp,,zitten,sit
+noun:KAST,noun,any,omgeving/voorwerp,,kasteel,castle
+noun:TRAP,noun,any,omgeving/voorwerp,,trap,steps
+noun:ZOLD,noun,any,omgeving/voorwerp,,zolder,attic
+noun:BRON,noun,any,omgeving/voorwerp,,bron,well
+noun:WAAR,noun,any,omgeving/voorwerp,,waard,innkeeper
+noun:MAN,noun,any,omgeving/voorwerp,,man,man
+noun:HAL,noun,any,omgeving/voorwerp,,hal,hall
+noun:VUUR,noun,any,omgeving/voorwerp,,vuur,fire
+noun:UIT,noun,any,omgeving/voorwerp,,uit,off
+noun:PIN,noun,any,omgeving/voorwerp,,pin,stake
+noun:DRAC,noun,any,omgeving/voorwerp,,dracula,dracula
+noun:DOOD,noun,any,omgeving/voorwerp,,doodskist,coffin
+noun:KIST,noun,any,omgeving/voorwerp,,kist,chest
+noun:SCHA,noun,any,omgeving/voorwerp,,schat,treasure
+noun:LADD,noun,any,omgeving/voorwerp,,ladder,ladder
+noun:MUNT,noun,any,omgeving/voorwerp,,munt,coin
+noun:FLES,noun,any,omgeving/voorwerp,,fles,bottle
+noun:BOEK,noun,any,omgeving/voorwerp,,boek,book
+noun:KNOF,noun,any,omgeving/voorwerp,,knoflook,garlic
+noun:TOUW,noun,any,omgeving/voorwerp,,touw,rope
+noun:HARN,noun,any,omgeving/voorwerp,,harnas,armour
+noun:DOOS,noun,any,omgeving/voorwerp,,doos,box
+noun:TAK,noun,any,omgeving/voorwerp,,tak,branch
+noun:HOUT,noun,any,omgeving/voorwerp,,hout,wood
+noun:KRUI,noun,any,omgeving/voorwerp,,kruis,cross
+noun:BROO,noun,any,omgeving/voorwerp,,brood,bread
+noun:WATE,noun,any,omgeving/voorwerp,,water,water
+noun:MELK,noun,any,omgeving/voorwerp,,melk,milk
+noun:WIG,noun,any,omgeving/voorwerp,,wig,wedge
+noun:KAPM,noun,any,omgeving/voorwerp,,kapmes,machete
+noun:BIJL,noun,any,omgeving/voorwerp,,bijl,axe
+noun:SCHE,noun,any,omgeving/voorwerp,,scherven,shards
+noun:BRIE,noun,any,omgeving/voorwerp,,briefje,note
+noun:SPIN,noun,any,omgeving/voorwerp,,spin,spider
+noun:KRUISS,noun,any,omgeving/voorwerp,,kruisspin,webspider
+noun:HERB,noun,any,omgeving/voorwerp,,herberg,inn
+noun:HUIS,noun,any,omgeving/voorwerp,,huis,house
+noun:POOR,noun,any,omgeving/voorwerp,,poort,archway
+noun:GANG,noun,any,omgeving/voorwerp,,gang,passage
+noun:RUIM,noun,any,omgeving/voorwerp,,ruimte,space
+noun:UITG,noun,any,omgeving/voorwerp,,uitgang,exit
+noun:LINK,noun,any,omgeving/voorwerp,,links,left
+noun:PAD,noun,any,omgeving/voorwerp,,pad,path
+noun:BINN,noun,any,omgeving/voorwerp,,binnenplaats,courtyard
+noun:KERK,noun,any,omgeving/voorwerp,,kerkhof,graveyard
+noun:STAA,noun,any,omgeving/voorwerp,,staan,stand
+room:0,room-text,0,Eigen huis,,"Je bent nu in je eigen huis. Er is een slaapkamer op het zuiden
+en een kleine hal oostelijk. Er is een deur die naar het westen leidt. De
+deur staat op een kier en een gure wind blaast zand en stof naar binnen.
+Door een raam kan je een bos zien.","You are now in your own house. There is a bedroom to the south
+and a small hall to the east. There is a door leading to the west. The
+door is ajar and a bleak wind blows sand and dust inside.
+Through a window you can see a forest."
+room:1,room-text,1,Slaapkamer,,"Je bent nu in de slaapkamer. De enige uitgang is naar het
+noorden, waar een rommelige kamer te zien is. Het is vrij donker
+hier, maar door een klein raampje valt net voldoende licht binnen
+om te kunnen zien.","You are now in the bedroom. The only exit is to the
+north, where a cluttered room can be seen. It's fairly dark
+here, but through a small window just enough light comes in
+to see by."
+room:2,room-text,2,Hal,,"Je staat nu in een kleine hal met een laag plafond. Er is een westelijke
+uitgang, waarachter een rommelige en stoffige ruimte te zien is. In een
+hoek staat een zware kist. Precies in het midden van de hal is de
+houten vloer geschroeid in de vorm van een cirkel.","You are now standing in a small hall with a low ceiling. There is a western
+exit, behind which a cluttered and dusty room can be seen. In a
+corner stands a heavy chest. Right in the middle of the hall the
+wooden floor is scorched in the shape of a circle."
+room:3,room-text,3,Zolder (huis),,"Je bent nu op een zolder. Er is een gat in de vloer,
+waaruit de punt van een ladder steekt. Je zou via
+deze ladder naar beneden kunnen.","You are now in an attic. There is a hole in the floor,
+out of which the tip of a ladder sticks. You could go
+down by way of this ladder."
+room:4,room-text,4,Kelder,,"Je bent nu in een vochtige kelder. Het plafond
+is hier zo laag dat je niet rechtop kunt staan.
+Er zit een nauw gat in het plafond waardoor
+je omhoog zou kunnen klimmen. De wanden lijken van
+graniet, maar naar het noorden is de wand erg
+zanderig. Je staat tot aan je enkels in modderig
+water.","You are now in a damp cellar. The ceiling
+is so low here that you can't stand upright.
+There is a narrow hole in the ceiling through which
+you could climb up. The walls seem to be of
+granite, but to the north the wall is very
+sandy. You stand up to your ankles in muddy
+water."
+room:5,room-text,5,Zandtunnel,,"Je kruipt nu in een nauwe zandtunnel. De tunnel
+loopt naar het zuiden, waar een flauw lichtschijnsel
+te zien is. De grond is erg zacht, zodat je in
+alle richtingen een gang zou kunnen graven. Het
+water staat hier ongeveer een decimeter hoog. Naar
+beneden graven is dus niet mogelijk.","You are now crawling in a narrow sand tunnel. The tunnel
+runs to the south, where a faint glimmer of light
+can be seen. The ground is very soft, so that you could
+dig a passage in any direction. The water
+here stands about a decimetre deep. Digging
+downward is therefore not possible."
+room:6,room-text,6,Achter het huis,,"Je bent nu achter het huis. Er is een raampje
+waardoor je het huis in kunt. Een donker woud strekt
+zich naar alle kanten uit.","You are now behind the house. There is a small window
+through which you can get into the house. A dark forest stretches
+out on all sides."
+room:7,room-text,7,Donker woud,,"Je bent nu in een donker woud. Overal om je heen
+zie je bomen.","You are now in a dark forest. All around you
+you see trees."
+room:8,room-text,8,Donker woud,,"Je bent nu in een donker woud. Overal om je heen
+zie je bomen.","You are now in a dark forest. All around you
+you see trees."
+room:9,room-text,9,Donker woud,,"Je bent nu in een donker woud. Overal om je heen
+zie je bomen.","You are now in a dark forest. All around you
+you see trees."
+room:10,room-text,10,Donker woud,,"Je bent nu in een donker woud. Overal om je heen
+zie je bomen.","You are now in a dark forest. All around you
+you see trees."
+room:11,room-text,11,Dorpsstraat,,"Je bent nu in de dorpsstraat van het dorp. Ver
+naar het noorden kan je het kasteel van Lord Dracula
+zien. Voor je is de herberg, terwijl links een klein
+huisje staat. Een groot woud ligt zuidelijk van het
+dorp.","You are now in the main street of the village. Far
+to the north you can see the castle of Lord Dracula.
+Before you is the inn, while to the left stands a small
+house. A large forest lies to the south of the
+village."
+room:12,room-text,12,Herberg,,"Je bent nu in de herberg de zwarte hand. Er zitten mensen
+aan een tafel te praten, terwijl de waard achter de
+toonbank staat. Via een deur kan je uit de herberg komen.","You are now in the inn 'the black hand'. People sit
+at a table talking, while the innkeeper stands behind the
+counter. Through a door you can get out of the inn."
+room:13,room-text,13,Herberg (tafel),,"Je zit nu aan een tafel in de herberg. Er zitten verschillende
+mensen om je heen te praten. Een persoon kijkt angstig voor zich uit.","You are now sitting at a table in the inn. Various
+people sit around you talking. One person stares ahead anxiously."
+room:14,room-text,14,Zolder (herberg),,"Je bent nu op de donkere zolder van de herberg. Via
+een trap kan je naar beneden. Er hangt een sterke geur,
+alsof hier een lijk enige maanden heeft liggen rotten.
+De vloer is vol bloedvlekken. Er is echter geen lijk
+te zien. Een vreemd gevormde steen is in de
+muur gemetseld.","You are now in the dark attic of the inn. By way of
+a staircase you can go down. There hangs a strong smell,
+as if a corpse has lain rotting here for some months.
+The floor is covered in bloodstains. There is, however, no corpse
+to be seen. A strangely shaped stone is set into the
+wall."
+room:15,room-text,15,Bos (open plek),,"Je bent nu in een open gedeelte van het bos. Je hoort water
+spatten in het oosten, waar je tussen de bomen door een
+bron kunt zien. De grond heeft een vreemde trilling.","You are now in an open part of the forest. You hear water
+splashing to the east, where between the trees you can see a
+well. The ground has a strange vibration."
+room:16,room-text,16,Heuvel,,"Je bent nu op de top van een kleine heuvel
+midden in het bos. In de verte boven de boomtoppen
+kan je een toren van een kasteel zien. Enige tientallen
+kilometers verder kan je de huizen van een stadje zien.","You are now on top of a small hill
+in the middle of the forest. In the distance above the treetops
+you can see a tower of a castle. Some tens of
+kilometres further you can see the houses of a small town."
+room:17,room-text,17,Donker woud (boom),,"Je bent nu in een donker woud. Hoog in een zware
+eikenboom is een kleine hut gebouwd. De takken van
+de boom hangen laag genoeg om erin te kunnen klimmen.
+Er zijn vele voetstappen in de grond te zien.","You are now in a dark forest. High in a heavy
+oak tree a small hut has been built. The branches of
+the tree hang low enough to climb into it.
+Many footprints can be seen in the ground."
+room:18,room-text,18,Boomhut,,"Je bent nu in een kleine hut bovenin een boom. Een van de
+planken, waaruit de vloer is opgebouwd, is afgebroken,
+zodat je daardoor naar beneden kunt. Je hebt van hier uit een
+prachtig uitzicht over het uitgestrekte bos. In de verte kan je
+het dorpje met de herberg zien. Een smal pad vanuit het dorp
+slingert het bos in. Ver links van het dorp kan je het kasteel
+van Lord Dracula zien. Door een vreemd schijnsel ziet het kasteel
+er spookachtig uit. Een smal pad loopt de heuvel op naar de ingang
+van het kasteel. Verder is de wand rondom het kasteel zo
+steil, dat het pad in feite de enige ingang vormt.","You are now in a small hut high up in a tree. One of the
+planks that make up the floor has broken off,
+so that you can go down through it. From here you have a
+magnificent view over the vast forest. In the distance you can
+see the little village with the inn. A narrow path from the village
+winds into the forest. Far to the left of the village you can see the castle
+of Lord Dracula. By some strange glow the castle looks
+ghostly. A narrow path runs up the hill to the entrance
+of the castle. Otherwise the wall around the castle is so
+steep that the path is in fact the only entrance."
+room:19,room-text,19,Bospad,,"Je loopt nu op een lang pad in het bos. Het pad loopt
+verder tot aan het kasteel op de heuvel. Het dorp
+ligt beneden. Wanneer je het pad niet volgt kom je
+in het woud terecht.","You are now walking on a long path in the forest. The path runs
+on up to the castle on the hill. The village
+lies below. If you don't follow the path you end up
+in the woods."
+room:20,room-text,20,Kasteel (ingang),,"Je staat nu voor de ingang van het kasteel. Een pad slingert
+de heuvel af en verdwijnt dan in het dichte bos.
+Boven de ingang staat een tekst met grote letters
+in de grove stenen gekrast.","You are now standing before the entrance of the castle. A path winds
+down the hill and then vanishes into the dense forest.
+Above the entrance a text is scratched in large letters
+into the coarse stones."
+room:21,room-text,21,Kasteelhal,,"Je bent nu in een immense hal van het kasteel. Een brede trap loopt
+naar boven. Onder de trap is een kleine deur naar het noorden,
+Het is alsof er iemand aanwezig is, je ziet echter niemand.
+","You are now in an immense hall of the castle. A broad staircase runs
+upward. Under the stairs is a small door to the north.
+It's as if someone is present, yet you see no one."
+room:22,room-text,22,Lange gang,,"Je bent nu in een lange gang. Met veel moeite kan je een zeer nauwe
+gang zuidwaarts zien. Voor je is een deur met daarop een
+bordje 'SLAAPKAMER 2'. De gang loopt oost/west.","You are now in a long corridor. With great effort you can make out a very
+narrow passage to the south. Before you is a door with a
+sign 'BEDROOM 2' on it. The corridor runs east/west."
+room:23,room-text,23,Kasteelslaapkamer,,"Je bent in een slaapkamer van het kasteel. De wanden van deze kamer
+zijn prachtig bewerkt met groen/bruine verf in een soort
+oosters patroon. Naar het zuiden is een deur, waarachter
+een balkon te zien is.","You are in a bedroom of the castle. The walls of this room
+are beautifully worked with green/brown paint in a kind of
+oriental pattern. To the south is a door, behind which
+a balcony can be seen."
+room:24,room-text,24,Kasteelslaapkamer 2,,"Je bent nu in een slaapkamer van het kasteel. De kamer is
+op een deur na geheel afgesloten. Achterop de deur hangt
+een bordje met 'SLAAPKAMER 2'. Er is hier een gedoofde haard
+met een schoorsteen. Het is hier zeer stoffig en droog,
+waarschijnlijk vanwege het roet, dat hier in dikke lagen
+overal op zit.","You are now in a bedroom of the castle. The room is
+completely sealed except for one door. On the back of the door hangs
+a sign reading 'BEDROOM 2'. There is a cold hearth
+with a chimney here. It's very dusty and dry here,
+probably because of the soot, which lies in thick layers
+on everything here."
+room:25,room-text,25,Balkon,,"Je bent nu op een breed balkon. Via een deur kan je
+naar een noordelijk gelegen kamer toe. Als je over de
+rand kijkt kan je ver beneden een rand zien die langs
+het kasteel loopt. Naast de rand is een afgrond, het bos
+is nog veel lager. Je hebt een prachtig uitzicht over het
+woud en de omgeving. Het dorp is van hieruit niet te zien.
+","You are now on a wide balcony. Through a door you can
+get to a room to the north. If you look over the
+edge you can see, far below, a ledge that runs along
+the castle. Beside the ledge is a chasm; the forest
+is far lower still. You have a magnificent view over the
+woods and the surroundings. The village can't be seen from here."
+room:26,room-text,26,Smalle rand,,"Je staat nu op een smalle rand, die langs het kasteel loopt.
+De rand wordt echter naar beide zijden zo smal, dat een doortocht
+niet mogelijk is. De heuvel loopt hier zeer steil naar beneden het bos in.
+Afdaling is hier waarschijnlijk niet mogelijk. Er staan diepe sporen
+die de heuvel af leiden.","You are now standing on a narrow ledge that runs along the castle.
+The ledge, however, becomes so narrow on both sides that passage
+is not possible. The hill here slopes very steeply down into the forest.
+Descent here is probably not possible. There are deep tracks
+leading down the hill."
+room:27,room-text,27,Eetkamer,,"Je bent nu in een grote eetkamer. Hier staat een zeer lange lege
+tafel. Over de vloer liggen etensresten. Een deur vormt de
+enige uitgang van deze kamer.","You are now in a large dining room. Here stands a very long empty
+table. Food scraps lie about the floor. A door forms the
+only exit from this room."
+room:28,room-text,28,Torendak,,"Je staat nu op het glibberige dak van een van de torens van het
+kasteel. Je hebt uitzicht op het bos, waarin je nu heel in de
+verte een soort waterbron ziet, een eind weg van het dorp.
+Naar beneden via het raam kom je weer in de toren.","You are now standing on the slippery roof of one of the towers of the
+castle. You have a view over the forest, in which you now, far in the
+distance, see a kind of well, some way from the village.
+Going down through the window brings you back into the tower."
+room:29,room-text,29,Kasteeltoren,,"Je bent nu in een kasteeltoren. Er zit een klein raampje in de
+muur waardoor je het bos kunt zien in de verte. Een versleten
+houten trap loopt omlaag.","You are now in a castle tower. There is a small window in the
+wall through which you can see the forest in the distance. A worn
+wooden staircase runs down."
+room:30,room-text,30,Wenteltrap (vertikaal),,"Je staat nu op vertikaal stuk van een hoge wenteltrap.
+De trap loopt zowel verder omhoog als naar beneden,
+terwijl er een smalle opening naar het noorden is. Hoog, buiten
+je bereik, lijkt een gat in de wand geslagen te zijn.","You are now standing on a vertical stretch of a high spiral staircase.
+The staircase runs both further up and down,
+while there is a narrow opening to the north. High up, beyond
+your reach, a hole seems to have been struck in the wall."
+room:31,room-text,31,Wenteltrap,,"Je staat nu op een lange wenteltrap die
+omhoog en naar beneden gaat. Voor je zie je een vreemd
+gevormde deur in de wand met in het hout van de
+deur 'DIT IS SESAM' gebrand. Een zwaar gebonk is achter de
+deur hoorbaar.","You are now standing on a long spiral staircase that
+goes up and down. Before you you see a strangely
+shaped door in the wall with 'THIS IS SESAME' burned into the
+wood of the door. A heavy thumping is audible behind the
+door."
+room:32,room-text,32,Gewelf,,"Je staat in een klein gewelf onderaan een wenteltrap. Een lage trap
+loopt naar beneden, langs een ijzeren hek. Achter
+het hek kan je enkele grafkisten zien staan. Het is
+echter te donker om de gehele onderliggende kamer te kunnen
+zien. Voor je is een poortje, met daarachter een binnenplaats
+die als kerkhof gebruikt wordt. Een wenteltrap leidt omhoog.","You are standing in a small vault at the foot of a spiral staircase. A low
+staircase runs down, past an iron gate. Behind
+the gate you can see several coffins standing. It is,
+however, too dark to see the whole room below.
+Before you is a small archway, behind which is a courtyard
+used as a graveyard. A spiral staircase leads up."
+room:33,room-text,33,Spionageruimte,,"Je bent nu in de spionageruimte. De kamer is
+rondom uitgehakt, met hier en daar wat losse stenen.
+Twee zeer nauwe gangen zijn met deze kamer verbonden. De
+ene gang loopt naar het oosten, de andere naar het westen.
+Er is een gat in de wand geslagen met een ladder
+aan de andere kant er tegenaan. Via deze ladder
+kan je omlaag.","You are now in the spy room. The room is
+hewn out all around, with here and there some loose stones.
+Two very narrow passages connect to this room. One
+passage runs to the east, the other to the west.
+A hole has been struck in the wall with a ladder
+leaning against the other side. By way of this ladder
+you can go down."
+room:34,room-text,34,Kruiskamer,,"Je bent nu in de kruiskamer. De wanden zijn hier met
+bloed besmeurd en er liggen hier restanten van dieren.
+In de hoek ligt het geraamte van een onvoorzichtige avonturier.
+Een groot vuur verspert de doorgang naar een ernaast liggende
+kamer. Er is slechts 1 uitgang, de zware houten
+deur.","You are now in the cross room. The walls here are smeared
+with blood and there are remains of animals lying about.
+In the corner lies the skeleton of a careless adventurer.
+A great fire blocks the passage to an adjacent
+room. There is only 1 exit, the heavy wooden
+door."
+room:35,room-text,35,Schatkamer,,"Je bent nu in de schatkamer. De wanden lijken licht
+te geven door een vreemde weerkaatsing van de gloed van
+het vuur. Hoog bovenin deze ruimte is een gat in de
+muur in de vorm van een latijns kruis. Er komt lucht
+door naar binnen.","You are now in the treasure chamber. The walls seem to give
+light through a strange reflection of the glow of
+the fire. High up in this chamber is a hole in the
+wall in the shape of a latin cross. Air comes
+in through it."
+room:36,room-text,36,Binnenplaats/kerkhof,,"Je bent nu op een binnenplaats van het kasteel dat als kerkhof dienst doet.
+Er zijn hier vele graven waarvan sommige open zijn. Van anderen is het graf-
+deksel weggeschoven. De meeste graven zijn echter intact. De enige uitgang
+is een poortje aan de westkant.","You are now in a courtyard of the castle that serves as a graveyard.
+There are many graves here, some of which are open. The gravestones of others
+have been slid aside. Most graves, however, are intact. The only exit
+is a small archway on the west side."
+room:37,room-text,37,Graftombe,,"Je bent nu in een graftombe diep onder het kasteel.Een smalle
+trap gaat omhoog, halverwege de trap is een ijzeren hek geplaatst.
+Een ijzige tocht gaat door merg en been. Er staan enige houten
+grafkisten in deze kamer, die allemaal op elkaar lijken.","You are now in a burial tomb deep beneath the castle. A narrow
+staircase goes up; halfway up the stairs an iron gate has been placed.
+An icy draught goes through marrow and bone. There stand a number of wooden
+coffins in this room, all alike."
+room:38,room-text,38,Doodskist,,"Je bent nu in een afgesloten houten doodskist. Bloedstrepen
+en een muffe geur verraden het feit dat deze kist al eens
+gebruikt is...","You are now in a sealed wooden coffin. Bloodstreaks
+and a musty smell betray the fact that this coffin has been
+used before..."
+room:39,room-text,39,Gegraven gat,,"De schep is op iets hards gestoten. Als je verder graaft
+blijkt dat je op een muur gestoten bent. De stenen van de muur zijn
+koud en vochtig. De uitgegraven gang loopt terug naar het zuiden.","The shovel has struck something hard. As you dig further
+it turns out you've struck a wall. The stones of the wall are
+cold and damp. The dug-out passage runs back to the south."
+room:40,room-text,40,Lange gang (kelder),,"Je bent nu in een lange gang. Voor je naar het zuiden
+zie je een deur met opschrift 'SLAAPKAMER 1'. De gang heeft
+ooit oost/west gelopen maar door een instorting is de westelijke
+doorgang versperd.","You are now in a long corridor. Before you to the south
+you see a door inscribed 'BEDROOM 1'. The corridor once
+ran east/west but through a collapse the western
+passage is blocked."
+room:41,room-text,41,Nis (kijkgat),,"Je bent nu in een smalle nis met een klein kijkgat in de wand. Door
+het gat komt wat licht, net voldoende om een gang noord en een iets
+lagere doorgang naar het westen te zien.","You are now in a narrow niche with a small peephole in the wall. Through
+the hole comes a little light, just enough to see a corridor to the north and a
+somewhat lower passage to the west."
+room:42,room-text,42,Nauwe hoge gang,,"Je staat aan het einde van een nauwe, hoge gang. Deze gang moet precies
+achter de verschillende kamers van het kasteel lopen. Boven je is
+een gat. Uitgehouwen treden leiden recht omhoog er naartoe.","You are standing at the end of a narrow, high corridor. This corridor must run
+exactly behind the various rooms of the castle. Above you is
+a hole. Hewn-out steps lead straight up to it."
+room:43,room-text,43,Gang (gat in grond),,"Je staat nu vlak voor een gat in de grond. De gang loopt nog verder door
+naar het oosten maar wordt steeds smaller.","You are now standing right before a hole in the ground. The corridor runs on
+further to the east but grows steadily narrower."
+room:44,room-text,44,Gang (onbegaanbaar),,"De gang is verder onbegaanbaar. De gang is verderop nog slechts tien
+centimeter breed. Wel is er een luchtstroom die oostwaarts de smalle
+sleuf in stroomt.","The corridor is impassable further on. Further along it is only ten
+centimetres wide. There is, however, an airflow streaming eastward into the
+narrow slit."
+room:51,room-text,51,Nauwe nis,,"Je staat nu vlakbij een zeer nauwe nis, met in de muur een klein gat,
+waar precies een vinger in zou passen. Boven het gat hangt een bordje met
+daarop 'TORENKAMER'.","You are now standing near a very narrow niche, with a small hole in the wall,
+into which a finger would fit exactly. Above the hole hangs a sign reading
+'TOWER ROOM'."
+room:52,room-text,52,Ventilatieruimte,,"Je bent hier in een soort ventilatieruimte. Door een, met een rooster
+afgesloten, gat heb je overzicht over de eetkamer. Een hoge, draaiende
+ventilator aan de andere zijde van de ruimte zorgt hier voor een warme,
+onaangename luchtstroom. Een gat boven je is de enige uitgang
+hier.","You are here in a kind of ventilation space. Through a hole closed off
+with a grating you have a view over the dining room. A tall, spinning
+fan on the other side of the space provides a warm,
+unpleasant airflow here. A hole above you is the only exit
+here."
+room:54,room-text,54,Harnas,,"Je zit nu in het harnas. Door het vizier kun je zien wat er
+gebeurt.","You are now inside the armour. Through the visor you can see what is
+happening."
+obj:0,object,1,Slaapkamer,,kleine brandende lantaren,small burning lantern
+obj:1,object,3,Zolder (huis),,stuk dik touw,piece of thick rope
+obj:2,object,18,Boomhut,,houten wig,wooden wedge
+obj:3,object,12,Herberg,,streng knoflook,string of garlic
+obj:4,object,-,,,dik gehavend boek,thick battered book
+obj:5,object,18,Boomhut,,zwaar kapmes,heavy machete
+obj:6,object,36,Binnenplaats/kerkhof,,lange ladder,long ladder
+obj:7,object,-,,,stuk hout,piece of wood
+obj:8,object,-,,,gesneden tak,carved branch
+obj:9,object,-,,,houten kruis,wooden cross
+obj:10,object,4,Kelder,,vlijmscherpe bijl,razor-sharp axe
+obj:11,object,-,,,Overbodig voorwerp,Superfluous object
+obj:12,object,-,,,"stuk dik touw, vastgebonden aan het balkon","piece of thick rope, tied to the balcony"
+obj:13,object,35,Schatkamer,,"schatkist, vol met gouden munten","treasure chest, full of gold coins"
+obj:14,object,2,Hal,,sneetje brood,slice of bread
+obj:15,object,2,Hal,,gouden duivelaarsmunt,gold devil's coin
+obj:16,object,2,Hal,,fles melk (zonder statiegeld),bottle of milk (no deposit)
+obj:17,object,-,,,lege fles,empty bottle
+obj:18,object,-,,,fles water,bottle of water
+obj:19,object,24,Kasteelslaapkamer 2,,gouden halsband,golden necklace
+obj:20,object,1,Slaapkamer,,zwaar eikenhouten bed,heavy oak bed
+obj:21,object,29,Kasteeltoren,,zware gesloten kist,heavy closed chest
+obj:22,object,-,,,zware geopende kist met een gesloten luik onderin,heavy opened chest with a closed hatch at the bottom
+obj:23,object,-,,,zware geopende kist met een geopend luik onderin,heavy opened chest with an open hatch at the bottom
+obj:24,object,14,Zolder (herberg),,zware kist met een dikke laag stof op de bodem,heavy chest with a thick layer of dust on the bottom
+obj:25,object,-,,,zware kist met een boek onderin,heavy chest with a book at the bottom
+obj:26,object,-,,,zware lege kist,heavy empty chest
+obj:27,object,-,,,scherven,shards
+obj:28,object,-,,,botte bijl,blunt axe
+obj:29,object,6,Achter het huis,,schep,shovel
+obj:30,object,16,Heuvel,,ondiepe waterbron,shallow well
+obj:31,object,4,Kelder,,kleine houten doos,small wooden box
+obj:32,object,-,,,houten hamer,wooden hammer
+obj:33,object,-,,,"fles gevuld met blauw,giftig water","bottle filled with blue, poisonous water"
+obj:34,object,34,Kruiskamer,,gevaarlijke kruisspin,dangerous cross-spider
+obj:35,object,0,Eigen huis,,klein briefje,small note
+obj:36,object,21,Kasteelhal,,groot ijzeren harnas,large iron suit of armour
+obj:37,object,37,Graftombe,,zware doodskist met in gothische letters de tekst 'D R A C U L A',heavy coffin with the text 'D R A C U L A' in gothic letters
+obj:38,object,-,,,zware geopende doodskist met op de zijkant de tekst 'DRACULA',heavy opened coffin with the text 'DRACULA' on the side
+obj:39,object,-,,,De vreemd gevormde deur is nu open,The strangely shaped door is now open
+obj:40,object,-,,,dode kruisspin,dead cross-spider
+objnoun:0,obj-noun,1,Slaapkamer,kleine brandende lantaren,"lantaren, brandende, lamp","lantern, burning, lamp"
+objnoun:1,obj-noun,3,Zolder (huis),stuk dik touw,touw,rope
+objnoun:2,obj-noun,18,Boomhut,houten wig,wig,wedge
+objnoun:3,obj-noun,12,Herberg,streng knoflook,"knoflook, streng","garlic, string"
+objnoun:4,obj-noun,-,,dik gehavend boek,boek,book
+objnoun:5,obj-noun,18,Boomhut,zwaar kapmes,"kapmes, mes","machete, knife"
+objnoun:6,obj-noun,36,Binnenplaats/kerkhof,lange ladder,ladder,ladder
+objnoun:7,obj-noun,-,,stuk hout,hout,wood
+objnoun:8,obj-noun,-,,gesneden tak,tak,branch
+objnoun:9,obj-noun,-,,houten kruis,kruis,cross
+objnoun:10,obj-noun,4,Kelder,vlijmscherpe bijl,bijl,axe
+objnoun:13,obj-noun,35,Schatkamer,"schatkist, vol met gouden munten","schatkist, kist","treasure, chest"
+objnoun:14,obj-noun,2,Hal,sneetje brood,"brood, sneetje","bread, slice"
+objnoun:15,obj-noun,2,Hal,gouden duivelaarsmunt,"munt, duivelaarsmunt","coin, devilcoin"
+objnoun:16,obj-noun,2,Hal,fles melk (zonder statiegeld),"fles, melk","bottle, milk"
+objnoun:17,obj-noun,-,,lege fles,fles,bottle
+objnoun:18,obj-noun,-,,fles water,"fles, water","bottle, water"
+objnoun:19,obj-noun,24,Kasteelslaapkamer 2,gouden halsband,halsband,necklace
+objnoun:28,obj-noun,-,,botte bijl,bijl,axe
+objnoun:29,obj-noun,6,Achter het huis,schep,schep,shovel
+objnoun:31,obj-noun,4,Kelder,kleine houten doos,doos,box
+objnoun:32,obj-noun,-,,houten hamer,hamer,hammer
+objnoun:33,obj-noun,-,,"fles gevuld met blauw,giftig water",fles,bottle
+objnoun:35,obj-noun,0,Eigen huis,klein briefje,briefje,note
+objnoun:36,obj-noun,21,Kasteelhal,groot ijzeren harnas,"harnas, ijzeren, groot","armour, iron, large"
+objnoun:38,obj-noun,-,,zware geopende doodskist met op de zijkant de tekst 'DRACULA',"kist, doodskist","chest, coffin"
+objnoun:40,obj-noun,-,,dode kruisspin,"spin, kruisspin",spider
+ui:OK_TAKE,ui,any,engine-tekst,,Ok,Ok
+ui:TAKEN,ui,any,engine-tekst,, : gepakt., : taken.
+ui:DROPPED,ui,any,engine-tekst,, : laten vallen., : dropped.
+ui:INV_HEADER,ui,any,engine-tekst,,Je draagt:,You are carrying:
+ui:INV_EMPTY,ui,any,engine-tekst,,Je hebt niets bij je.,You aren't carrying anything.
+ui:NO_SEE_A,ui,any,engine-tekst,,Ik zie geen ,I don't see a 
+ui:NO_SEE_B,ui,any,engine-tekst,, hier., here.
+ui:OBJ_HERE_SINGULAR,ui,any,engine-tekst,,Er is een {name} hier.,There is a {name} here.
+ui:OBJ_HERE_PLURAL,ui,any,engine-tekst,,Er zijn {name} hier.,There are {name} here.
+ui:SCREAM_ECHO,ui,any,engine-tekst,,..{noun}....,..{noun}....
+ui:BUG_PLAYER_PREFIX,ui,any,engine-tekst,, Speler: , Player: 
+ui:REVEAL_SECRET,ui,any,engine-tekst,,"De stof waait door elkaar en lijkt op een bepaald moment
+letters te vormen. Vaag kun je de tekst {word} lezen.
+Dan verwaait het stof totaal en blijft er geen spoor van deze
+toch eens zeer indrukwekkende dracula over.","The dust swirls about and at a certain moment seems to
+form letters. Faintly you can read the text {word}.
+Then the dust disperses entirely and no trace remains of this
+once so very impressive dracula."
+ui:ASSUME_A,ui,any,engine-tekst,,Ik neem aan dat je ',I assume you mean '
+ui:ASSUME_B,ui,any,engine-tekst,,' bedoelt.,'.
+ui:PRESS_KEY,ui,any,engine-tekst,,--- Druk een toets ---,--- Press a key ---
+ui:LOAD_ERROR,ui,any,engine-tekst,,Laadfout.,Load error.
+ui:OK,ui,any,engine-tekst,,Ok.,Ok.
+ui:TESTER_HELLO,ui,any,engine-tekst,,Hallo beste tester.,Hello dear tester.
+ui:TESTER_INSTR,ui,any,engine-tekst,,"Typ nu jouw opmerking in, als je klaar bent typ dan
+een punt en dan return","Now type in your comment, when you're done type
+a period and then return"
+ui:TESTER_PROMPT,ui,any,engine-tekst,,commentaar --> ,comment --> 
+ui:GAME_OVER,ui,any,engine-tekst,,[ het spel is afgelopen ],[ the game is over ]
+ui:MENU_CUT,ui,any,engine-tekst,,Knippen,Cut
+ui:MENU_COPY,ui,any,engine-tekst,,Kopiëren,Copy
+ui:MENU_PASTE,ui,any,engine-tekst,,Plakken,Paste
+ui:MENU_SELECT_ALL,ui,any,engine-tekst,,Alles selecteren,Select all
+ui:MENU_SAVE_GAME,ui,any,engine-tekst,,Bewaar spel,Save game
+ui:MENU_LOAD_GAME,ui,any,engine-tekst,,Laad spel,Load game
+ui:MENU_NEW_GAME,ui,any,engine-tekst,,Nieuw spel,New game
+ui:MENU_QUIT,ui,any,engine-tekst,,Stoppen,Quit
+ui:MENU_GAME,ui,any,engine-tekst,,Spel,Game
+ui:MENU_HELP,ui,any,engine-tekst,,Help,Help
+ui:MENU_LANGUAGE,ui,any,engine-tekst,,Taal,Language
+ui:LANGUAGE_NAME,ui,any,engine-tekst,,Nederlands,English
+ui:HELP_CLOSE,ui,any,engine-tekst,,Sluiten,Close
+ui:BUG_HEADER,ui,any,engine-tekst,,"Dracula Buglijst 
+Dit bestand wordt gevuld indien je tijdens het spelen een bug
+vindt en dan BUG intikt. 
+*******************************************************************************
+","Dracula Bug list 
+This file is filled if, while playing, you find a bug
+and then type BUG. 
+*******************************************************************************"
+ui:HELP_WARNING_TITLE,ui,any,engine-tekst,,Commando's tonen?,Show commands?
+ui:HELP_WARNING,ui,any,engine-tekst,,In het originele spel moest je alle commando's zelf ontdekken. Weet je zeker dat je ze nu wilt zien?,In the original game you had to discover all commands yourself. Are you sure you want to see them now?
+ui:HELP_TITLE,ui,any,engine-tekst,,Commando's,Commands
+ui:HELP_INTRO,ui,any,engine-tekst,,Commando's (met een simpel voorbeeld):,Commands (with a simple example):
+ui:HELP_COMMANDS,ui,any,engine-tekst,,"Beweging
+  ga <richting> — bijv. 'ga noord' (loop ergens heen)
+    kort: n, z, o, w, h (omhoog), l (omlaag), e (eruit)
+  sta op — bijv. 'sta op' (ga staan)
+
+Kijken en lezen
+  kijk — bijv. 'kijk' (bekijk de plaats waar je bent; kort: k)
+  bekijk <ding> — bijv. 'bekijk deur' (bekijk iets van dichterbij)
+  lees <ding> — bijv. 'lees brief' (lees een tekst)
+
+Voorwerpen
+  pak <voorwerp> — bijv. 'pak lamp' (pak iets op)
+  leg <voorwerp> — bijv. 'leg lamp' (leg iets neer)
+  i — bijv. 'i' (toon wat je bij je draagt)
+  toon <voorwerp> — bijv. 'toon kruis' (laat iets zien)
+  geef <voorwerp> — bijv. 'geef geld' (geef iets weg)
+  gooi <voorwerp> — bijv. 'gooi mes' (gooi iets weg)
+  schijn <ding> — bijv. 'schijn lamp' (schijn met de lamp)
+
+Dingen gebruiken
+  open <ding> — bijv. 'open deur' (maak iets open)
+  sluit <ding> — bijv. 'sluit deur' (doe iets dicht)
+  duw <ding> — bijv. 'duw knop' (duw of druk ergens tegen)
+  trek <ding> — bijv. 'trek hendel' (trek ergens aan)
+  til <ding> — bijv. 'til steen' (til iets op)
+  graaf — bijv. 'graaf' (graaf in de grond)
+  hak <ding> — bijv. 'hak boom' (hak of kap iets)
+  snij <ding> — bijv. 'snij touw' (snij iets door)
+  breek <ding> — bijv. 'breek raam' (breek iets)
+  vul <ding> — bijv. 'vul kruik' (vul iets)
+  blaas <ding> — bijv. 'blaas hoorn' (blaas ergens op)
+  spring — bijv. 'spring' (spring omhoog of vooruit)
+
+Praten en overige
+  zeg <woord> — bijv. 'zeg sesam' (zeg een woord hardop)
+  gil — bijv. 'gil' (schreeuw of roep)
+  eet <ding> — bijv. 'eet brood' (eet iets op)
+  drink <ding> — bijv. 'drink water' (drink iets)
+  koop <ding> — bijv. 'koop kaart' (koop iets)
+  wacht — bijv. 'wacht' (wacht een moment)
+
+Vechten
+  sla <iets> — bijv. 'sla wolf' (sla ergens op)
+  dood <iemand> — bijv. 'dood dracula' (probeer iemand te doden)
+
+Het spel
+  bewaar spel — bijv. 'bewaar spel' (sla je spel op)
+  laad spel — bijv. 'laad spel' (laad een opgeslagen spel)
+  stop — bijv. 'stop' (stop met spelen)
+
+Tip: geef meerdere commando's achter elkaar, gescheiden door een punt '.'
+bijvoorbeeld: ga noord . pak lamp . i","Movement
+  go <direction> - e.g. 'go north' (walk somewhere)
+    short: n, s, e, w, u (up), d (down), o (out)
+  stand up - e.g. 'stand up' (get to your feet)
+
+Looking and reading
+  look - e.g. 'look' (look at where you are; short: l)
+  examine <thing> - e.g. 'examine door' (look at something more closely)
+  read <thing> - e.g. 'read note' (read a text)
+
+Objects
+  take <object> - e.g. 'take lamp' (pick something up)
+  drop <object> - e.g. 'drop lamp' (put something down)
+  i - e.g. 'i' (show what you're carrying)
+  show <object> - e.g. 'show cross' (show something)
+  give <object> - e.g. 'give money' (give something away)
+  throw <object> - e.g. 'throw knife' (throw something away)
+  shine <thing> - e.g. 'shine lamp' (shine the lamp)
+
+Using things
+  open <thing> - e.g. 'open door' (open something)
+  close <thing> - e.g. 'close door' (shut something)
+  push <thing> - e.g. 'push button' (push or press against something)
+  pull <thing> - e.g. 'pull lever' (pull on something)
+  lift <thing> - e.g. 'lift stone' (lift something)
+  dig - e.g. 'dig' (dig in the ground)
+  chop <thing> - e.g. 'chop tree' (chop or hew something)
+  cut <thing> - e.g. 'cut rope' (cut something through)
+  break <thing> - e.g. 'break window' (break something)
+  fill <thing> - e.g. 'fill jug' (fill something)
+  blow <thing> - e.g. 'blow horn' (blow on something)
+  jump - e.g. 'jump' (jump up or forward)
+
+Talking and other
+  say <word> - e.g. 'say sesame' (say a word out loud)
+  scream - e.g. 'scream' (scream or shout)
+  eat <thing> - e.g. 'eat bread' (eat something)
+  drink <thing> - e.g. 'drink water' (drink something)
+  buy <thing> - e.g. 'buy map' (buy something)
+  wait - e.g. 'wait' (wait a moment)
+
+Fighting
+  hit <something> - e.g. 'hit wolf' (hit something)
+  kill <someone> - e.g. 'kill dracula' (try to kill someone)
+
+The game
+  save game - e.g. 'save game' (save your game)
+  load game - e.g. 'load game' (load a saved game)
+  stop - e.g. 'stop' (stop playing)
+
+Tip: give several commands in a row, separated by a period '.'
+for example: go north . take lamp . i"
+answer:yes,answer,any,antwoord: yes,,J,Y
+answer:no,answer,any,antwoord: no,,N,N
+secret:word,secret,31,wachtwoord,,incoronium,incoronium
+intro:1,intro,-,titelscherm,,                   D R A C U L A   A V O N T U U R,                 D R A C U L A   A D V E N T U R E
+intro:3,intro,-,titelscherm,,       (c) 1982 Incore Automatisering / R.van Woensel produkties,       (c) 1982 Incore Automatisering / R.van Woensel produkties
+intro:5,intro,-,titelscherm,,   Gemoderniseerde versie door Gerwout van der Veen.,   Modernised version by Gerwout van der Veen.
+intro:6,intro,-,titelscherm,,   Alle originele auteursrechten berusten bij de oorspronkelijke,   All original copyrights remain with the original
+intro:7,intro,-,titelscherm,,   auteur en rechthebbenden.,   author and rightsholders.
+intro:9,intro,-,titelscherm,,                    Druk een toets om te beginnen,                    Press a key to begin
+intro:header,intro,-,serienummer,,Serienummer:A000002-MSD op MS-DOS.,Serial number:A000002-MSD on MS-DOS.
