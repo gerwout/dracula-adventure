@@ -70,6 +70,12 @@ def test_command_reference_mentions_chaining(app):
     assert "ga noord . pak lamp . i" in ref
 
 
+def test_command_reference_lists_all_meaningful_verbs(app):
+    ref = app._command_reference_text().lower()
+    for verb in ["klim", "volg", "draag", "knoop", "vraag", "luister", "slaap"]:
+        assert verb in ref, f"Help is missing the '{verb}' command"
+
+
 def test_help_intro_and_title_come_from_lexicon(app):
     lex = app.engine.lex
     assert lex.ui("HELP_TITLE")

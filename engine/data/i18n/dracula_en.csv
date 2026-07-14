@@ -1665,6 +1665,8 @@ Tip: geef meerdere commando's achter elkaar, gescheiden door een punt '.'
 bijvoorbeeld: ga noord . pak lamp . i","Movement
   go <direction> - e.g. 'go north' (walk somewhere)
     short: n, s, e, w, u (up), d (down), o (out)
+  climb / crawl / walk - also ways to move (e.g. 'climb up')
+  follow <someone> - e.g. 'follow dracula'
   stand up - e.g. 'stand up' (get to your feet)
 
 Looking and reading
@@ -1680,6 +1682,7 @@ Objects
   give <object> - e.g. 'give money' (give something away)
   throw <object> - e.g. 'throw knife' (throw something away)
   shine <thing> - e.g. 'shine lamp' (shine the lamp)
+  wear <object> - e.g. 'wear armour' (put something on; also: try on)
 
 Using things
   open <thing> - e.g. 'open door' (open something)
@@ -1694,6 +1697,7 @@ Using things
   fill <thing> - e.g. 'fill jug' (fill something)
   blow <thing> - e.g. 'blow horn' (blow on something)
   jump - e.g. 'jump' (jump up or forward)
+  tie <thing> - e.g. 'tie rope' (tie or hang something up)
 
 Talking and other
   say <word> - e.g. 'say sesame' (say a word out loud)
@@ -1702,6 +1706,9 @@ Talking and other
   drink <thing> - e.g. 'drink water' (drink something)
   buy <thing> - e.g. 'buy map' (buy something)
   wait - e.g. 'wait' (wait a moment)
+  ask <someone> - e.g. 'ask innkeeper'
+  listen - e.g. 'listen'
+  sleep - e.g. 'sleep' (go to sleep)
 
 Fighting
   hit <something> - e.g. 'hit wolf' (hit something)
