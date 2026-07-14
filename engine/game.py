@@ -653,4 +653,9 @@ def new_game(io: IO, txt_path=None, explore: bool = False,
     from .i18n import builtin_translator
     world = load_file(txt_path, corrections=corrections, translator=builtin_translator(lang))
     nav = build_named_entries(world) if explore else None
-    return Engine(world, io, navigation=nav, store=store, sandboxed=sandboxed)
+    eng = Engine(world, io, navigation=nav, store=store, sandboxed=sandboxed)
+    # Remember the language this game runs in. Not per-game mutable state (a
+    # reincarnation restart keeps the same language), so it lives here rather than in
+    # _reset_state — frontends/tests read engine.lang to know which language is active.
+    eng.lang = lang
+    return eng
