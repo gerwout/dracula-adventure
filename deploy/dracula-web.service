@@ -1,0 +1,16 @@
+[Unit]
+Description=Dracula Adventure web (WebSocket) server
+After=network.target
+
+[Service]
+Type=simple
+User=dracula
+WorkingDirectory=/opt/dracula-adventure
+Environment=DRACULA_WEB_HOST=127.0.0.1
+Environment=DRACULA_WEB_PORT=8765
+ExecStart=/usr/bin/python -m frontends.web.server
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

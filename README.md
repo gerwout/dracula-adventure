@@ -85,6 +85,22 @@ Useful flags (both frontends):
 - `--faithful` — use the verbatim 1982 text, including its original spelling typos
   (by default a "Gemoderniseerde" build is used, which corrects a handful of them).
 
+## Play in your browser / self-host
+
+The game also runs as a web app: a small Python WebSocket server drives the engine, and
+a single static page is the terminal (it mirrors the desktop GUI, saves to your browser's
+`localStorage`, and works on mobile). It runs one isolated session per visitor.
+
+```sh
+pip install -r requirements-web.txt
+python -m frontends.web.server        # ws://127.0.0.1:8765 by default
+```
+
+For production, put it behind Nginx (TLS + static + WebSocket proxy) and run it as a
+service — see [`deploy/nginx.conf`](deploy/nginx.conf) and
+[`deploy/dracula-web.service`](deploy/dracula-web.service). Online, filesystem features
+(BUG / COMMENTAAR / the `/` tester) are disabled.
+
 ## Translate the game (contributions welcome!)
 
 The game ships in **Dutch** (the original) and **English**, but adding another language is
