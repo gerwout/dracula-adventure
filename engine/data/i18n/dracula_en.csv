@@ -1584,6 +1584,7 @@ ui:TESTER_INSTR,ui,any,engine-tekst,,"Typ nu jouw opmerking in, als je klaar ben
 een punt en dan return","Now type in your comment, when you're done type
 a period and then return"
 ui:TESTER_PROMPT,ui,any,engine-tekst,,commentaar --> ,comment --> 
+ui:WEB_DISABLED,ui,any,engine-tekst,,Dat kan niet in de webversie.,That is not available in the web version.
 ui:GAME_OVER,ui,any,engine-tekst,,[ het spel is afgelopen ],[ the game is over ]
 ui:MENU_CUT,ui,any,engine-tekst,,Knippen,Cut
 ui:MENU_COPY,ui,any,engine-tekst,,Kopiëren,Copy

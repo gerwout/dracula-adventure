@@ -474,6 +474,9 @@ class Engine:
         """BUG / COMMENTAAR (EXE 0x3fd6): append a comment/bug report to DRACULA.BUG.
         Asks for the player's name, then reads report lines until a line with just
         '.', and appends '  Speler: <name>' + the lines to the logbook."""
+        if self.sandboxed:
+            self.io.writeln(self.lex.ui("WEB_DISABLED"))
+            return
         self.io.writeln(self.world.message_text(183))    # "Bugje ... tiep eerst je naam in..."
         name = (self.io.read_command() or "").strip()
         self.io.writeln(self.world.message_text(184))     # "Typ nu ... '.' om te stoppen"
@@ -504,6 +507,9 @@ class Engine:
         install the missing-file error is fatal. The net *intent* is a rolling logbook
         that accumulates every comment; this port implements that (a plain append) so it
         actually works — a faithful reproduction would mean crashing, which we don't want."""
+        if self.sandboxed:
+            self.io.writeln(self.lex.ui("WEB_DISABLED"))
+            return
         self.io.writeln(self.lex.ui("TESTER_HELLO"))    # "Hallo beste tester."
         self.io.writeln(self.lex.ui("TESTER_INSTR"))    # "Typ nu jouw opmerking in ..."
         lines: list[str] = []

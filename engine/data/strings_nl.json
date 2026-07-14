@@ -25,6 +25,7 @@
     "TESTER_HELLO": "Hallo beste tester.",
     "TESTER_INSTR": "Typ nu jouw opmerking in, als je klaar bent typ dan\neen punt en dan return",
     "TESTER_PROMPT": "commentaar --> ",
+    "WEB_DISABLED": "Dat kan niet in de webversie.",
     "GAME_OVER": "[ het spel is afgelopen ]",
     "MENU_CUT": "Knippen",
     "MENU_COPY": "Kopiëren",
