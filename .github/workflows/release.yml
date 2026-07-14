@@ -78,7 +78,7 @@ jobs:
         with:
           name: linux
           path: |
-            dist/*.AppImage
+            dist/Dracula-Adventure-*.AppImage
             dist/*.deb
           if-no-files-found: error
 
