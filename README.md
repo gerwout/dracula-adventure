@@ -87,19 +87,27 @@ Useful flags (both frontends):
 
 ## Play in your browser / self-host
 
-The game also runs as a web app: a small Python WebSocket server drives the engine, and
-a single static page is the terminal (it mirrors the desktop GUI, saves to your browser's
-`localStorage`, and works on mobile). It runs one isolated session per visitor.
+The game also runs as a web app: a small Python server drives the engine over a WebSocket
+and serves a single self-contained page as the terminal (it mirrors the desktop GUI, saves
+to your browser's `localStorage`, and works on mobile). Every visitor gets their own
+isolated session.
+
+**Run it locally** (needs Python 3.14):
 
 ```sh
 pip install -r requirements-web.txt
-python -m frontends.web.server        # ws://127.0.0.1:8765 by default
+python -m frontends.web.server
 ```
 
-For production, put it behind Nginx (TLS + static + WebSocket proxy) and run it as a
-service — see [`deploy/nginx.conf`](deploy/nginx.conf) and
-[`deploy/dracula-web.service`](deploy/dracula-web.service). Online, filesystem features
-(BUG / COMMENTAAR / the `/` tester) are disabled.
+Then open **http://127.0.0.1:8765/** in your browser — that's it (the server serves both
+the page and the WebSocket). Override the address with `DRACULA_WEB_HOST` /
+`DRACULA_WEB_PORT`; e.g. run `DRACULA_WEB_HOST=0.0.0.0 python -m frontends.web.server` to
+reach it from your phone on the same network at `http://<your-computer-ip>:8765/`.
+
+**Production:** put it behind Nginx for TLS (see [`deploy/nginx.conf`](deploy/nginx.conf))
+and run it as a service with [`deploy/dracula-web.service`](deploy/dracula-web.service).
+
+Online, the filesystem-writing commands (BUG / COMMENTAAR / the `/` tester) are disabled.
 
 ## Translate the game (contributions welcome!)
 
