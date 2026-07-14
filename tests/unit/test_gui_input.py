@@ -35,10 +35,12 @@ def test_begin_starts_game_and_swallows_the_event():
 
 
 def test_game_menu_save_and_load_run_the_commands(tmp_path, monkeypatch):
+    # SAVE_PATH must be patched before the app (and its engine) is constructed: the
+    # engine's default store captures the path once, at construction time.
+    import engine.game as gmod
+    monkeypatch.setattr(gmod, "SAVE_PATH", tmp_path / "s.json")
     root, app = _app()
     try:
-        import engine.game as gmod
-        monkeypatch.setattr(gmod, "SAVE_PATH", tmp_path / "s.json")
         app._begin()                                   # dismiss the title -> into the game
         gm = root.nametowidget(app.menubar.entrycget(app._game_cascade, "menu"))
         labels = [gm.entrycget(i, "label") for i in range(gm.index("end") + 1)

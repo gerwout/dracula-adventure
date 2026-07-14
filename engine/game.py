@@ -50,9 +50,12 @@ _UNMAPPED: set[str] = set()
 
 
 class Engine:
-    def __init__(self, world, io: IO, navigation: dict | None = None):
+    def __init__(self, world, io: IO, navigation: dict | None = None,
+                 store: savegame.SaveStore | None = None, sandboxed: bool = False):
         self.world = world
         self.io = io
+        self.store = store if store is not None else savegame.FileSaveStore(SAVE_PATH)
+        self.sandboxed = sandboxed
         self.msg = Messages(world)
         # Externalised UI strings / answer letters / secret word (engine/data/lexicon.py),
         # read through here so a translation (engine/i18n.py) applies everywhere.
@@ -519,13 +522,15 @@ class Engine:
     # locations + the DGROUP flags) to SAVE_PATH; see engine/savegame.py and
     # docs/savegame.md. Messages are the original's DRACULA.SAV lines.
     def do_bewaar(self, cmd: Command) -> None:
-        savegame.save(self, SAVE_PATH)
+        self.store.save(savegame.serialize(self))
         self.io.writeln(self.world.message_text(185))   # "Ik zet nu alle gegevens in DRACULA.SAV....."
 
     def do_laad(self, cmd: Command) -> None:
-        if not savegame.load(self, SAVE_PATH):
+        data = self.store.load()
+        if data is None:
             self.io.writeln(self.world.message_text(188))   # the "Vtoc error" load-fail easter egg
             return
+        savegame.restore(self, data)
         self.io.writeln(self.world.message_text(186))   # "Ik haal nu alle gegevens uit DRACULA.SAV......"
         self.describe_room()
 
@@ -541,7 +546,7 @@ class Engine:
         yes = self.lex.answer("yes").upper()
         if ans and ans != "stop" and yes and ans.strip().upper().startswith(yes):
             self.io.writeln(self.world.message_text(185))   # "Ik zet nu alle gegevens in DRACULA.SAV....."
-            savegame.save(self, SAVE_PATH)
+            self.store.save(savegame.serialize(self))
         self.running = False
 
     # -------------------------------------------------------------- main loop
@@ -628,15 +633,18 @@ class Engine:
 
 
 def new_game(io: IO, txt_path=None, explore: bool = False,
-             corrections: bool = True, lang: str = "nl") -> Engine:
+             corrections: bool = True, lang: str = "nl",
+             store: savegame.SaveStore | None = None, sandboxed: bool = False) -> Engine:
     """Create a game. explore=True enables reconstructed named-place navigation
     (BETREED HUIS / GA HERBERG ...) so more of the map is reachable — this is a
     heuristic reconstruction, not oracle-verified (see engine/navigation.py).
     corrections=True (default) shows the modernised text; corrections=False shows the
     true 1982 original text (see engine/data/corrections_nl.json).
     lang selects a bundled language ('nl' = the Dutch original, 'en' = English, ...);
-    the whole game — text, input words and scenery nouns — switches together."""
+    the whole game — text, input words and scenery nouns — switches together.
+    store selects where BEWAAR/LAAD SPEL read and write (default: the save file);
+    sandboxed is reserved for a later task."""
     from .i18n import builtin_translator
     world = load_file(txt_path, corrections=corrections, translator=builtin_translator(lang))
     nav = build_named_entries(world) if explore else None
-    return Engine(world, io, navigation=nav)
+    return Engine(world, io, navigation=nav, store=store, sandboxed=sandboxed)

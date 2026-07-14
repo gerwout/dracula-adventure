@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Protocol
 
 
 def serialize(eng) -> dict:
@@ -56,3 +57,27 @@ def load(eng, path) -> bool:
         return False
     restore(eng, data)
     return True
+
+
+class SaveStore(Protocol):
+    """Where a saved game is written to / read from. Desktop uses a file; the web
+    frontend routes this to the browser's localStorage."""
+    def save(self, data: dict) -> None: ...
+    def load(self) -> dict | None: ...
+
+
+class FileSaveStore:
+    """The default store: one JSON save file (the CLI/GUI behaviour)."""
+    def __init__(self, path):
+        self.path = Path(path)
+
+    def save(self, data: dict) -> None:
+        self.path.write_text(json.dumps(data), encoding="utf-8")
+
+    def load(self) -> dict | None:
+        if not self.path.exists():
+            return None
+        try:
+            return json.loads(self.path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return None
