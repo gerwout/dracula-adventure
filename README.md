@@ -85,6 +85,53 @@ Useful flags (both frontends):
 - `--faithful` — use the verbatim 1982 text, including its original spelling typos
   (by default a "Gemoderniseerde" build is used, which corrects a handful of them).
 
+## Translate the game (contributions welcome!)
+
+The game ships in **Dutch** (the original) and **English**, but adding another language is
+easy and needs **no code changes** — translations live as plain CSV files under
+`engine/data/i18n/`, which the game **auto-discovers** at startup. A small helper tool
+collects every translatable string (messages, room descriptions, object names, the title
+screen — even the words you type) into one editable table.
+
+1. **Fork and clone** the repo (Python 3.14).
+
+2. **Launch the translation tool** (a small tkinter window):
+
+   ```sh
+   python tools/translate_gui.py
+   ```
+
+3. **Add your language:** click **+ Lang**, enter your language code (e.g. `fr`, `de`, `es`),
+   then **Export** and save the file as `dracula_<code>.csv` (e.g. `dracula_fr.csv`).
+
+4. **Translate.** Fill in your language's column — in the tool (double-click a cell) or in
+   Excel / LibreOffice (it's a UTF-8 CSV). Only edit *your* column; leave `id`, `type`,
+   `dutch` untouched. **Any cell you leave empty keeps the Dutch original**, so you can
+   translate as much or as little as you like. Do translate the `ui:LANGUAGE_NAME` row into
+   your language's own name — that's what shows up in the in-game language picker.
+
+5. **Drop it in:** save the finished file as `engine/data/i18n/dracula_<code>.csv`. That's it
+   — no code to touch. Use the bundled `engine/data/i18n/dracula_en.csv` as a reference.
+
+6. **Try it:**
+
+   ```sh
+   python run_cli.py --lang fr      # or your code
+   python run_gui.py                # your language now appears in the startup picker
+   ```
+
+7. **Verify and open a PR.** Run the tests — the suite plays a full winning walkthrough in
+   *every* registered language, so it catches a broken translation:
+
+   ```sh
+   python -m pytest
+   ```
+
+   Then open a pull request adding your `engine/data/i18n/dracula_<code>.csv`. 🎉
+
+Full details (what each string type means, the room/context hints the tool shows) are in
+[`tools/TRANSLATING.md`](tools/TRANSLATING.md).
+
 ## The original game (freeware)
 
 The [`original/`](original/) folder, and the `dracula-original-1982.zip` attached to

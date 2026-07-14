@@ -67,9 +67,10 @@ Each row also shows:
 ## Notes / scope
 
 * Round-trip is lossless: Export → Import yields identical rows.
-* Verb/direction **input tokens** are included so a translator can see them, but
-  the seam does not yet re-seed the parser to accept translated commands — the
-  parser table (`engine/parser.py`) stays Dutch. Message/room text translation is
-  the supported path; localized input words are a documented future step.
+* Translation is **engine-wide**: message and room text, object names, the UI strings,
+  the J/N answer letters, the title screen, **and the input words** (verbs, directions and
+  nouns) all switch together — the Engine rebuilds its parser tables from the translated
+  tokens, so the game also *accepts* commands typed in the target language. Any cell left
+  blank falls back to the Dutch original, so a partial translation is always safe.
 * The room attribution and room names are heuristics (documented in the source);
   they are aids for the translator, not gameplay data.
