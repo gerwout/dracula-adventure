@@ -56,3 +56,14 @@ def test_savestore_load_returns_none_on_empty_slot():
     store = WebSaveStore(ch)
     ch.put({"kind": "loaded", "data": None})
     assert store.load() is None
+
+
+def test_close_is_sticky_and_unblocks_repeated_reads():
+    ch, sent = make()
+    ch.close()
+    assert ch.get() == {"kind": "eof"}
+    assert ch.get() == {"kind": "eof"}          # sticky: returns EOF again, does not block
+    io = WebIO(ch)
+    assert io.read_command() == "stop"
+    assert io.read_key() == "stop"
+    assert WebSaveStore(ch).load() is None       # a nested load read also sees EOF

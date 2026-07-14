@@ -106,3 +106,15 @@ def test_help_menu_works_at_the_title_screen():
     assert wait_until(lambda: any(m.get("t") == "help" for m in sent)), \
         "Help must work at the title screen"
     ch.close(); t.join(timeout=5)
+
+
+def test_worker_terminates_on_disconnect_during_menu_load():
+    session, sent, ch, t = run_session([
+        {"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
+        {"kind": "menu", "action": "load"},      # -> do_laad -> WebSaveStore.load() blocks for 'loaded'
+    ])
+    # wait until the worker is actually blocked waiting for the client's save data
+    assert wait_until(lambda: any(m.get("t") == "load" for m in sent))
+    ch.close()                                    # disconnect BEFORE the client replies 'loaded'
+    t.join(timeout=5)
+    assert not t.is_alive(), "worker must terminate after a disconnect during a menu Load"

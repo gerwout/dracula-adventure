@@ -11,15 +11,16 @@ from engine.io import IO
 
 
 class Channel:
-    """A per-connection pipe. `send` hands an outbound dict to the transport
-    (thread-safe, non-blocking). Inbound client events are `put` by the transport and
-    read (blocking) by the engine thread via `get`. `close` unblocks a waiting reader."""
-
-    EOF = {"kind": "eof"}
+    """A per-connection pipe. `send` hands an outbound dict to the transport (thread-safe,
+    non-blocking). Inbound client events are `put` by the transport and read (blocking) by
+    the engine thread via `get`. `close` unblocks a waiting reader AND is *sticky*: every
+    later `get` returns the EOF sentinel, so a nested read (e.g. a menu Load waiting for the
+    client's reply) can never leave an outer loop blocked on a now-permanently-empty queue."""
 
     def __init__(self, send):
         self._send = send                       # callable(dict) -> None
         self._inbox: "queue.Queue[dict]" = queue.Queue()
+        self._closed = False
 
     def send(self, msg: dict) -> None:
         self._send(msg)
@@ -28,10 +29,16 @@ class Channel:
         self._inbox.put(msg)
 
     def get(self) -> dict:
-        return self._inbox.get()
+        if self._closed:
+            return {"kind": "eof"}
+        ev = self._inbox.get()
+        if ev.get("kind") == "eof":
+            self._closed = True
+        return ev
 
     def close(self) -> None:
-        self._inbox.put(self.EOF)
+        self._closed = True
+        self._inbox.put({"kind": "eof"})
 
 
 class WebIO(IO):
