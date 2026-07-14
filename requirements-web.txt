@@ -1,0 +1,2 @@
+# Web frontend server dependency (the game + desktop builds do NOT need this).
+websockets>=13
