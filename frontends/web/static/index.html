@@ -157,6 +157,7 @@
 
   // -- input --------------------------------------------------------------- //
   inp.addEventListener("keydown", function (e) {
+    if (modal.classList.contains("show")) { e.preventDefault(); return; }
     if (e.key === "Enter") {
       const line = inp.value;
       inp.value = "";
@@ -171,6 +172,10 @@
     }
   });
   document.addEventListener("keydown", function (e) {
+    if (modal.classList.contains("show")) {
+      if (e.key === "Escape") modal.classList.remove("show");
+      return;                       // while Help is open, keys must not reach the game
+    }
     if (awaitMode === "key" && document.activeElement !== inp && e.key.length === 1) {
       e.preventDefault();
       send({ kind: "key", ch: e.key });
