@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dracula Avontuur</title>
+<title>Dracula Avontuur — remake</title>
 <style>
   :root { --bg:#000; --fg:#c8c8c8; --grn:#00c000; }
   * { box-sizing:border-box; }
@@ -33,6 +33,11 @@
   #modal .box { background:#fff; color:#000; max-width:680px; max-height:80vh;
     overflow:auto; padding:1rem 1.2rem; border-radius:6px; white-space:pre-wrap; }
   #modal button { margin-top:1rem; font:inherit; padding:.4rem .8rem; }
+  #modal .box a { color:#0645ad; }
+  #modal .box h2 { margin:0 0 .5rem; font-size:1.15rem; }
+  #modal .box ul { margin:.3rem 0; padding-left:1.3rem; }
+  #modal .box li { margin:.15rem 0; }
+  #lang-wrap { display:flex; align-items:center; gap:.2rem; }
   .notice { color:#c08000; }
 </style>
 </head>
@@ -42,8 +47,9 @@
     <button data-act="new"  id="m-new"></button>
     <button data-act="save" id="m-save"></button>
     <button data-act="load" id="m-load"></button>
-    <select id="m-lang"></select>
+    <span id="lang-wrap"><span aria-hidden="true">🌐</span><select id="m-lang" title="Taal / Language"></select></span>
     <button data-act="help" id="m-help"></button>
+    <button data-act="about" id="m-about" title="Over deze remake / About this remake">About</button>
   </div>
   <div id="out"></div>
   <div id="keys"></div>
@@ -82,6 +88,37 @@
   function storeSave(data) {
     try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); }
     catch (e) { append("\n[Opslaan is niet beschikbaar in deze browser.]\n", "notice"); }
+  }
+
+  const LANG_KEY = "dracula_lang";
+  function loadLang() { try { return localStorage.getItem(LANG_KEY) || ""; } catch (e) { return ""; } }
+  function storeLang(code) { try { localStorage.setItem(LANG_KEY, code); } catch (e) {} }
+
+  const ABOUT_HTML =
+    '<h2>Dracula Avontuur — webversie</h2>' +
+    '<p>Dit is een moderne, door fans gemaakte <strong>remake</strong> van het tekstavontuur ' +
+    '<em>Dracula Avontuur</em> (R. van Woensel, &copy; 1982 Incore Automatisering, Rotterdam), ' +
+    'volledig opnieuw gebouwd in Python.<br><em>This is a modern, fan-made <strong>remake</strong> ' +
+    'of the 1982 Dutch MS-DOS text adventure; the original game and its content are by ' +
+    'R.&nbsp;van&nbsp;Woensel / Incore Automatisering.</em></p>' +
+    '<p><strong>Broncode / source:</strong><br>' +
+    '<a href="https://github.com/gerwout/dracula-adventure" target="_blank" rel="noopener">github.com/gerwout/dracula-adventure</a></p>' +
+    '<p><strong>Het originele spel (freeware) / the original game:</strong><br>' +
+    '<a href="https://www.tekstadventure.nl/database/dracula.html" target="_blank" rel="noopener">tekstadventure.nl</a> &middot; ' +
+    '<a href="https://github.com/gerwout/dracula-adventure/releases/download/v1.0.0/dracula-original-1982.zip" target="_blank" rel="noopener">originele DOS-versie (zip)</a></p>' +
+    '<p><strong>Download &amp; installeer / installers:</strong></p>' +
+    '<ul>' +
+    '<li><a href="https://github.com/gerwout/dracula-adventure/releases/download/v1.0.0/dracula-adventure-1.0.0-setup.exe" target="_blank" rel="noopener">Windows</a> — installer (.exe)</li>' +
+    '<li><a href="https://github.com/gerwout/dracula-adventure/releases/download/v1.0.0/Dracula-Adventure-1.0.0.dmg" target="_blank" rel="noopener">macOS</a> — (.dmg)</li>' +
+    '<li><a href="https://github.com/gerwout/dracula-adventure/releases/download/v1.0.0/dracula-adventure_1.0.0_amd64.deb" target="_blank" rel="noopener">Debian / Ubuntu</a> — (.deb)</li>' +
+    '<li><a href="https://github.com/gerwout/dracula-adventure/releases/download/v1.0.0/Dracula-Adventure-1.0.0-x86_64.AppImage" target="_blank" rel="noopener">Linux</a> — (AppImage, generic)</li>' +
+    '</ul>' +
+    '<p style="font-size:.9em"><a href="https://github.com/gerwout/dracula-adventure/releases/latest" target="_blank" rel="noopener">Alle releases / all releases &raquo;</a></p>';
+
+  function showAbout() {
+    modalbox.style.whiteSpace = "normal";
+    modalbox.innerHTML = ABOUT_HTML;
+    modal.classList.add("show");
   }
 
   function setMenu(flags) {
@@ -137,8 +174,8 @@
         document.getElementById("m-save").textContent = L.save || "Bewaar";
         document.getElementById("m-load").textContent = L.load || "Laad";
         document.getElementById("m-help").textContent = L.help || "Help";
-        document.getElementById("m-lang").title = L.language || "Taal";
-        if (msg.lang) document.getElementById("m-lang").value = msg.lang;
+        document.getElementById("m-lang").title = L.language || "Taal / Language";
+        if (msg.lang) { document.getElementById("m-lang").value = msg.lang; storeLang(msg.lang); }
         break;
       case "await":
         awaitMode = msg.mode;
@@ -149,6 +186,7 @@
       case "save": storeSave(msg.data); break;
       case "load": send({ kind: "loaded", data: loadSave() }); break;
       case "help":
+        modalbox.style.whiteSpace = "pre-wrap";
         modalbox.textContent = (msg.title ? msg.title + "\n\n" : "") + (msg.body || "");
         modal.classList.add("show");
         break;
@@ -186,6 +224,7 @@
     const b = e.target.closest("button"); if (!b) return;
     const act = b.dataset.act;
     if (act === "new") send({ kind: "start", lang: document.getElementById("m-lang").value });
+    else if (act === "about") showAbout();
     else if (act === "save" || act === "load" || act === "help") send({ kind: "menu", action: act });
   });
   document.getElementById("m-lang").addEventListener("change", function (e) {
@@ -198,10 +237,11 @@
     ws = new WebSocket(url);
     ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
     ws.onopen = function () {
-      // Auto-start in the browser/UI language if we know it, else Dutch; the picker
-      // (language <select>) lets the player switch, which re-sends 'start'.
-      const want = (navigator.language || "nl").slice(0, 2);
-      send({ kind: "start", lang: (want in langs) ? want : "nl" });
+      // Start in the player's remembered language (localStorage), else the browser
+      // language, else Dutch. The server validates and falls back to Dutch for an
+      // unknown code, then re-sends 'menu-labels' with the actual language (persisted).
+      const want = loadLang() || (navigator.language || "nl").slice(0, 2);
+      send({ kind: "start", lang: want });
     };
     ws.onclose = function () { append("\n[verbinding verbroken]\n", "notice"); };
   }
