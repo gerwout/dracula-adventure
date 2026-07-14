@@ -26,6 +26,8 @@ parser uses (engine/parser.py): typed[:len(ref)] == ref.
 """
 from __future__ import annotations
 
+import threading
+
 from .data.model import CARRIED, LOC_NOWHERE
 from .data.lexicon import DEFAULT as _DEFAULT_LEXICON
 
@@ -49,17 +51,20 @@ def pr(eng, idx: int) -> None:
 
 
 # Active-language scenery-noun aliases: target-language 4-char token -> canonical Dutch
-# token (chest CHES -> KIST). Empty in Dutch play (noun_is then compares the typed word
-# to the fixed Dutch `ref` directly, unchanged). The dispatching Engine sets this each
-# command from its world's lexicon (see Engine.dispatch), so a translation makes the
-# hardcoded Dutch noun checks below accept the translated words.
-_NOUN_CANON: dict[str, str] = {}
+# token (chest CHES -> KIST). PER-THREAD, so concurrent web sessions (each in its own
+# worker thread) never read one another's map. Empty in Dutch play. The dispatching Engine
+# sets it each command from its world's lexicon (see Engine.dispatch).
+_noun_canon_tls = threading.local()
 
 
 def set_noun_canon(mapping: dict[str, str] | None) -> None:
-    """Install the active language's scenery-noun alias map (target token -> Dutch token)."""
-    global _NOUN_CANON
-    _NOUN_CANON = mapping or {}
+    """Install this thread's active scenery-noun alias map (target token -> Dutch token)."""
+    _noun_canon_tls.value = mapping or {}
+
+
+def _active_noun_canon() -> dict[str, str]:
+    """This thread's alias map (empty if none installed -> Dutch prefix behaviour)."""
+    return getattr(_noun_canon_tls, "value", None) or {}
 
 
 def canon_token(noun: str | None) -> str:
@@ -71,8 +76,9 @@ def canon_token(noun: str | None) -> str:
     if not noun:
         return ""
     head = noun.upper()[:4]
-    if _NOUN_CANON:
-        return _NOUN_CANON.get(head, "")
+    canon = _active_noun_canon()
+    if canon:
+        return canon.get(head, "")
     return head
 
 
@@ -87,8 +93,9 @@ def noun_is(noun: str | None, ref: str) -> bool:
     if not noun:
         return False
     r = ref.upper()
-    if _NOUN_CANON:
-        canon = _NOUN_CANON.get(noun.upper()[:4])
+    active = _active_noun_canon()
+    if active:
+        canon = active.get(noun.upper()[:4])
         return canon is not None and canon[: len(r)] == r
     return noun.upper()[: len(r)] == r
 
