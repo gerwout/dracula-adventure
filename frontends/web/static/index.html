@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dracula Avontuur</title>
+<style>
+  :root { --bg:#000; --fg:#c8c8c8; --grn:#00c000; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg);
+    font-family:"Consolas","DejaVu Sans Mono",monospace; }
+  #app { display:flex; flex-direction:column; height:100dvh; }
+  #menu { display:flex; gap:.25rem; padding:.35rem .5rem; background:#0a0a0a;
+    border-bottom:1px solid #222; flex-wrap:wrap; }
+  #menu button, #menu select { background:#111; color:var(--fg); border:1px solid #333;
+    font:inherit; padding:.3rem .6rem; border-radius:3px; }
+  #menu button:disabled { opacity:.4; }
+  #out { flex:1; overflow-y:auto; white-space:pre-wrap; word-break:break-word;
+    padding:.6rem .8rem; line-height:1.25; font-size:15px; }
+  #out .cmd { color:var(--grn); }
+  #inbar { display:flex; align-items:center; border-top:1px solid #222; padding:.4rem .6rem; }
+  #prompt { color:var(--grn); margin-right:.4rem; }
+  #inp { flex:1; background:#000; color:var(--grn); border:none; outline:none;
+    font:inherit; font-size:16px; }
+  #keys { display:none; gap:.4rem; padding:.4rem .6rem; flex-wrap:wrap;
+    border-top:1px solid #222; }
+  #keys.show { display:flex; }
+  #keys button { min-width:3rem; padding:.6rem; font:inherit; font-size:16px;
+    background:#111; color:var(--grn); border:1px solid #333; border-radius:4px; }
+  #modal { position:fixed; inset:0; background:rgba(0,0,0,.85); display:none;
+    align-items:center; justify-content:center; padding:1rem; }
+  #modal.show { display:flex; }
+  #modal .box { background:#fff; color:#000; max-width:680px; max-height:80vh;
+    overflow:auto; padding:1rem 1.2rem; border-radius:6px; white-space:pre-wrap; }
+  #modal button { margin-top:1rem; font:inherit; padding:.4rem .8rem; }
+  .notice { color:#c08000; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="menu" hidden>
+    <button data-act="new"  id="m-new"></button>
+    <button data-act="save" id="m-save"></button>
+    <button data-act="load" id="m-load"></button>
+    <select id="m-lang"></select>
+    <button data-act="help" id="m-help"></button>
+  </div>
+  <div id="out"></div>
+  <div id="keys"></div>
+  <div id="inbar"><span id="prompt">&gt;</span><input id="inp" autocomplete="off"
+    autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send"></div>
+</div>
+<div id="modal"><div><div class="box" id="modalbox"></div>
+  <div style="text-align:center"><button id="modalclose">Sluit</button></div></div></div>
+<script>
+(function () {
+  "use strict";
+  const SAVE_KEY = "dracula_save";
+  const out = document.getElementById("out");
+  const inp = document.getElementById("inp");
+  const menu = document.getElementById("menu");
+  const keys = document.getElementById("keys");
+  const modal = document.getElementById("modal");
+  const modalbox = document.getElementById("modalbox");
+  let ws, awaitMode = null, langs = {};
+
+  const url = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
+
+  function append(text, cls) {
+    const span = document.createElement("span");
+    if (cls) span.className = cls;
+    span.textContent = text;
+    out.appendChild(span);
+    out.scrollTop = out.scrollHeight;
+  }
+  function send(obj) { if (ws && ws.readyState === 1) ws.send(JSON.stringify(obj)); }
+
+  function loadSave() {
+    try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; }
+    catch (e) { return null; }
+  }
+  function storeSave(data) {
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); }
+    catch (e) { append("\n[Opslaan is niet beschikbaar in deze browser.]\n", "notice"); }
+  }
+
+  function setMenuEnabled(on) {
+    menu.hidden = false;
+    menu.querySelectorAll("button,select").forEach(function (el) { el.disabled = !on; });
+  }
+  function showKeys(list) {
+    keys.innerHTML = "";
+    list.forEach(function (k) {
+      const b = document.createElement("button");
+      b.textContent = k.label;
+      b.onclick = function () { send({ kind: "key", ch: k.ch }); afterInput(); };
+      keys.appendChild(b);
+    });
+    keys.classList.add("show");
+  }
+  function hideKeys() { keys.classList.remove("show"); keys.innerHTML = ""; }
+
+  function afterInput() { /* keeps focus sane on mobile */ inp.focus(); }
+
+  // Which on-screen keys to offer for an await:key prompt (language digits + J/N + continue).
+  function keysForContext() {
+    const digits = Object.keys(langs).map(function (_, i) {
+      return { label: String(i + 1), ch: String(i + 1) };
+    });
+    return digits.concat([
+      { label: "J", ch: "J" }, { label: "N", ch: "N" },
+      { label: "▶ spatie", ch: " " }
+    ]);
+  }
+
+  function handle(msg) {
+    switch (msg.t) {
+      case "out": append(msg.text); break;
+      case "clear": out.textContent = ""; break;
+      case "langs":
+        langs = msg.available || {};
+        const sel = document.getElementById("m-lang");
+        sel.innerHTML = "";
+        Object.keys(langs).forEach(function (code) {
+          const o = document.createElement("option");
+          o.value = code; o.textContent = langs[code]; sel.appendChild(o);
+        });
+        break;
+      case "menu-labels":
+        const L = msg.labels || {};
+        document.getElementById("m-new").textContent = L.new || "Nieuw";
+        document.getElementById("m-save").textContent = L.save || "Bewaar";
+        document.getElementById("m-load").textContent = L.load || "Laad";
+        document.getElementById("m-help").textContent = L.help || "Help";
+        if (msg.lang) document.getElementById("m-lang").value = msg.lang;
+        break;
+      case "await":
+        awaitMode = msg.mode;
+        setMenuEnabled(!!msg.menu);
+        if (msg.mode === "key") { showKeys(keysForContext()); inp.blur(); }
+        else { hideKeys(); if (msg.mode === "line") inp.focus(); }
+        break;
+      case "save": storeSave(msg.data); break;
+      case "load": send({ kind: "loaded", data: loadSave() }); break;
+      case "help":
+        modalbox.textContent = (msg.title ? msg.title + "\n\n" : "") + (msg.body || "");
+        modal.classList.add("show");
+        break;
+    }
+  }
+
+  // -- input --------------------------------------------------------------- //
+  inp.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      const line = inp.value;
+      inp.value = "";
+      if (awaitMode === "key") { send({ kind: "key", ch: line.slice(0, 1) || " " }); }
+      else {
+        append("\n→ " + line + "\n", "cmd");
+        send({ kind: "line", text: line });
+      }
+    } else if (awaitMode === "key" && e.key.length === 1) {
+      e.preventDefault();
+      send({ kind: "key", ch: e.key });
+    }
+  });
+
+  menu.addEventListener("click", function (e) {
+    const b = e.target.closest("button"); if (!b) return;
+    const act = b.dataset.act;
+    if (act === "new") send({ kind: "start", lang: document.getElementById("m-lang").value });
+    else if (act === "save" || act === "load" || act === "help") send({ kind: "menu", action: act });
+  });
+  document.getElementById("m-lang").addEventListener("change", function (e) {
+    send({ kind: "start", lang: e.target.value });
+  });
+  document.getElementById("modalclose").onclick = function () { modal.classList.remove("show"); };
+
+  // -- connect ------------------------------------------------------------- //
+  function connect() {
+    ws = new WebSocket(url);
+    ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
+    ws.onopen = function () {
+      // Auto-start in the browser/UI language if we know it, else Dutch; the picker
+      // (language <select>) lets the player switch, which re-sends 'start'.
+      const want = (navigator.language || "nl").slice(0, 2);
+      send({ kind: "start", lang: (want in langs) ? want : "nl" });
+    };
+    ws.onclose = function () { append("\n[verbinding verbroken]\n", "notice"); };
+  }
+  connect();
+})();
+</script>
+</body>
+</html>
