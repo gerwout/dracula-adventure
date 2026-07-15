@@ -21,3 +21,26 @@ def test_allowed_origins_blank_is_none(monkeypatch):
 
 def test_max_message_size_is_bounded_well_below_1mb():
     assert 0 < server.MAX_MESSAGE_SIZE <= 128 * 1024
+
+
+def test_broadcast_players_pushes_count_to_all_live(tmp_path):
+    from frontends.web.sessionstore import SessionStore
+
+    class FakeOutbox:
+        def __init__(self): self.items = []
+        def put_nowait(self, m): self.items.append(m)
+
+    class FakeHost:
+        def __init__(self): self.outbox = FakeOutbox()
+
+    srv = server.Server(SessionStore(tmp_path))
+    h1, h2 = FakeHost(), FakeHost()
+    srv.live.add(h1); srv.live.add(h2)
+    srv._broadcast_players()
+    assert {"t": "players", "count": 2} in h1.outbox.items
+    assert {"t": "players", "count": 2} in h2.outbox.items
+    srv.live.discard(h2)                       # a player left
+    srv._broadcast_players()
+    assert {"t": "players", "count": 1} in h1.outbox.items
+    h1.outbox = None                           # a detached host is skipped, never raises
+    srv._broadcast_players()

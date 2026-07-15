@@ -176,4 +176,5 @@ class Session:
             "game": lex.ui("MENU_GAME"), "new": lex.ui("MENU_NEW_GAME"),
             "save": lex.ui("MENU_SAVE_GAME"), "load": lex.ui("MENU_LOAD_GAME"),
             "language": lex.ui("MENU_LANGUAGE"), "help": lex.ui("HELP_TITLE"),
+            "players": lex.ui("PLAYERS_ONLINE"),
         }, "lang": self.lang})

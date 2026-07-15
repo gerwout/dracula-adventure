@@ -56,6 +56,8 @@
   #modal .box ul { margin:.3rem 0; padding-left:1.3rem; }
   #modal .box li { margin:.15rem 0; }
   #lang-wrap { display:flex; align-items:center; gap:.2rem; }
+  #players { margin-left:auto; align-self:center; color:#8a8a8a; font-size:.9rem;
+    white-space:nowrap; padding:0 .3rem; }
   .notice { color:#c08000; }
 </style>
 </head>
@@ -68,6 +70,7 @@
     <span id="lang-wrap"><span aria-hidden="true">🌐</span><select id="m-lang" title="Taal / Language"></select></span>
     <button data-act="help" id="m-help"></button>
     <button data-act="about" id="m-about" title="Over">ℹ️</button>
+    <span id="players" title=""></span>
   </div>
   <div id="layout">
     <div id="gamecol">
@@ -210,6 +213,7 @@
       case "clear": out.textContent = ""; break;
       case "session": storeToken(msg.token); break;
       case "pong": gotPong = true; break;
+      case "players": { const p = document.getElementById("players"); if (p) p.textContent = "👥 " + msg.count; break; }
       case "screen":
         out.classList.toggle("title", msg.kind === "title");
         if (typeof fitTitle === "function") fitTitle();
@@ -230,6 +234,7 @@
         document.getElementById("m-load").textContent = L.load || "Laad";
         document.getElementById("m-help").textContent = L.help || "Help";
         document.getElementById("m-lang").title = L.language || "Taal / Language";
+        if (L.players) document.getElementById("players").title = L.players;
         if (msg.lang) { document.getElementById("m-lang").value = msg.lang; currentLang = msg.lang; storeLang(msg.lang); renderAbout(); }
         break;
       case "await":

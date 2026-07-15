@@ -163,6 +163,15 @@ class Server:
     def __init__(self, store: SessionStore):
         self.store = store
         self.parked: dict[str, Host] = {}
+        self.live: set[Host] = set()          # hosts with a currently-attached socket = "players online"
+
+    def _broadcast_players(self):
+        # Push the current live player count to every attached client. Loop-thread only
+        # (all callers run on the loop), so touching self.live and the outboxes is safe.
+        msg = {"t": "players", "count": len(self.live)}
+        for h in self.live:
+            if h.outbox is not None:
+                h.outbox.put_nowait(msg)
 
     async def handle(self, ws):
         loop = asyncio.get_running_loop()
@@ -203,6 +212,9 @@ class Server:
             host.start()
             host.feed({"kind": "start", "lang": lang})
 
+        self.live.add(host)                   # now attached -> counts as a player
+        self._broadcast_players()
+
         try:
             async for raw in ws:
                 try:
@@ -220,6 +232,8 @@ class Server:
             self._on_disconnect(loop, host)
 
     def _on_disconnect(self, loop, host):
+        self.live.discard(host)               # no longer attached -> drop from the player count
+        self._broadcast_players()
         host.detach()
         if host.worker.is_alive() and len(self.parked) < MAX_WARM:
             def expire():

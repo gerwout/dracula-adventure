@@ -1589,6 +1589,7 @@ ui:GAME_OVER,ui,any,engine-tekst,,[ het spel is afgelopen ],[ the game is over ]
 ui:BTN_YES,ui,any,engine-tekst,,Ja,Yes
 ui:BTN_NO,ui,any,engine-tekst,,Nee,No
 ui:BTN_CONTINUE,ui,any,engine-tekst,,▶ Verder,▶ Continue
+ui:PLAYERS_ONLINE,ui,any,engine-tekst,,spelers online,players online
 ui:MENU_CUT,ui,any,engine-tekst,,Knippen,Cut
 ui:MENU_COPY,ui,any,engine-tekst,,Kopiëren,Copy
 ui:MENU_PASTE,ui,any,engine-tekst,,Plakken,Paste

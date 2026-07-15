@@ -496,6 +496,7 @@ EN: dict[str, str] = {
     "ui:BTN_YES": "Yes",
     "ui:BTN_NO": "No",
     "ui:BTN_CONTINUE": "▶ Continue",
+    "ui:PLAYERS_ONLINE": "players online",
     "ui:MENU_CUT": "Cut",
     "ui:MENU_COPY": "Copy",
     "ui:MENU_PASTE": "Paste",
