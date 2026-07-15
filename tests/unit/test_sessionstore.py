@@ -1,4 +1,3 @@
-import time
 from pathlib import Path
 from frontends.web.sessionstore import SessionStore
 
@@ -45,3 +44,27 @@ def test_reap_deletes_only_expired_and_caps_count(tmp_path):
     s.save("t2", {"i": 2}, "nl")  # refresh t2 ts newest
     removed = s.reap(ttl=10**9, max_files=1, now=now + 1)
     assert removed >= 2 and s.exists("t2")
+
+
+def test_reap_tolerates_wrong_shape_json(tmp_path):
+    s = SessionStore(tmp_path)
+    now = 1_000_000.0
+    (Path(tmp_path) / "arr.json").write_text("[]", encoding="utf-8")
+    (Path(tmp_path) / "badts.json").write_text('{"ts": "x"}', encoding="utf-8")
+    # must not raise, and both are treated as ts=0 -> expired -> removed
+    deleted = s.reap(ttl=3600, max_files=50_000, now=now)
+    assert deleted == 2
+    assert not (Path(tmp_path) / "arr.json").exists()
+    assert not (Path(tmp_path) / "badts.json").exists()
+
+
+def test_load_returns_none_for_non_dict_json(tmp_path):
+    s = SessionStore(tmp_path)
+    (Path(tmp_path) / "arr.json").write_text("[]", encoding="utf-8")
+    (Path(tmp_path) / "nul.json").write_text("null", encoding="utf-8")
+    (Path(tmp_path) / "num.json").write_text("42", encoding="utf-8")
+    (Path(tmp_path) / "str.json").write_text('"hello"', encoding="utf-8")
+    assert s.load("arr") is None
+    assert s.load("nul") is None
+    assert s.load("num") is None
+    assert s.load("str") is None

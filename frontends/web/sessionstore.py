@@ -30,6 +30,16 @@ class SessionStore:
         name = _safe_name(token)
         return (self.dir / name) if name else None
 
+    @staticmethod
+    def _read_record(path: Path) -> dict | None:
+        # Tolerates missing/corrupt files and JSON that parses but isn't a
+        # dict (e.g. "[]", "null", a bare string/number) -> None either way.
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return None
+        return data if isinstance(data, dict) else None
+
     def save(self, token: str, state: dict, lang: str) -> None:
         p = self._path(token)
         if p is None:
@@ -44,10 +54,7 @@ class SessionStore:
         p = self._path(token)
         if p is None or not p.exists():
             return None
-        try:
-            return json.loads(p.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            return None
+        return self._read_record(p)
 
     def exists(self, token: str) -> bool:
         p = self._path(token)
@@ -56,10 +63,9 @@ class SessionStore:
     def reap(self, ttl: float, max_files: int, now: float) -> int:
         files = []
         for p in self.dir.glob("*.json"):
-            try:
-                ts = json.loads(p.read_text(encoding="utf-8")).get("ts", 0)
-            except (json.JSONDecodeError, OSError):
-                ts = 0
+            rec = self._read_record(p) or {}
+            ts = rec.get("ts", 0)
+            ts = ts if isinstance(ts, (int, float)) else 0
             files.append((ts, p))
         deleted = 0
         keep = []
