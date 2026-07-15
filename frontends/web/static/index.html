@@ -93,6 +93,14 @@
 
   const url = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
 
+  // -- session persistence + queued/reconnect state ------------------------ //
+  const SESSION_KEY = "dracula_session";
+  let token = null; try { token = localStorage.getItem(SESSION_KEY); } catch (e) {}
+  function storeToken(tk) { token = tk; try { localStorage.setItem(SESSION_KEY, tk); } catch (e) {} }
+  let backoff = 500, reconnectTimer = null, hbTimer = null, gotPong = true;
+  const queued = [];                 // client messages typed while the socket was down
+  let noticeShown = false;
+
   function append(text, cls) {
     const span = document.createElement("span");
     if (cls) span.className = cls;
@@ -100,7 +108,8 @@
     out.appendChild(span);
     out.scrollTop = out.scrollHeight;
   }
-  function send(obj) { if (ws && ws.readyState === 1) ws.send(JSON.stringify(obj)); }
+  function rawSend(obj) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(obj)); return true; } return false; }
+  function send(obj) { if (!rawSend(obj)) { queued.push(obj); ensureConnected(); } }
 
   function loadSave() {
     try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; }
@@ -178,6 +187,12 @@
     switch (msg.t) {
       case "out": append(msg.text); break;
       case "clear": out.textContent = ""; break;
+      case "session": storeToken(msg.token); break;
+      case "pong": gotPong = true; break;
+      case "screen":
+        document.getElementById("out").classList.toggle("title", msg.kind === "title");
+        if (typeof fitTitle === "function") fitTitle();
+        break;
       case "langs":
         langs = msg.available || {};
         const sel = document.getElementById("m-lang");
@@ -250,19 +265,59 @@
   });
   document.getElementById("modalclose").onclick = function () { modal.classList.remove("show"); };
 
-  // -- connect ------------------------------------------------------------- //
+  // -- connect / silent auto-reconnect -------------------------------------- //
+  function showReconnecting() {
+    if (!noticeShown) { append("\n[verbinding herstellen…]\n", "notice"); noticeShown = true; }
+  }
+  function clearReconnecting() { noticeShown = false; }
+
+  function heartbeat() {
+    clearInterval(hbTimer);
+    hbTimer = setInterval(function () {
+      if (!ws || ws.readyState !== 1) return;
+      if (!gotPong) { try { ws.close(); } catch (e) {} return; }  // no pong -> dead
+      gotPong = false; rawSend({ kind: "ping" });
+    }, 25000);
+  }
+
+  function ensureConnected() {
+    if (ws && (ws.readyState === 0 || ws.readyState === 1)) return;
+    connect();
+  }
+
   function connect() {
     ws = new WebSocket(url);
     ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
     ws.onopen = function () {
+      backoff = 500; gotPong = true; clearReconnecting(); heartbeat();
       // Start in the player's remembered language (localStorage), else the browser
       // language, else Dutch. The server validates and falls back to Dutch for an
       // unknown code, then re-sends 'menu-labels' with the actual language (persisted).
       const want = loadLang() || (navigator.language || "nl").slice(0, 2);
-      send({ kind: "start", lang: want });
+      if (token) {
+        const needRedraw = out.textContent.trim() === "";
+        send({ kind: "resume", token: token, needRedraw: needRedraw, lang: want });
+      } else {
+        send({ kind: "start", lang: want });
+      }
+      while (queued.length) rawSend(queued.shift());
     };
-    ws.onclose = function () { append("\n[verbinding verbroken]\n", "notice"); };
+    ws.onclose = function () {
+      clearInterval(hbTimer);
+      if (reconnectTimer) clearTimeout(reconnectTimer);
+      reconnectTimer = setTimeout(function () {
+        showReconnecting(); connect();
+      }, backoff);
+      backoff = Math.min(backoff * 2, 10000);
+    };
+    ws.onerror = function () { try { ws.close(); } catch (e) {} };
   }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") ensureConnected();
+  });
+  window.addEventListener("online", ensureConnected);
+
   connect();
 })();
 </script>
