@@ -3,6 +3,7 @@
 engine handlers directly). Runs in the connection's worker thread. Owns nothing shared."""
 from __future__ import annotations
 
+from engine import savegame
 from engine.game import new_game
 from engine.i18n import AVAILABLE_LANGUAGES
 
@@ -10,17 +11,28 @@ from .webio import Channel, WebIO, WebSaveStore
 
 
 class Session:
-    def __init__(self, channel: Channel):
+    def __init__(self, channel, token=None, snapshotter=None,
+                 resume_state=None, resume_lang=None):
         self.ch = channel
         self.io = WebIO(channel)
         self.store = WebSaveStore(channel)
         self.engine = None
-        self.lang = "nl"
+        self.lang = resume_lang or "nl"
+        self.token = token
+        self._snapshotter = snapshotter
+        self._resume_state = resume_state
+        self._resume_lang = resume_lang
 
     # -- entry point (worker thread) --------------------------------------- #
     def run(self) -> None:
         self.ch.send({"t": "langs", "available": AVAILABLE_LANGUAGES})
-        pending = self._wait_start()
+        if self._resume_state is not None:
+            self.lang = self._resume_lang if self._resume_lang in AVAILABLE_LANGUAGES else "nl"
+            pending = self._play_one_game(resume_state=self._resume_state)
+            if pending is not None and pending.get("kind") == "over":
+                pending = self._wait_start()
+        else:
+            pending = self._wait_start()
         while pending is not None:
             self.lang = pending.get("lang") if pending.get("lang") in AVAILABLE_LANGUAGES else "nl"
             pending = self._play_one_game()          # -> next 'start' | None | {"kind":"over"}
@@ -55,28 +67,46 @@ class Session:
                 self._send_help()
             # save/load/new-as-command are disabled in this state -> ignored
 
-    def _play_one_game(self):
+    def _snapshot_now(self) -> None:
+        if self._snapshotter and self.engine is not None:
+            try:
+                self._snapshotter(savegame.serialize(self.engine), self.lang)
+            except Exception:
+                pass   # snapshotting must never break play
+
+    def _play_one_game(self, resume_state=None):
         self.engine = new_game(self.io, explore=True, lang=self.lang,
                                store=self.store, sandboxed=True)
         self._send_menu_labels()
+        first = True
         while True:                                  # reincarnation restart loop
             self.engine.restart = False
-            self.io.clear()
-            self.engine.intro()
-            ev = self._await_dismiss()               # press a key OR a 'start'
-            if ev is None:
-                return None
-            if ev.get("kind") == "start":
-                return ev
-            self.io.clear()
-            self.engine.start()
+            if resume_state is not None and first:
+                savegame.restore(self.engine, resume_state)
+                self.io.clear()
+                self.ch.send({"t": "screen", "kind": "game"})
+                self.engine.describe_room()          # cold resume redraws the room
+            else:
+                self.io.clear()
+                self.ch.send({"t": "screen", "kind": "title"})
+                self.engine.intro()
+                ev = self._await_dismiss()           # press a key OR a 'start'
+                if ev is None:
+                    return None
+                if ev.get("kind") == "start":
+                    return ev
+                self.io.clear()
+                self.ch.send({"t": "screen", "kind": "game"})
+                self.engine.start()
+            first = False
             ev = self._command_loop()
             if ev is None:
                 return None
             if ev.get("kind") == "start":
                 return ev
             if self.engine.restart:
-                continue                             # reincarnation -> re-show intro
+                resume_state = None
+                continue
             self.io.write("\n" + self.engine.lex.ui("GAME_OVER") + "\n")
             return {"kind": "over"}
 
@@ -96,14 +126,15 @@ class Session:
             # save/load are disabled at the title -> ignored
 
     def _command_loop(self):
+        self._snapshot_now()
         while self.engine.running and not self.engine.restart:
             self.ch.send({"t": "await", "mode": "line", "menu": self._menu_flags(True)})
             ev = self.ch.get()
             kind = ev.get("kind")
             if kind == "line":
-                self.engine.submit(ev.get("text", ""))
+                self.engine.submit(ev.get("text", "")); self._snapshot_now()
             elif kind == "menu":
-                self._menu(ev.get("action"), ev.get("arg"))
+                self._menu(ev.get("action"), ev.get("arg")); self._snapshot_now()
             elif kind == "start":
                 return ev
             elif kind == "eof":
