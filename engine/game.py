@@ -533,7 +533,10 @@ class Engine:
 
     def do_laad(self, cmd: Command) -> None:
         data = self.store.load()
-        if data is None:
+        # Reject a missing OR malformed/hostile save (the web store's data is supplied by
+        # the client) with the faithful load-fail message, instead of restoring junk — a
+        # crafted save must never crash the engine worker.
+        if not savegame.is_valid_save(data, self.world):
             self.io.writeln(self.world.message_text(188))   # the "Vtoc error" load-fail easter egg
             return
         savegame.restore(self, data)

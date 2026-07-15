@@ -32,6 +32,19 @@ MAX_WARM = 200
 RESUME_TTL = 3 * 24 * 3600
 MAX_SNAPSHOTS = 50_000
 REAP_INTERVAL = 3600.0
+# Client->server frames are tiny (a command line, a key, a small save blob); cap them well
+# below the websockets 1 MB default so a peer can't force large allocations.
+MAX_MESSAGE_SIZE = 64 * 1024
+
+
+def _allowed_origins():
+    """The WebSocket Origin allow-list from ``DRACULA_WEB_ORIGINS`` (comma-separated), or
+    ``None`` (no Origin check) when unset — so local/dev play still works. Production sets
+    it to the site's own origins, which blocks cross-site WebSocket use of the endpoint."""
+    raw = os.environ.get("DRACULA_WEB_ORIGINS", "").strip()
+    if not raw:
+        return None
+    return [o.strip() for o in raw.split(",") if o.strip()]
 
 
 def _process_request(connection, request):
@@ -232,8 +245,9 @@ async def main() -> None:
     host = os.environ.get("DRACULA_WEB_HOST", "127.0.0.1")
     port = int(os.environ.get("DRACULA_WEB_PORT", "8765"))
     state_dir = os.environ.get("DRACULA_WEB_STATE_DIR", str(Path(".web-sessions")))
-    srv = Server(SessionStore(state_dir))
+    srv = Server(SessionStore(state_dir, max_files=MAX_SNAPSHOTS))
     async with serve(srv.handle, host, port, process_request=_process_request,
+                     origins=_allowed_origins(), max_size=MAX_MESSAGE_SIZE,
                      ping_interval=20, ping_timeout=20):
         print(f"Dracula web server on http://{host}:{port}/  (state: {state_dir})")
         reaper_task = asyncio.create_task(srv.reaper())   # kept referenced (no GC of task)

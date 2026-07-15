@@ -84,3 +84,44 @@ def test_laad_without_a_save_gives_the_vtoc_error(tmp_path, monkeypatch):
     eng = Engine(w, ScriptedIO([]))
     eng.io = ScriptedIO([]); eng.submit("laad spel")
     assert w.message_text(188) in eng.io.text            # the "Vtoc error" easter egg
+
+
+# -- hardening: a hostile/corrupt client-supplied save must never crash the worker ------
+
+def test_restore_tolerates_malformed_data_without_raising():
+    eng = _eng()
+    savegame.restore(eng, "not a dict")                      # non-dict -> no-op
+    savegame.restore(eng, {"room": "nope", "state": "x",     # wrong-typed fields ignored
+                           "obj_loc": {"notanint": 5}})      # unparseable key skipped
+    assert eng.room == 0                                      # non-int room left untouched
+    assert isinstance(eng.obj_loc, dict) and "notanint" not in eng.obj_loc
+    # a valid partial dict still applies
+    savegame.restore(eng, {"room": 24, "obj_loc": {"6": 99}})
+    assert eng.room == 24 and eng.obj_loc[6] == 99
+
+
+def test_is_valid_save():
+    w = load_file()
+    assert savegame.is_valid_save({"room": 0}, w) is True
+    assert savegame.is_valid_save({"room": 24, "obj_loc": {}, "state": {}}, w) is True
+    assert savegame.is_valid_save(None, w) is False
+    assert savegame.is_valid_save("x", w) is False
+    assert savegame.is_valid_save({"room": 99999}, w) is False        # room not in world
+    assert savegame.is_valid_save({"room": "0"}, w) is False          # wrong type
+    assert savegame.is_valid_save({"room": True}, w) is False         # bool is not a room id
+    assert savegame.is_valid_save({"room": 0, "obj_loc": "x"}, w) is False  # obj_loc not a dict
+
+
+def test_do_laad_rejects_a_malformed_save_with_the_loadfail_message():
+    w = load_file()
+    eng = Engine(w, ScriptedIO([]))
+
+    class JunkStore:                       # mimics a hostile client 'loaded' payload
+        def load(self): return {"obj_loc": {"x": 1}}     # no valid room -> invalid
+        def save(self, data): pass
+
+    eng.store = JunkStore()
+    eng.io = ScriptedIO([])
+    eng.do_laad(None)                                    # must not raise
+    assert w.message_text(188) in eng.io.text            # load-fail
+    assert eng.room == 0                                 # engine state untouched

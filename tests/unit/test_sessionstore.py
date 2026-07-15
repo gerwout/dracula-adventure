@@ -68,3 +68,24 @@ def test_load_returns_none_for_non_dict_json(tmp_path):
     assert s.load("nul") is None
     assert s.load("num") is None
     assert s.load("str") is None
+
+
+# -- hardening: amortized write-time cap bounds the dir between hourly reaps -------------
+
+def test_write_time_cap_enforce_evicts_oldest(tmp_path):
+    import os
+    s = SessionStore(tmp_path, max_files=2, cap_check_every=1000)   # no auto-prune during setup
+    for i in range(5):
+        s.save(f"t{i}", {"room": i}, "nl")
+        os.utime(Path(tmp_path) / f"t{i}.json", (1_000_000 + i, 1_000_000 + i))  # ascending mtime
+    assert len(list(Path(tmp_path).glob("*.json"))) == 5           # not pruned yet
+    s._enforce_count_cap()
+    remaining = sorted(p.stem for p in Path(tmp_path).glob("*.json"))
+    assert remaining == ["t3", "t4"]                               # the oldest three evicted
+
+
+def test_save_triggers_amortized_cap(tmp_path):
+    s = SessionStore(tmp_path, max_files=1, cap_check_every=1)      # prune on every save
+    s.save("a", {"room": 0}, "nl")
+    s.save("b", {"room": 0}, "nl")                                 # this save prunes down to 1
+    assert len(list(Path(tmp_path).glob("*.json"))) <= 1

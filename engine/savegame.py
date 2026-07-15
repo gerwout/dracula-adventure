@@ -30,15 +30,46 @@ def serialize(eng) -> dict:
 
 
 def restore(eng, data: dict) -> None:
-    """Apply a snapshot (or a partial scenario dict) onto `eng`."""
-    if "room" in data:
+    """Apply a snapshot (or a partial scenario dict) onto `eng`.
+
+    Defensive: tolerates a malformed/partial dict without raising — a non-dict input is a
+    no-op, wrong-typed fields are ignored, and an unparseable obj_loc key is skipped. So a
+    hostile client-supplied save (the LAAD SPEL path) can never crash the engine worker;
+    ``is_valid_save`` is the stronger gate the load handler uses to reject junk outright."""
+    if not isinstance(data, dict):
+        return
+    if isinstance(data.get("room"), int):
         eng.room = data["room"]
-    if "obj_loc" in data:
-        eng.obj_loc = {int(k): v for k, v in data["obj_loc"].items()}
-    if "state" in data:
+    obj_loc = data.get("obj_loc")
+    if isinstance(obj_loc, dict):
+        parsed: dict[int, object] = {}
+        for k, v in obj_loc.items():
+            try:
+                parsed[int(k)] = v
+            except (ValueError, TypeError):
+                continue
+        eng.obj_loc = parsed
+    if isinstance(data.get("state"), dict):
         eng.state = dict(data["state"])
-    if "fail_counter" in data:
+    if isinstance(data.get("fail_counter"), int):
         eng.fail_counter = data["fail_counter"]
+
+
+def is_valid_save(data, world) -> bool:
+    """Whether ``data`` is a plausible save for ``world``: a dict whose ``room`` is a real
+    room id, with dict-typed ``obj_loc``/``state`` when present. Rejects a hostile or
+    corrupt client-supplied save BEFORE it is restored. (The web resume path restores
+    server-written snapshots and does not need this.)"""
+    if not isinstance(data, dict):
+        return False
+    room = data.get("room")
+    if not isinstance(room, int) or isinstance(room, bool) or room not in world.rooms:
+        return False
+    if "obj_loc" in data and not isinstance(data["obj_loc"], dict):
+        return False
+    if "state" in data and not isinstance(data["state"], dict):
+        return False
+    return True
 
 
 def save(eng, path) -> None:

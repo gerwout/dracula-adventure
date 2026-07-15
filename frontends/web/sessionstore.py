@@ -22,9 +22,16 @@ def _safe_name(token: str) -> str | None:
 
 
 class SessionStore:
-    def __init__(self, directory) -> None:
+    def __init__(self, directory, max_files: int = 50_000, cap_check_every: int = 256) -> None:
         self.dir = Path(directory)
         self.dir.mkdir(parents=True, exist_ok=True)
+        # Amortized write-time cap: the hourly reaper enforces the count cap, but a burst of
+        # new sessions between sweeps could exhaust disk/inodes — so every _cap_check_every
+        # writes we cheaply prune down to _max_files (oldest first). Keeps the cost off the
+        # hot path while bounding the directory to ~max_files + cap_check_every.
+        self._max_files = max_files
+        self._cap_check_every = max(1, cap_check_every)
+        self._writes_since_cap = 0
 
     def _path(self, token: str) -> Path | None:
         name = _safe_name(token)
@@ -49,6 +56,29 @@ class SessionStore:
         tmp = p.with_suffix(".tmp")
         tmp.write_text(json.dumps(rec), encoding="utf-8")
         os.replace(tmp, p)
+        self._writes_since_cap += 1
+        if self._writes_since_cap >= self._cap_check_every:
+            self._writes_since_cap = 0
+            self._enforce_count_cap()
+
+    def _enforce_count_cap(self) -> None:
+        """Prune the directory down to _max_files (oldest by mtime first). Cheap: uses
+        stat, not JSON reads. Missing/racing files are skipped. Called amortized from save."""
+        entries = []
+        for p in self.dir.glob("*.json"):
+            try:
+                entries.append((p.stat().st_mtime, p))
+            except OSError:
+                continue
+        excess = len(entries) - self._max_files
+        if excess <= 0:
+            return
+        entries.sort()                       # oldest mtime first
+        for _mtime, p in entries[:excess]:
+            try:
+                p.unlink()
+            except OSError:
+                pass
 
     def load(self, token: str) -> dict | None:
         p = self._path(token)
