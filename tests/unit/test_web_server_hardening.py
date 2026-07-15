@@ -1,6 +1,10 @@
 """Security-hardening wiring on the web server: Origin allow-list env parsing and the
 bounded max message size. (Live Origin *enforcement* is verified against the deployed
 server; here we pin the pure config helpers.)"""
+import pytest
+
+pytest.importorskip("websockets")   # server.py imports websockets at module import time
+
 from frontends.web import server
 
 
