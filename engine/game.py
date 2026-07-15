@@ -540,13 +540,19 @@ class Engine:
         self.io.writeln(self.world.message_text(186))   # "Ik haal nu alle gegevens uit DRACULA.SAV......"
         self.describe_room()
 
+    def _yesno_keys(self):
+        """The on-screen key hint for a J/N prompt (WebIO only; console/tk ignore it):
+        localized Yes/No button labels paired with the lexicon's answer letters."""
+        return [{"label": self.lex.ui("BTN_YES"), "ch": self.lex.answer("yes")},
+                {"label": self.lex.ui("BTN_NO"), "ch": self.lex.answer("no")}]
+
     def do_stop(self, cmd: Command) -> None:
         # STOP/QUIT/EIND/OP/HOU -> the save-or-not quit prompt (EXE 0x496c). msg 187
         # asks whether to save before stopping; 'J' saves (0x40e7) then ends, anything
         # else ends without saving. Both answers end the game (0x49a9). ScriptedIO
         # returns "stop" when exhausted, so a trailing "stop" ends without saving.
         self.io.writeln(self.world.message_text(187))
-        ans = self.io.read_key()               # a single J/N keypress, no Enter needed
+        ans = self.io.read_key(self._yesno_keys())   # a single J/N keypress, no Enter needed
         # The 'yes' letter comes from the lexicon (Dutch 'J'; a translation makes it 'Y'
         # etc.). ScriptedIO returns "stop" when exhausted -> ends without saving.
         yes = self.lex.answer("yes").upper()
@@ -586,7 +592,7 @@ class Engine:
         without touching this code."""
         if 166 in self.world.messages:
             self.io.writeln(self.world.message_text(166))
-        ans = self.io.read_key()               # a single J/N keypress, no Enter needed
+        ans = self.io.read_key(self._yesno_keys())   # a single J/N keypress, no Enter needed
         no = self.lex.answer("no").upper()
         if not ans or ans == "stop" or (no and ans.strip().upper().startswith(no)):
             self.running = False               # 'no' (or no input) -> the game ends

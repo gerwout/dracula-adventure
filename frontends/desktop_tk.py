@@ -48,7 +48,7 @@ class TkIO(IO):
     def read_command(self) -> str:
         return self._read_line() if self._read_line else ""
 
-    def read_key(self) -> str:
+    def read_key(self, keys=None) -> str:
         if self._read_key:
             return self._read_key()
         return self._read_line() if self._read_line else ""

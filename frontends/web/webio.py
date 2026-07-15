@@ -65,8 +65,11 @@ class WebIO(IO):
                 return "stop"
             # ignore keys / menu / loaded that arrive out of turn
 
-    def read_key(self) -> str:
-        self.ch.send({"t": "await", "mode": "key"})
+    def read_key(self, keys=None) -> str:
+        msg = {"t": "await", "mode": "key"}
+        if keys:
+            msg["keys"] = keys
+        self.ch.send(msg)
         while True:
             ev = self.ch.get()
             kind = ev.get("kind")

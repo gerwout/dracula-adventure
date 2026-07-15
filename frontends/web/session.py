@@ -111,7 +111,8 @@ class Session:
             return {"kind": "over"}
 
     def _await_dismiss(self):
-        self.ch.send({"t": "await", "mode": "key", "menu": self._menu_flags(False)})
+        keys = [{"label": self.engine.lex.ui("BTN_CONTINUE"), "ch": " "}] if self.engine else None
+        self.ch.send({"t": "await", "mode": "key", "menu": self._menu_flags(False), "keys": keys})
         while True:
             ev = self.ch.get()
             kind = ev.get("kind")

@@ -1586,6 +1586,9 @@ a period and then return"
 ui:TESTER_PROMPT,ui,any,engine-tekst,,commentaar --> ,comment --> 
 ui:WEB_DISABLED,ui,any,engine-tekst,,Dat kan niet in de webversie.,That is not available in the web version.
 ui:GAME_OVER,ui,any,engine-tekst,,[ het spel is afgelopen ],[ the game is over ]
+ui:BTN_YES,ui,any,engine-tekst,,Ja,Yes
+ui:BTN_NO,ui,any,engine-tekst,,Nee,No
+ui:BTN_CONTINUE,ui,any,engine-tekst,,▶ Verder,▶ Continue
 ui:MENU_CUT,ui,any,engine-tekst,,Knippen,Cut
 ui:MENU_COPY,ui,any,engine-tekst,,Kopiëren,Copy
 ui:MENU_PASTE,ui,any,engine-tekst,,Plakken,Paste
@@ -1614,6 +1617,8 @@ ui:HELP_INTRO,ui,any,engine-tekst,,Commando's (met een simpel voorbeeld):,Comman
 ui:HELP_COMMANDS,ui,any,engine-tekst,,"Beweging
   ga <richting> — bijv. 'ga noord' (loop ergens heen)
     kort: n, z, o, w, h (omhoog), l (omlaag), e (eruit)
+  klim / kruip / loop — ook manieren om te bewegen (bijv. 'klim omhoog')
+  volg <iemand> — bijv. 'volg dracula'
   sta op — bijv. 'sta op' (ga staan)
 
 Kijken en lezen
@@ -1629,6 +1634,7 @@ Voorwerpen
   geef <voorwerp> — bijv. 'geef geld' (geef iets weg)
   gooi <voorwerp> — bijv. 'gooi mes' (gooi iets weg)
   schijn <ding> — bijv. 'schijn lamp' (schijn met de lamp)
+  draag <voorwerp> — bijv. 'draag harnas' (trek iets aan; ook: pas)
 
 Dingen gebruiken
   open <ding> — bijv. 'open deur' (maak iets open)
@@ -1643,6 +1649,7 @@ Dingen gebruiken
   vul <ding> — bijv. 'vul kruik' (vul iets)
   blaas <ding> — bijv. 'blaas hoorn' (blaas ergens op)
   spring — bijv. 'spring' (spring omhoog of vooruit)
+  knoop <ding> — bijv. 'knoop touw' (knoop of hang iets vast)
 
 Praten en overige
   zeg <woord> — bijv. 'zeg sesam' (zeg een woord hardop)
@@ -1651,6 +1658,9 @@ Praten en overige
   drink <ding> — bijv. 'drink water' (drink iets)
   koop <ding> — bijv. 'koop kaart' (koop iets)
   wacht — bijv. 'wacht' (wacht een moment)
+  vraag <iemand> — bijv. 'vraag waard'
+  luister — bijv. 'luister'
+  slaap — bijv. 'slaap' (ga slapen)
 
 Vechten
   sla <iets> — bijv. 'sla wolf' (sla ergens op)

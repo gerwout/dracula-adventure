@@ -22,10 +22,12 @@ class IO(abc.ABC):
     def read_command(self) -> str:
         """Block for one line of player input (without trailing newline)."""
 
-    def read_key(self) -> str:
+    def read_key(self, keys=None) -> str:
         """Read a single keypress — ANY key, no Enter needed (used for the title
         screen and the J/N quit prompt). Default: fall back to a full line read so
-        scripted/headless play still works."""
+        scripted/headless play still works. ``keys`` is an optional
+        ``list[{"label", "ch"}]`` hint for a frontend that shows on-screen buttons
+        (only WebIO uses it); every other IO ignores it."""
         return self.read_command()
 
     def clear(self) -> None:
@@ -59,8 +61,9 @@ class ConsoleIO(IO):
         except EOFError:
             return "stop"
 
-    def read_key(self) -> str:
-        """One raw keypress, no Enter required (Windows msvcrt / POSIX termios)."""
+    def read_key(self, keys=None) -> str:
+        """One raw keypress, no Enter required (Windows msvcrt / POSIX termios).
+        ``keys`` is ignored (there is no on-screen key row on a console)."""
         try:
             import msvcrt
         except ImportError:

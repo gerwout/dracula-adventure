@@ -98,6 +98,21 @@ def test_menu_offers_new_and_language_after_game_over():
     ch.close(); t.join(timeout=5)
 
 
+def test_title_await_key_offers_a_continue_button():
+    # The dead 1/2/J/N/spatie row is gone: the title's await:key prompt now carries a
+    # single contextual "keys" hint (a ▶ Verder/Continue button), driven by the lexicon
+    # so it follows the active language like everything else player-facing.
+    session, sent, ch, t = run_session([{"kind": "start", "lang": "nl"}])
+
+    def title_await_has_continue():
+        awaits = [m for m in sent if m.get("t") == "await" and m.get("mode") == "key"]
+        return bool(awaits) and session.engine is not None and awaits[-1].get("keys") == [
+            {"label": session.engine.lex.ui("BTN_CONTINUE"), "ch": " "}]
+
+    assert wait_until(title_await_has_continue)
+    ch.close(); t.join(timeout=5)
+
+
 def test_help_menu_works_at_the_title_screen():
     session, sent, ch, t = run_session([
         {"kind": "start", "lang": "nl"},
