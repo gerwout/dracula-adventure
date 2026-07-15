@@ -203,7 +203,7 @@
 
   function handle(msg) {
     switch (msg.t) {
-      case "out": append(msg.text); break;
+      case "out": append(msg.text); if (out.classList.contains("title")) fitTitle(); break;
       case "clear": out.textContent = ""; break;
       case "session": storeToken(msg.token); break;
       case "pong": gotPong = true; break;
