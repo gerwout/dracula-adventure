@@ -24,7 +24,7 @@ import pytest
 
 pytest.importorskip("websockets")   # server.py imports websockets at module import time
 
-from frontends.web.server import Server, WARM_GRACE            # noqa: E402
+from frontends.web.server import Host, Server, WARM_GRACE      # noqa: E402
 from frontends.web.sessionstore import SessionStore            # noqa: E402
 
 
@@ -187,6 +187,61 @@ def test_warm_reattach_replays_from_buffer_without_disturbing_worker(tmp_path):
                 host.expire_handle.cancel()
             host.close()
         srv.parked.clear()
+
+    asyncio.run(scenario())
+
+
+def test_warm_reattach_replays_actual_screen_kind_not_hardcoded_game(tmp_path):
+    # Regression: Host.attach()'s redraw path used to hardcode {"t":"screen","kind":"game"}
+    # regardless of what screen the client was actually parked on. A client that reloads
+    # while on the title screen and warm-re-attaches must get "title" back, not "game"
+    # (which loses the title's white-space:pre / title-fit CSS and can misrender).
+    # Driven directly against Host (no live worker needed): feed a screen hint through
+    # _on_msg, then attach with replay+redraw and inspect what got queued for the client.
+    async def scenario():
+        store = SessionStore(tmp_path)
+        loop = asyncio.get_running_loop()
+        host = Host(loop, "tokTitle", store, resume_state=None, resume_lang="nl")
+        host._on_msg({"t": "screen", "kind": "title"})
+
+        ws = FakeWS([])
+        host.attach(ws, replay=True, redraw=True)
+
+        def screen_sent(w):
+            return any(m.get("t") == "screen" for m in w.sent)
+
+        assert await _poll(lambda: screen_sent(ws)), "attach() must queue a screen replay"
+        host.detach()
+
+        kinds = [m.get("kind") for m in ws.sent if m.get("t") == "screen"]
+        assert "title" in kinds, "warm replay must use the recorded screen kind"
+        assert "game" not in kinds, "warm replay must NOT hardcode 'game' over a title screen"
+
+    asyncio.run(scenario())
+
+
+def test_stateless_snapshot_does_not_soft_lock_falls_through_to_fresh(tmp_path):
+    # Regression: a resumable-looking record on disk with no real `state` (e.g. an
+    # interrupted/partial snapshot write) used to still satisfy `rec is not None`, building
+    # a Host around resume_state=None -> the client would get stuck instead of a playable
+    # game. It must instead be treated as unresolvable and fall through to a fresh start.
+    async def scenario():
+        store = SessionStore(tmp_path)
+        store.save("tokStale", None, "nl")     # a snapshot record with NO real state
+        srv = Server(store)
+        ws = FakeWS([{"kind": "resume", "token": "tokStale", "needRedraw": True},
+                     {"kind": "key", "ch": " "}])
+
+        def snapshot_written(w):
+            tok = _session_token(w)
+            return bool(tok) and srv.store.exists(tok)
+
+        await _drive(srv, ws, snapshot_written)
+
+        tok = _session_token(ws)
+        assert tok, "server must still mint a token and send {'t':'session', token}"
+        assert tok != "tokStale", "a stateless snapshot must not be resumed as-is"
+        assert srv.store.exists(tok), "the fresh session must persist its own snapshot"
 
     asyncio.run(scenario())
 

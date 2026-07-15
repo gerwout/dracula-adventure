@@ -65,6 +65,7 @@ class Host:
         self._last_langs = None
         self._last_menu_labels = None
         self._last_await = None
+        self._last_screen = None
         self._screen: list[str] = []
         self.channel = Channel(self._emit)
         self.session = Session(self.channel, token=token, snapshotter=self._snapshot,
@@ -86,6 +87,8 @@ class Host:
             self._last_menu_labels = msg
         elif t == "await":
             self._last_await = msg
+        elif t == "screen":
+            self._last_screen = msg
         elif t == "clear":
             self._screen = []
         elif t == "out":
@@ -113,7 +116,7 @@ class Host:
                 self.outbox.put_nowait(self._last_menu_labels)
             if redraw:
                 self.outbox.put_nowait({"t": "clear"})
-                self.outbox.put_nowait({"t": "screen", "kind": "game"})
+                self.outbox.put_nowait(self._last_screen or {"t": "screen", "kind": "game"})
                 for chunk in self._screen:
                     self.outbox.put_nowait({"t": "out", "text": chunk})
             if self._last_await:
@@ -173,7 +176,7 @@ class Server:
         elif kind == "resume" and token and self.store.exists(token):
             # Cold resume: rebuild a fresh Host from the disk snapshot; the Session redraws.
             rec = self.store.load(token)
-            if rec is not None:
+            if rec is not None and rec.get("state") is not None:
                 host = Host(loop, token, self.store,
                             resume_state=rec.get("state"), resume_lang=rec.get("lang", "nl"))
                 host.attach(ws, replay=False, redraw=True)
