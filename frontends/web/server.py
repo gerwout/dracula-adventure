@@ -105,7 +105,7 @@ class Host:
         elif t == "clear":
             self._screen = []
         elif t == "out":
-            self._screen.append(msg.get("text", ""))
+            self._screen.append(msg)          # store the whole message so replay keeps styling (the cmd echo)
         if self.outbox is not None:
             self.outbox.put_nowait(msg)
 
@@ -130,8 +130,8 @@ class Host:
             if redraw:
                 self.outbox.put_nowait({"t": "clear"})
                 self.outbox.put_nowait(self._last_screen or {"t": "screen", "kind": "game"})
-                for chunk in self._screen:
-                    self.outbox.put_nowait({"t": "out", "text": chunk})
+                for m in self._screen:
+                    self.outbox.put_nowait(m)
             if self._last_await:
                 self.outbox.put_nowait(self._last_await)
 

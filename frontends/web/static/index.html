@@ -2,15 +2,18 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Dracula Avontuur — remake</title>
 <style>
   :root { --bg:#000; --fg:#c8c8c8; --grn:#00c000; }
   * { box-sizing:border-box; }
-  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg);
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg); color:var(--fg);
     font-family:"Consolas","DejaVu Sans Mono",monospace; }
-  #app { display:flex; flex-direction:column; min-height:100dvh; }
-  #menu { display:flex; gap:.25rem; padding:.35rem .5rem; background:#0a0a0a;
+  /* App shell: fixed to the viewport so #out is the ONLY scroll region and the menu +
+     input bar stay put. interactive-widget=resizes-content keeps the input above the
+     mobile keyboard (100dvh shrinks when it opens). */
+  #app { display:flex; flex-direction:column; height:100dvh; }
+  #menu { display:flex; flex:none; gap:.25rem; padding:.35rem .5rem; background:#0a0a0a;
     border-bottom:1px solid #222; flex-wrap:wrap; }
   #layout { display:flex; flex:1; min-height:0; }
   #gamecol { display:flex; flex-direction:column; flex:1; min-width:0; min-height:0; }
@@ -22,25 +25,22 @@
   #about li { margin:.15rem 0; }
   #about .muted { opacity:.7; font-size:.85rem; }
   @media (max-width:820px) {
-    #app { height:auto; }
-    #menu { position:sticky; top:0; z-index:5; }
     #layout { flex-direction:column; }
-    #gamecol { min-height: calc(100dvh - 3.2rem); }   /* fills the screen below the menu */
     #about { display:none; }   /* reached via the m-about (ℹ️) modal instead, so the game keeps the viewport */
   }
   @media (min-width:821px) { #m-about { display:none; } }   /* desktop already shows the sidebar */
   #menu button, #menu select { background:#111; color:var(--fg); border:1px solid #333;
     font:inherit; padding:.3rem .6rem; border-radius:3px; }
   #menu button:disabled { opacity:.4; }
-  #out { flex:1; overflow-y:auto; white-space:pre-wrap; word-break:break-word;
+  #out { flex:1; min-height:0; overflow-y:auto; white-space:pre-wrap; word-break:break-word;
     padding:.6rem .8rem; line-height:1.25; font-size:15px; }
   #out.title { white-space:pre; overflow-x:hidden; }
   #out .cmd { color:var(--grn); }
-  #inbar { display:flex; align-items:center; border-top:1px solid #222; padding:.4rem .6rem; }
+  #inbar { display:flex; flex:none; align-items:center; border-top:1px solid #222; padding:.4rem .6rem; }
   #prompt { color:var(--grn); margin-right:.4rem; }
   #inp { flex:1; background:#000; color:var(--grn); border:none; outline:none;
     font:inherit; font-size:16px; }
-  #keys { display:none; gap:.4rem; padding:.4rem .6rem; flex-wrap:wrap;
+  #keys { display:none; flex:none; gap:.4rem; padding:.4rem .6rem; flex-wrap:wrap;
     border-top:1px solid #222; }
   #keys.show { display:flex; }
   #keys button { min-width:3rem; padding:.6rem; font:inherit; font-size:16px;
@@ -104,12 +104,15 @@
   const queued = [];                 // client messages typed while the socket was down
   let noticeShown = false;
 
+  function atBottom() { return out.scrollHeight - out.scrollTop - out.clientHeight < 48; }
+  function scrollToBottom() { out.scrollTop = out.scrollHeight; }
   function append(text, cls) {
+    const stick = atBottom();          // auto-scroll on new output, but don't yank a reader who scrolled up
     const span = document.createElement("span");
     if (cls) span.className = cls;
     span.textContent = text;
     out.appendChild(span);
-    out.scrollTop = out.scrollHeight;
+    if (stick) scrollToBottom();
   }
   function rawSend(obj) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(obj)); return true; } return false; }
   function send(obj) { if (!rawSend(obj)) { queued.push(obj); ensureConnected(); } }
@@ -203,7 +206,7 @@
 
   function handle(msg) {
     switch (msg.t) {
-      case "out": append(msg.text); if (out.classList.contains("title")) fitTitle(); break;
+      case "out": append(msg.text, msg.cls); if (out.classList.contains("title")) fitTitle(); break;
       case "clear": out.textContent = ""; break;
       case "session": storeToken(msg.token); break;
       case "pong": gotPong = true; break;
@@ -253,7 +256,7 @@
       inp.value = "";
       if (awaitMode === "key") { send({ kind: "key", ch: line.slice(0, 1) || " " }); }
       else {
-        append("\n→ " + line + "\n", "cmd");
+        scrollToBottom();              // pin to bottom; the server echoes the command + reply (so a refresh replays it too)
         send({ kind: "line", text: line });
       }
     } else if (awaitMode === "key" && e.key.length === 1) {

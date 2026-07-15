@@ -144,7 +144,12 @@ class Session:
             ev = self.ch.get()
             kind = ev.get("kind")
             if kind == "line":
-                if self._safe_engine(self.engine.submit, ev.get("text", "")):
+                text = ev.get("text", "")
+                # Echo the command from the SERVER (not the client) so it lands in the host's
+                # replay buffer — a refresh/reconnect then restores the commands too, not just
+                # the replies.
+                self.ch.send({"t": "out", "text": "\n→ " + text + "\n", "cls": "cmd"})
+                if self._safe_engine(self.engine.submit, text):
                     self._snapshot_now()          # snapshot only a clean turn (never poisoned state)
             elif kind == "menu":
                 if self._safe_engine(self._menu, ev.get("action"), ev.get("arg")):
