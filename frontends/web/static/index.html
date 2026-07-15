@@ -190,7 +190,7 @@
       case "session": storeToken(msg.token); break;
       case "pong": gotPong = true; break;
       case "screen":
-        document.getElementById("out").classList.toggle("title", msg.kind === "title");
+        out.classList.toggle("title", msg.kind === "title");
         if (typeof fitTitle === "function") fitTitle();
         break;
       case "langs":
@@ -282,6 +282,7 @@
 
   function ensureConnected() {
     if (ws && (ws.readyState === 0 || ws.readyState === 1)) return;
+    if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
     connect();
   }
 
@@ -304,9 +305,8 @@
     };
     ws.onclose = function () {
       clearInterval(hbTimer);
-      if (reconnectTimer) clearTimeout(reconnectTimer);
       reconnectTimer = setTimeout(function () {
-        showReconnecting(); connect();
+        reconnectTimer = null; showReconnecting(); ensureConnected();
       }, backoff);
       backoff = Math.min(backoff * 2, 10000);
     };
