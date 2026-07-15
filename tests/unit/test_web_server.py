@@ -11,15 +11,17 @@ websockets = pytest.importorskip("websockets")
 from websockets.asyncio.server import serve                # noqa: E402
 from websockets.asyncio.client import connect              # noqa: E402
 
-from frontends.web.server import _serve_connection, _process_request   # noqa: E402
+from frontends.web.server import Server, _process_request   # noqa: E402
+from frontends.web.sessionstore import SessionStore          # noqa: E402
 from tests.unit.test_full_playthrough import WALKTHROUGH    # noqa: E402
 
 CHAIN = " . ".join(WALKTHROUGH)
 
 
-def test_server_serves_page_and_plays_to_win():
+def test_server_serves_page_and_plays_to_win(tmp_path):
     async def scenario():
-        server = await serve(_serve_connection, "127.0.0.1", 0,
+        srv = Server(SessionStore(tmp_path))
+        server = await serve(srv.handle, "127.0.0.1", 0,
                              process_request=_process_request)
         port = server.sockets[0].getsockname()[1]
         loop = asyncio.get_running_loop()

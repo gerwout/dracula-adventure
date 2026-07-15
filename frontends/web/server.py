@@ -1,20 +1,19 @@
-"""Web server: serves the static game page AND the per-connection WebSocket, so a
-single process is a complete, playable web app.
+"""Web server: static game page + per-connection WebSocket with resumable sessions.
 
-Each WebSocket connection runs one Session in a worker thread; ordered outbound delivery
-is guaranteed by a single async sender task draining a per-connection queue that the
-worker thread fills via loop.call_soon_threadsafe. A normal HTTP GET (any path other than
-/ws) returns the static index.html.
-
-Run:  python -m frontends.web.server    then open http://127.0.0.1:8765/
-      (env DRACULA_WEB_HOST / DRACULA_WEB_PORT override the host/port)
-"""
+A Host owns one Session (worker thread + engine + channel) and whichever socket is
+attached now. On disconnect the Host is parked for WARM_GRACE seconds so a reconnect
+re-attaches to the still-live worker (replaying the current screen from a host-side
+buffer). After the grace window the worker is torn down; the per-turn disk snapshot
+(SessionStore) still allows a cold resume for RESUME_TTL. An hourly reaper enforces the
+TTL + a file cap."""
 from __future__ import annotations
 
 import asyncio
 import json
 import os
+import secrets
 import threading
+import time
 from pathlib import Path
 
 import websockets
@@ -23,9 +22,16 @@ from websockets.datastructures import Headers
 from websockets.http11 import Response
 
 from .session import Session
+from .sessionstore import SessionStore
 from .webio import Channel
 
 _STATIC_INDEX = Path(__file__).resolve().parent / "static" / "index.html"
+
+WARM_GRACE = 90.0
+MAX_WARM = 200
+RESUME_TTL = 3 * 24 * 3600
+MAX_SNAPSHOTS = 50_000
+REAP_INTERVAL = 3600.0
 
 
 def _process_request(connection, request):
@@ -40,44 +46,198 @@ def _process_request(connection, request):
     return Response(200, "OK", headers, body)
 
 
-async def _serve_connection(ws):
-    loop = asyncio.get_running_loop()
-    outbox: "asyncio.Queue[dict]" = asyncio.Queue()
+class Host:
+    """Owns one Session (worker thread + Channel) and, at most, one attached socket.
 
-    def send(msg: dict) -> None:                     # engine thread -> loop (thread-safe)
-        loop.call_soon_threadsafe(outbox.put_nowait, msg)
+    Thread boundary: the worker thread only ever reaches the loop through the thread-safe
+    Channel (inbound) and `_emit` -> loop.call_soon_threadsafe (outbound). Everything else
+    on this object (outbox, sender_task, ws, expire_handle, the replay buffer) is touched
+    solely on the asyncio loop thread."""
 
-    channel = Channel(send)
-    session = Session(channel)
-    worker = threading.Thread(target=session.run, name="dracula-session", daemon=True)
-    worker.start()
+    def __init__(self, loop, token, store, *, resume_state, resume_lang):
+        self.loop = loop
+        self.token = token
+        self.store = store
+        self.ws = None
+        self.outbox = None
+        self.sender_task = None
+        self.expire_handle = None
+        self._last_langs = None
+        self._last_menu_labels = None
+        self._last_await = None
+        self._screen: list[str] = []
+        self.channel = Channel(self._emit)
+        self.session = Session(self.channel, token=token, snapshotter=self._snapshot,
+                               resume_state=resume_state, resume_lang=resume_lang)
+        self.worker = threading.Thread(target=self.session.run,
+                                       name=f"dracula-{token[:8]}", daemon=True)
 
-    async def sender():
+    # worker thread -> loop
+    def _emit(self, msg):
+        self.loop.call_soon_threadsafe(self._on_msg, msg)
+
+    def _on_msg(self, msg):
+        # Runs on the loop thread. Keep the host-side replay buffer current (even while
+        # parked, so a warm re-attach can redraw), then forward to the live socket if any.
+        t = msg.get("t")
+        if t == "langs":
+            self._last_langs = msg
+        elif t == "menu-labels":
+            self._last_menu_labels = msg
+        elif t == "await":
+            self._last_await = msg
+        elif t == "clear":
+            self._screen = []
+        elif t == "out":
+            self._screen.append(msg.get("text", ""))
+        if self.outbox is not None:
+            self.outbox.put_nowait(msg)
+
+    def _snapshot(self, state, lang):
+        self.store.save(self.token, state, lang)
+
+    def start(self):
+        self.worker.start()
+
+    def attach(self, ws, *, replay: bool, redraw: bool):
+        self.ws = ws
+        self.outbox = asyncio.Queue()
+        self.sender_task = asyncio.create_task(self._sender(ws, self.outbox))
+        self.outbox.put_nowait({"t": "session", "token": self.token})
+        if replay:
+            # Warm re-attach: rebuild the client from the host-side buffer without
+            # disturbing the still-running worker.
+            if self._last_langs:
+                self.outbox.put_nowait(self._last_langs)
+            if self._last_menu_labels:
+                self.outbox.put_nowait(self._last_menu_labels)
+            if redraw:
+                self.outbox.put_nowait({"t": "clear"})
+                self.outbox.put_nowait({"t": "screen", "kind": "game"})
+                for chunk in self._screen:
+                    self.outbox.put_nowait({"t": "out", "text": chunk})
+            if self._last_await:
+                self.outbox.put_nowait(self._last_await)
+
+    async def _sender(self, ws, outbox):
+        try:
+            while True:
+                msg = await outbox.get()
+                await ws.send(json.dumps(msg))
+        except (websockets.ConnectionClosed, asyncio.CancelledError):
+            pass
+        except Exception:
+            pass
+
+    def detach(self):
+        if self.sender_task:
+            self.sender_task.cancel()
+        self.sender_task = None
+        self.outbox = None
+        self.ws = None
+
+    def feed(self, msg):
+        self.channel.put(msg)
+
+    def close(self):
+        self.channel.close()
+
+
+class Server:
+    def __init__(self, store: SessionStore):
+        self.store = store
+        self.parked: dict[str, Host] = {}
+
+    async def handle(self, ws):
+        loop = asyncio.get_running_loop()
+        try:
+            raw = await ws.recv()
+        except Exception:
+            return
+        try:
+            first = json.loads(raw)
+        except (ValueError, TypeError):
+            first = {}
+        kind = first.get("kind")
+        token = first.get("token") if isinstance(first.get("token"), str) else None
+        redraw = bool(first.get("needRedraw"))
+        host = None
+
+        if kind == "resume" and token and token in self.parked:
+            # Warm re-attach: the worker is still alive; cancel its expire timer and replay.
+            host = self.parked.pop(token)
+            if host.expire_handle:
+                host.expire_handle.cancel()
+                host.expire_handle = None
+            host.attach(ws, replay=True, redraw=redraw)
+        elif kind == "resume" and token and self.store.exists(token):
+            # Cold resume: rebuild a fresh Host from the disk snapshot; the Session redraws.
+            rec = self.store.load(token)
+            if rec is not None:
+                host = Host(loop, token, self.store,
+                            resume_state=rec.get("state"), resume_lang=rec.get("lang", "nl"))
+                host.attach(ws, replay=False, redraw=True)
+                host.start()
+        if host is None:
+            # Fresh game: mint a new opaque token and drive the worker with a synthetic start.
+            token = secrets.token_urlsafe(24)
+            lang = first.get("lang") if isinstance(first.get("lang"), str) else "nl"
+            host = Host(loop, token, self.store, resume_state=None, resume_lang=lang)
+            host.attach(ws, replay=False, redraw=False)
+            host.start()
+            host.feed({"kind": "start", "lang": lang})
+
+        try:
+            async for raw in ws:
+                try:
+                    m = json.loads(raw)
+                except (ValueError, TypeError):
+                    continue
+                if m.get("kind") == "ping":          # answered here, NOT fed to the worker
+                    if host.outbox is not None:
+                        host.outbox.put_nowait({"t": "pong"})
+                    continue
+                host.feed(m)
+        except Exception:
+            pass
+        finally:
+            self._on_disconnect(loop, host)
+
+    def _on_disconnect(self, loop, host):
+        host.detach()
+        if host.worker.is_alive() and len(self.parked) < MAX_WARM:
+            def expire():
+                self.parked.pop(host.token, None)
+                host.close()
+            host.expire_handle = loop.call_later(WARM_GRACE, expire)
+            self.parked[host.token] = host
+        else:
+            host.close()
+
+    async def reaper(self):
         while True:
-            msg = await outbox.get()
-            await ws.send(json.dumps(msg))
-
-    send_task = asyncio.create_task(sender())
-    try:
-        async for raw in ws:
+            await asyncio.sleep(REAP_INTERVAL)
             try:
-                channel.put(json.loads(raw))
-            except (ValueError, TypeError):
-                pass                                 # ignore malformed frames
-    except websockets.ConnectionClosed:
-        pass
-    finally:
-        channel.close()                              # unblock the worker (-> EOF/"stop")
-        send_task.cancel()
-        await loop.run_in_executor(None, worker.join)
+                n = self.store.reap(RESUME_TTL, MAX_SNAPSHOTS, time.time())
+                if n:
+                    print(f"[dracula] reaped {n} stale session snapshot(s)")
+            except Exception:
+                pass
 
 
 async def main() -> None:
     host = os.environ.get("DRACULA_WEB_HOST", "127.0.0.1")
     port = int(os.environ.get("DRACULA_WEB_PORT", "8765"))
-    async with serve(_serve_connection, host, port, process_request=_process_request):
-        print(f"Dracula web server on http://{host}:{port}/  (game page + /ws WebSocket)")
-        await asyncio.Future()                       # run forever
+    state_dir = os.environ.get("DRACULA_WEB_STATE_DIR", str(Path(".web-sessions")))
+    srv = Server(SessionStore(state_dir))
+    async with serve(srv.handle, host, port, process_request=_process_request,
+                     ping_interval=20, ping_timeout=20):
+        print(f"Dracula web server on http://{host}:{port}/  (state: {state_dir})")
+        reaper_task = asyncio.create_task(srv.reaper())   # kept referenced (no GC of task)
+        try:
+            await asyncio.Future()                        # run forever
+        finally:
+            reaper_task.cancel()
 
 
 if __name__ == "__main__":
