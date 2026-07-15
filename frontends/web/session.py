@@ -74,6 +74,17 @@ class Session:
             except Exception:
                 pass   # snapshotting must never break play
 
+    def _safe_engine(self, fn, *args) -> bool:
+        """Run an engine action so that an exception can NEVER kill this worker thread
+        (which would silently hang the client). A malformed save is already rejected up
+        front, but this is the last-line backstop for any unexpected engine error on
+        attacker-controlled input. Returns False (turn dropped) if it raised."""
+        try:
+            fn(*args)
+            return True
+        except Exception:
+            return False
+
     def _play_one_game(self, resume_state=None):
         self.engine = new_game(self.io, explore=True, lang=self.lang,
                                store=self.store, sandboxed=True)
@@ -133,9 +144,11 @@ class Session:
             ev = self.ch.get()
             kind = ev.get("kind")
             if kind == "line":
-                self.engine.submit(ev.get("text", "")); self._snapshot_now()
+                if self._safe_engine(self.engine.submit, ev.get("text", "")):
+                    self._snapshot_now()          # snapshot only a clean turn (never poisoned state)
             elif kind == "menu":
-                self._menu(ev.get("action"), ev.get("arg")); self._snapshot_now()
+                if self._safe_engine(self._menu, ev.get("action"), ev.get("arg")):
+                    self._snapshot_now()
             elif kind == "start":
                 return ev
             elif kind == "eof":

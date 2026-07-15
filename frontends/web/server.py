@@ -249,7 +249,8 @@ async def main() -> None:
     async with serve(srv.handle, host, port, process_request=_process_request,
                      origins=_allowed_origins(), max_size=MAX_MESSAGE_SIZE,
                      ping_interval=20, ping_timeout=20):
-        print(f"Dracula web server on http://{host}:{port}/  (state: {state_dir})")
+        print(f"Dracula web server on http://{host}:{port}/  (state: {state_dir}; "
+              f"origin-check: {'on' if _allowed_origins() else 'OFF (set DRACULA_WEB_ORIGINS)'})")
         reaper_task = asyncio.create_task(srv.reaper())   # kept referenced (no GC of task)
         try:
             await asyncio.Future()                        # run forever

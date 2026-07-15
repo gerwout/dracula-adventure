@@ -3,6 +3,18 @@ from frontends.web.session import Session
 from tests.unit.test_web_session import run_session, wait_until  # reuse harness
 
 
+def test_safe_engine_never_lets_an_exception_kill_the_worker():
+    # The worker-level backstop: any engine error on attacker input must be swallowed
+    # (returning False), never propagate out and hang the client.
+    s = Session(Channel(lambda m: None))
+
+    def boom():
+        raise ValueError("engine blew up")
+
+    assert s._safe_engine(boom) is False
+    assert s._safe_engine(lambda: None) is True
+
+
 def run_session_ex(events, **kw):
     import threading
     sent = []

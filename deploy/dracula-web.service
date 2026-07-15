@@ -1,16 +1,41 @@
 [Unit]
 Description=Dracula Adventure web (WebSocket) server
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 User=dracula
+Group=dracula
 WorkingDirectory=/opt/dracula-adventure
 Environment=DRACULA_WEB_HOST=127.0.0.1
 Environment=DRACULA_WEB_PORT=8765
-ExecStart=/usr/bin/python -m frontends.web.server
+# Session snapshots (resumable games) live here. StateDirectory makes /var/lib/dracula-web
+# writable for the service user while ProtectSystem=strict keeps the rest of the FS read-only.
+StateDirectory=dracula-web
+Environment=DRACULA_WEB_STATE_DIR=/var/lib/dracula-web/sessions
+# WebSocket Origin allow-list — set this in production so the /ws endpoint cannot be used
+# cross-site. List every browser-visible origin (adjust to your own domains). If unset, the
+# server logs "origin-check: OFF" and accepts any Origin (intended only for local/dev).
+Environment=DRACULA_WEB_ORIGINS=https://dracula-adventure.com,https://www.dracula-adventure.com
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/dracula-adventure/.venv/bin/python -m frontends.web.server
 Restart=on-failure
-RestartSec=2
+RestartSec=3
+
+# --- resource caps: backstop against connection/memory exhaustion (thread-per-connection) ---
+TasksMax=512
+MemoryMax=512M
+LimitNOFILE=4096
+
+# --- hardening: the app writes only to StateDirectory (/var/lib/dracula-web) ---
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
 
 [Install]
 WantedBy=multi-user.target

@@ -55,21 +55,40 @@ def restore(eng, data: dict) -> None:
         eng.fail_counter = data["fail_counter"]
 
 
+def _is_int(v) -> bool:
+    return isinstance(v, int) and not isinstance(v, bool)   # bool is a subclass of int
+
+
 def is_valid_save(data, world) -> bool:
-    """Whether ``data`` is a plausible save for ``world``: a dict whose ``room`` is a real
-    room id, with dict-typed ``obj_loc``/``state`` when present. Rejects a hostile or
-    corrupt client-supplied save BEFORE it is restored. (The web resume path restores
+    """Whether ``data`` is a plausible save for ``world`` — content, not just structure:
+    a dict whose ``room`` is a real room id, whose ``obj_loc`` (if present) maps *real*
+    object ids to int locations, and whose ``state`` (if present) has int values. This is
+    checked so a crafted save can never reach ``restore``/``describe_room`` and crash the
+    engine worker (a bogus object id -> KeyError in the room lister; a non-int flag ->
+    TypeError in the describe-time room events). Rejects a hostile or corrupt
+    client-supplied save BEFORE it is restored. (The web resume path restores
     server-written snapshots and does not need this.)"""
     if not isinstance(data, dict):
         return False
     room = data.get("room")
-    if not isinstance(room, int) or isinstance(room, bool) or room not in world.rooms:
+    if not _is_int(room) or room not in world.rooms:
         return False
-    if "obj_loc" in data and not isinstance(data["obj_loc"], dict):
+    obj_loc = data.get("obj_loc", {})
+    if not isinstance(obj_loc, dict):
         return False
-    if "state" in data and not isinstance(data["state"], dict):
+    for k, v in obj_loc.items():
+        try:
+            oid = int(k)
+        except (ValueError, TypeError):
+            return False
+        if oid not in world.objects or not _is_int(v):
+            return False
+    state = data.get("state", {})
+    if not isinstance(state, dict):
         return False
-    return True
+    if not all(_is_int(v) for v in state.values()):
+        return False
+    return _is_int(data.get("fail_counter", 0))
 
 
 def save(eng, path) -> None:

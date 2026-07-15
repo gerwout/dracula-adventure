@@ -6,6 +6,8 @@ and dropped self.state (the real flags) — these tests pin the corrected round-
 """
 import json
 
+import pytest
+
 from engine import savegame
 from engine.data.loader import load_file
 from engine.data.model import CARRIED
@@ -104,24 +106,37 @@ def test_is_valid_save():
     w = load_file()
     assert savegame.is_valid_save({"room": 0}, w) is True
     assert savegame.is_valid_save({"room": 24, "obj_loc": {}, "state": {}}, w) is True
+    assert savegame.is_valid_save(savegame.serialize(_eng()), w) is True   # a real save
     assert savegame.is_valid_save(None, w) is False
     assert savegame.is_valid_save("x", w) is False
     assert savegame.is_valid_save({"room": 99999}, w) is False        # room not in world
     assert savegame.is_valid_save({"room": "0"}, w) is False          # wrong type
     assert savegame.is_valid_save({"room": True}, w) is False         # bool is not a room id
     assert savegame.is_valid_save({"room": 0, "obj_loc": "x"}, w) is False  # obj_loc not a dict
+    # CONTENT, not just structure — these are the crafted saves that crash describe_room:
+    assert savegame.is_valid_save({"room": 0, "obj_loc": {"999999": 0}}, w) is False  # bogus obj id
+    assert savegame.is_valid_save({"room": 0, "obj_loc": {"6": "x"}}, w) is False      # loc not int
+    assert savegame.is_valid_save({"room": 20, "state": {"dee": "x"}}, w) is False     # flag not int
+    assert savegame.is_valid_save({"room": 0, "state": {"dde": True}}, w) is False      # bool not int
 
 
-def test_do_laad_rejects_a_malformed_save_with_the_loadfail_message():
+@pytest.mark.parametrize("hostile", [
+    {"obj_loc": {"x": 1}},                      # no valid room
+    {"room": 0, "obj_loc": {"999999": 0}},      # valid room + bogus object id -> would KeyError
+    {"room": 20, "state": {"dee": "x"}},        # valid room + non-int flag -> would TypeError
+    "not even a dict",
+    None,
+])
+def test_do_laad_rejects_hostile_saves_without_crashing(hostile):
     w = load_file()
     eng = Engine(w, ScriptedIO([]))
 
-    class JunkStore:                       # mimics a hostile client 'loaded' payload
-        def load(self): return {"obj_loc": {"x": 1}}     # no valid room -> invalid
+    class JunkStore:                            # mimics a hostile client 'loaded' payload
+        def load(self): return hostile
         def save(self, data): pass
 
     eng.store = JunkStore()
     eng.io = ScriptedIO([])
-    eng.do_laad(None)                                    # must not raise
-    assert w.message_text(188) in eng.io.text            # load-fail
-    assert eng.room == 0                                 # engine state untouched
+    eng.do_laad(None)                           # must not raise (would crash the web worker)
+    assert w.message_text(188) in eng.io.text   # the load-fail message
+    assert eng.room == 0                        # engine state untouched
