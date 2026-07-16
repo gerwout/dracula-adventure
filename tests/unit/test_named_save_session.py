@@ -46,3 +46,20 @@ def test_menu_load_restores_room(tmp_path):
     ], ps, AuthLimiter())
     assert wait_until(lambda: s.engine is not None and s.engine.room == 11)
     ch.close(); t.join(timeout=5)
+
+
+def test_new_game_after_load_does_not_overwrite_loaded_slot(tmp_path):
+    ps = PlayerSaveStore(tmp_path, b"pep")
+    ps.save("Emma", "123456", "Kasteel", {"room": 11, "obj_loc": {}, "state": {}, "fail_counter": 0}, "nl")
+    s, sent, ch, t = _run([
+        {"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
+        {"kind": "menu", "action": "load"},
+        {"kind": "list-submit", "name": "Emma", "pin": "123456"},
+        {"kind": "load-pick", "name": "Emma", "pin": "123456", "slot": "Kasteel"},
+        # now active=Kasteel, engine restored to room 11 -- start a brand-new game
+        {"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
+        {"kind": "line", "text": "ga zuid"},                 # new game: room 0 -> 1, triggers autosave
+    ], ps, AuthLimiter())
+    assert wait_until(lambda: s.engine is not None and s.engine.room == 1)
+    assert ps.load("Emma", "123456", "Kasteel")["room"] == 11
+    ch.close(); t.join(timeout=5)

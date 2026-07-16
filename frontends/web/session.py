@@ -120,6 +120,7 @@ class Session:
                 def save(self, data): return False
                 def load(self): return None
             self.store = _NoStore()
+        self.active = None                            # fresh Engine -> no stale named identity
         self.engine = new_game(self.io, explore=True, lang=self.lang,
                                store=self.store, sandboxed=True)
         self._send_menu_labels()
@@ -151,6 +152,7 @@ class Session:
                 return ev
             if self.engine.restart:
                 resume_state = None
+                self.active = None                    # reincarnation restart -> no stale identity
                 continue
             self.io.write("\n" + self.engine.lex.ui("GAME_OVER") + "\n")
             return {"kind": "over"}
