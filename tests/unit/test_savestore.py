@@ -10,6 +10,7 @@ class DictStore:
         self.data = None
     def save(self, data):
         self.data = dict(data)
+        return True
     def load(self):
         return dict(self.data) if self.data is not None else None
 
@@ -21,6 +22,7 @@ def test_do_bewaar_and_do_laad_round_trip_through_the_store():
     saved_room = eng.room
     eng.do_bewaar(None)
     assert store.data is not None and store.data["room"] == saved_room
+    assert eng.world.message_text(185) in eng.io.text
     eng.submit("ga noord")                # 1 -> 0
     assert eng.room != saved_room
     eng.do_laad(None)

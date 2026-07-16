@@ -92,8 +92,9 @@ class WebSaveStore:
     def __init__(self, channel: Channel):
         self.ch = channel
 
-    def save(self, data: dict) -> None:
+    def save(self, data: dict) -> bool:
         self.ch.send({"t": "save", "data": data})
+        return True
 
     def load(self):
         self.ch.send({"t": "load"})
