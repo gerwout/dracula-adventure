@@ -87,7 +87,6 @@
 <script>
 (function () {
   "use strict";
-  const SAVE_KEY = "dracula_save";
   const out = document.getElementById("out");
   const inp = document.getElementById("inp");
   const menu = document.getElementById("menu");
@@ -95,14 +94,15 @@
   const modal = document.getElementById("modal");
   const modalbox = document.getElementById("modalbox");
   const aboutEl = document.getElementById("about");
-  let ws, awaitMode = null, langs = {}, currentLang = "nl";
+  let ws, awaitMode = null, langs = {}, currentLang = "nl", dlg = {};
 
   const url = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
 
   // -- session persistence + queued/reconnect state ------------------------ //
-  const SESSION_KEY = "dracula_session";
-  let token = null; try { token = localStorage.getItem(SESSION_KEY); } catch (e) {}
-  function storeToken(tk) { token = tk; try { localStorage.setItem(SESSION_KEY, tk); } catch (e) {} }
+  // Reconnect token: kept in memory only (spec §7). Cross-session return is via named
+  // saves, not the token — so a full reload starts fresh, but standby (no reload) resumes.
+  let token = null;
+  function storeToken(tk) { token = tk; }
   let backoff = 500, reconnectTimer = null, hbTimer = null, gotPong = true;
   const queued = [];                 // client messages typed while the socket was down
   let noticeShown = false;
@@ -119,15 +119,6 @@
   }
   function rawSend(obj) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(obj)); return true; } return false; }
   function send(obj) { if (!rawSend(obj)) { queued.push(obj); ensureConnected(); } }
-
-  function loadSave() {
-    try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; }
-    catch (e) { return null; }
-  }
-  function storeSave(data) {
-    try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); }
-    catch (e) { append("\n[Opslaan is niet beschikbaar in deze browser.]\n", "notice"); }
-  }
 
   const LANG_KEY = "dracula_lang";
   function loadLang() { try { return localStorage.getItem(LANG_KEY) || ""; } catch (e) { return ""; } }
@@ -236,6 +227,7 @@
         document.getElementById("m-lang").title = L.language || "Taal / Language";
         if (L.players) document.getElementById("players").title = L.players;
         if (msg.lang) { document.getElementById("m-lang").value = msg.lang; currentLang = msg.lang; storeLang(msg.lang); renderAbout(); }
+        if (msg.dialog) dlg = msg.dialog;
         break;
       case "await":
         awaitMode = msg.mode;
@@ -243,8 +235,11 @@
         if (msg.mode === "key") { showKeys(msg.keys && msg.keys.length ? msg.keys : [{ label: "▶", ch: " " }]); inp.blur(); }
         else { hideKeys(); if (msg.mode === "line") inp.focus(); }
         break;
-      case "save": storeSave(msg.data); break;
-      case "load": send({ kind: "loaded", data: loadSave() }); break;
+      case "save-dialog": openSaveDialog(); break;
+      case "load-dialog": openLoadDialog(); break;
+      case "slots": renderSlotPicker(msg.slots || []); break;
+      case "save-result": onSaveResult(msg); break;
+      case "load-result": onLoadResult(msg); break;
       case "help":
         modalbox.style.whiteSpace = "pre-wrap";
         modalbox.textContent = (msg.title ? msg.title + "\n\n" : "") + (msg.body || "");
@@ -295,6 +290,116 @@
     send({ kind: "start", lang: e.target.value });
   });
   document.getElementById("modalclose").onclick = function () { modal.classList.remove("show"); };
+
+  // -- named save / load dialogs ------------------------------------------ //
+  function clearModalBox() { modalbox.textContent = ""; modalbox.style.whiteSpace = "normal"; }
+  function field(labelText, type) {
+    const wrap = document.createElement("div"); wrap.style.margin = ".5rem 0";
+    const lab = document.createElement("label"); lab.textContent = labelText;
+    lab.style.display = "block"; lab.style.marginBottom = ".2rem";
+    const inp2 = document.createElement("input"); inp2.type = type;
+    if (type === "text") { inp2.autocapitalize = "off"; inp2.spellcheck = false; }
+    if (type === "tel") { inp2.inputMode = "numeric"; inp2.maxLength = 12; }
+    inp2.maxLength = inp2.maxLength || 24;
+    inp2.style.width = "100%"; inp2.style.font = "inherit"; inp2.style.padding = ".3rem";
+    wrap.appendChild(lab); wrap.appendChild(inp2); return { wrap: wrap, input: inp2 };
+  }
+  function msgLine(text, cls) {
+    const p = document.createElement("div"); p.textContent = text || "";
+    if (cls) p.style.color = cls; p.style.margin = ".4rem 0"; return p;
+  }
+  function button(text, onclick) {
+    const b = document.createElement("button"); b.textContent = text;
+    b.style.margin = ".3rem .3rem 0 0"; b.onclick = onclick; return b;
+  }
+  let saveFields = null;
+  function openSaveDialog() {
+    clearModalBox();
+    const title = document.createElement("h2"); title.textContent = dlg.saveTitle || "Bewaar";
+    const n = field(dlg.name || "Naam", "text");
+    const p = field(dlg.pin || "PIN", "tel");
+    const s = field(dlg.slot || "Naam", "text");
+    saveFields = { name: n.input, pin: p.input, slot: s.input, confirm: false };
+    const status = msgLine("", "#c08000"); status.id = "dlg-status";
+    modalbox.appendChild(title);
+    [n, p, s].forEach(function (f) { modalbox.appendChild(f.wrap); });
+    modalbox.appendChild(msgLine(dlg.ttlNote || "", "#8a8a8a"));
+    modalbox.appendChild(status);
+    modalbox.appendChild(button(dlg.save || "Bewaar", submitSave));
+    modalbox.appendChild(button(dlg.cancel || "Annuleer", cancelDialog));
+    modal.classList.add("show"); n.input.focus();
+  }
+  function submitSave() {
+    if (!saveFields) return;
+    send({ kind: "save-submit", name: saveFields.name.value, pin: saveFields.pin.value,
+           slot: saveFields.slot.value, confirm: saveFields.confirm });
+  }
+  function onSaveResult(msg) {
+    const status = document.getElementById("dlg-status");
+    if (msg.status === "ok") {
+      modal.classList.remove("show"); saveFields = null;
+      append("\n[" + (dlg.ok || "Opgeslagen").replace("{slot}", msg.slot || "") + "]\n", "notice");
+      return;
+    }
+    if (!status) return;
+    if (msg.status === "exists") { saveFields.confirm = true; status.textContent = dlg.exists || "Overschrijven?"; }
+    else if (msg.status === "full") status.textContent = dlg.full || "";
+    else if (msg.status === "invalid") status.textContent = dlg.invalid || "";
+  }
+  let loadFields = null;
+  function openLoadDialog() {
+    clearModalBox();
+    const title = document.createElement("h2"); title.textContent = dlg.loadTitle || "Laad";
+    const n = field(dlg.name || "Naam", "text");
+    const p = field(dlg.pin || "PIN", "tel");
+    loadFields = { name: n.input, pin: p.input };
+    const status = msgLine("", "#c08000"); status.id = "dlg-status";
+    modalbox.appendChild(title); modalbox.appendChild(n.wrap); modalbox.appendChild(p.wrap);
+    modalbox.appendChild(status);
+    modalbox.appendChild(button(dlg.load || "Laad", submitList));
+    modalbox.appendChild(button(dlg.cancel || "Annuleer", cancelDialog));
+    modal.classList.add("show"); n.input.focus();
+  }
+  function submitList() {
+    if (!loadFields) return;
+    send({ kind: "list-submit", name: loadFields.name.value, pin: loadFields.pin.value });
+  }
+  function renderSlotPicker(slots) {
+    clearModalBox();
+    const title = document.createElement("h2"); title.textContent = dlg.loadTitle || "Laad";
+    modalbox.appendChild(title);
+    if (!slots.length) { modalbox.appendChild(msgLine(dlg.noSaves || "", "#c08000")); }
+    slots.forEach(function (sl) {
+      const b = document.createElement("button");
+      b.style.display = "block"; b.style.width = "100%"; b.style.textAlign = "left";
+      b.style.margin = ".2rem 0";
+      const nm = document.createElement("div"); nm.textContent = sl.name;   // textContent = no XSS
+      const ht = document.createElement("div"); ht.textContent = sl.hint || "";
+      ht.style.opacity = ".7"; ht.style.fontSize = ".85rem";
+      b.appendChild(nm); b.appendChild(ht);
+      b.onclick = function () {
+        send({ kind: "load-pick", name: loadFields.name.value,
+               pin: loadFields.pin.value, slot: sl.name });
+      };
+      modalbox.appendChild(b);
+    });
+    modalbox.appendChild(button(dlg.cancel || "Annuleer", cancelDialog));
+  }
+  function onLoadResult(msg) {
+    if (msg.status === "ok") { modal.classList.remove("show"); loadFields = null; return; }
+    const status = document.getElementById("dlg-status");
+    const text = msg.status === "auth-fail" ? (dlg.authFail || "")
+               : msg.status === "invalid" ? (dlg.invalid || "")
+               : msg.status === "no-slot" ? (dlg.noSaves || "")
+               : msg.status === "locked" ? (dlg.tooMany || "")
+               : "";
+    if (status) status.textContent = text;
+    else append("\n[" + text + "]\n", "notice");
+  }
+  function cancelDialog() {
+    modal.classList.remove("show"); saveFields = null; loadFields = null;
+    send({ kind: "cancel" });
+  }
 
   // -- connect / silent auto-reconnect -------------------------------------- //
   function showReconnecting() {
