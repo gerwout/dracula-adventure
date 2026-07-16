@@ -26,3 +26,23 @@ def test_slot_rules_and_normalize():
     assert v.normalize_slot("  Begin  ") == "Begin"
     assert not v.valid_slot("../x")
     assert not v.valid_slot("x" * 25)
+
+
+def test_trailing_newlines_rejected():
+    # Fix 1: fullmatch anchors the entire string, rejecting trailing newlines
+    assert not v.valid_pin("123456\n")
+    assert not v.valid_pin("123456\r")
+    assert not v.valid_name("Emma\n")
+    assert not v.valid_slot("Kasteel\n")
+
+
+def test_non_str_input_rejected():
+    # Fix 2: non-str input is rejected without raising
+    assert not v.valid_slot(123)
+
+
+def test_boundary_name_lengths():
+    # Boundary cases for name length (1–24)
+    assert v.valid_name("a")
+    assert v.valid_name("a" * 24)
+    assert not v.valid_name("a" * 25)
