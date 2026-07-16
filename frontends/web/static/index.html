@@ -71,6 +71,7 @@
     <button data-act="help" id="m-help"></button>
     <button data-act="about" id="m-about" title="Over">ℹ️</button>
     <span id="players" title=""></span>
+    <span id="conn" title="verbinding" style="align-self:center;margin-left:.3rem">●</span>
   </div>
   <div id="layout">
     <div id="gamecol">
@@ -109,6 +110,11 @@
 
   function atBottom() { return out.scrollHeight - out.scrollTop - out.clientHeight < 48; }
   function scrollToBottom() { out.scrollTop = out.scrollHeight; }
+  function setConn(state) {   // "ok" | "wait" | "down"
+    const el = document.getElementById("conn");
+    if (!el) return;
+    el.style.color = state === "ok" ? "#00c000" : state === "wait" ? "#c08000" : "#a33";
+  }
   function append(text, cls) {
     const stick = atBottom();          // auto-scroll on new output, but don't yank a reader who scrolled up
     const span = document.createElement("span");
@@ -211,7 +217,7 @@
       case "out": append(msg.text, msg.cls); if (out.classList.contains("title")) fitTitle(); break;
       case "clear": out.textContent = ""; break;
       case "session": storeToken(msg.token); break;
-      case "pong": gotPong = true; verified = true; clearTimeout(verifyTimer); flushQueue(); break;
+      case "pong": gotPong = true; verified = true; clearTimeout(verifyTimer); flushQueue(); setConn("ok"); break;
       case "players": { const p = document.getElementById("players"); if (p) p.textContent = "👥 " + msg.count; break; }
       case "screen":
         out.classList.toggle("title", msg.kind === "title");
@@ -422,6 +428,7 @@
   let verified = true;        // false while a just-woken socket is unproven (queue sends)
   let verifyTimer = null;
   function revive() {
+    setConn("wait");
     if (!ws || ws.readyState === 2 || ws.readyState === 3) { connect(); return; }
     if (ws.readyState === 0) return;                 // a connect is already in flight
     if (!verified) return;              // a verification is already pending -- don't re-arm the watchdog
@@ -431,7 +438,7 @@
     clearTimeout(verifyTimer);
     verifyTimer = setTimeout(function () { if (!verified) forceReconnect(); }, 2000);
   }
-  function forceReconnect() { try { ws.close(); } catch (e) {} verified = true; connect(); }
+  function forceReconnect() { try { ws.close(); } catch (e) {} verified = true; setConn("down"); connect(); }
 
   function heartbeat() {
     clearInterval(hbTimer);
@@ -453,6 +460,7 @@
     ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
     ws.onopen = function () {
       if (this !== ws) return;         // belated open from a socket superseded by forceReconnect()
+      setConn("ok");
       backoff = 500; gotPong = true; verified = true; clearReconnecting(); heartbeat();
       // Start in the player's remembered language (localStorage), else the browser
       // language, else Dutch. The server validates and falls back to Dutch for an
@@ -468,6 +476,7 @@
     };
     ws.onclose = function () {
       if (this !== ws) return;         // belated close from a socket superseded by forceReconnect()
+      setConn("wait");
       clearInterval(hbTimer);
       reconnectTimer = setTimeout(function () {
         reconnectTimer = null; showReconnecting(); ensureConnected();
