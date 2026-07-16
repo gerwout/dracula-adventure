@@ -18,6 +18,10 @@ Environment=DRACULA_WEB_STATE_DIR=/var/lib/dracula-web/sessions
 # cross-site. List every browser-visible origin (adjust to your own domains). If unset, the
 # server logs "origin-check: OFF" and accepts any Origin (intended only for local/dev).
 Environment=DRACULA_WEB_ORIGINS=https://dracula-adventure.com,https://www.dracula-adventure.com
+# Optional: a stable secret for deriving named-save keys. If unset, a random
+# `pepper` file is generated once under StateDirectory (back it up before moving
+# the state dir, or saves become unreachable).
+# Environment=DRACULA_WEB_SAVE_PEPPER=change-me-to-a-long-random-string
 Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=PYTHONUNBUFFERED=1
 ExecStart=/opt/dracula-adventure/.venv/bin/python -m frontends.web.server
