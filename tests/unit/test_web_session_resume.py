@@ -31,7 +31,7 @@ def test_autosnapshot_fires_each_turn():
     session, sent, ch, t = run_session_ex(
         [{"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
          {"kind": "line", "text": "ga zuid"}],
-        token="tokX", snapshotter=lambda st, lang: snaps.append((st, lang)))
+        token="tokX", snapshotter=lambda st, lang, active=None: snaps.append((st, lang)))
     assert wait_until(lambda: session.engine and session.engine.room == 1)
     assert snaps and snaps[-1][0]["room"] == 1 and snaps[-1][1] == "nl"
     ch.close(); t.join(timeout=5)

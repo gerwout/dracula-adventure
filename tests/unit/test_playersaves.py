@@ -85,3 +85,22 @@ def test_amortized_cap_bounds_directory(tmp_path):
         s.save(f"player{i}", "123456", "a", {"room": i}, "nl", now=1_000_000.0 + i)
     # bounded near max_identities (+ up to cap_check_every-1 slack), never the full 10 saved
     assert len(list(s.dir.glob("*.json"))) <= 3 + 1
+
+
+# -- save_by_key: identity-key-based entry point (used to restore autosave after a cold
+# resume, where only the derived HMAC key + slot are persisted -- never the raw name/PIN) --
+
+def test_save_by_key_round_trips(tmp_path):
+    s = store(tmp_path)
+    k = s.key_for("Emma", "123456")
+    assert s.save_by_key(k, "Kasteel", {"room": 11}, "nl", "hint") == "ok"
+    assert s.load("Emma", "123456", "Kasteel") == {"room": 11}
+    assert s.list_slots("Emma", "123456") == [("Kasteel", "hint")]
+
+
+def test_save_by_key_respects_slot_cap(tmp_path):
+    s = PlayerSaveStore(tmp_path, PEP, max_slots=2)
+    k = s.key_for("E", "123456")
+    assert s.save_by_key(k, "a", {"room": 1}, "nl") == "ok"
+    assert s.save_by_key(k, "b", {"room": 2}, "nl") == "ok"
+    assert s.save_by_key(k, "c", {"room": 3}, "nl") == "full"   # 3rd new slot over the cap

@@ -14,7 +14,7 @@ from .namedsave import NamedWebSaveStore
 class Session:
     def __init__(self, channel, token=None, snapshotter=None,
                  resume_state=None, resume_lang=None,
-                 player_store=None, limiter=None, ip=""):
+                 player_store=None, limiter=None, ip="", resume_active=None):
         self.ch = channel
         self.io = WebIO(channel)
         self.engine = None
@@ -23,10 +23,12 @@ class Session:
         self._snapshotter = snapshotter
         self._resume_state = resume_state
         self._resume_lang = resume_lang
+        self._resume_active = resume_active
         self._player_store = player_store
         self._limiter = limiter
         self._ip = ip
-        self.active = None                       # (name, pin, slot) for autosave; memory only
+        self.active_key = None                   # HMAC key for autosave; memory only
+        self.active_slot = None                  # slot name for autosave; memory only
         self.store = NamedWebSaveStore(
             channel, player_store, limiter, ip,
             on_identity=self._set_identity,
@@ -80,12 +82,18 @@ class Session:
     def _snapshot_now(self) -> None:
         if self._snapshotter and self.engine is not None:
             try:
-                self._snapshotter(savegame.serialize(self.engine), self.lang)
+                self._snapshotter(savegame.serialize(self.engine), self.lang, self._active_dict())
             except Exception:
                 pass   # snapshotting must never break play
 
     def _set_identity(self, name, pin, slot) -> None:
-        self.active = (name, pin, slot)
+        self.active_key = self._player_store.key_for(name, pin) if self._player_store else None
+        self.active_slot = slot
+
+    def _active_dict(self):
+        if self.active_key and self.active_slot:
+            return {"key": self.active_key, "slot": self.active_slot}
+        return None
 
     def _room_hint(self) -> str:
         try:
@@ -94,12 +102,13 @@ class Session:
             return ""
 
     def _autosave_named(self) -> None:
-        if self._player_store is None or self.active is None or self.engine is None:
+        if self._player_store is None or not self.active_key or not self.active_slot \
+                or self.engine is None:
             return
-        name, pin, slot = self.active
         try:
-            self._player_store.save(name, pin, slot, savegame.serialize(self.engine),
-                                    self.lang, self._room_hint())
+            self._player_store.save_by_key(self.active_key, self.active_slot,
+                                           savegame.serialize(self.engine),
+                                           self.lang, self._room_hint())
         except Exception:
             pass   # autosave must never break play
 
@@ -120,7 +129,8 @@ class Session:
                 def save(self, data): return False
                 def load(self): return None
             self.store = _NoStore()
-        self.active = None                            # fresh Engine -> no stale named identity
+        self.active_key = None                        # fresh Engine -> no stale named identity
+        self.active_slot = None
         self.engine = new_game(self.io, explore=True, lang=self.lang,
                                store=self.store, sandboxed=True)
         self._send_menu_labels()
@@ -129,6 +139,9 @@ class Session:
             self.engine.restart = False
             if resume_state is not None and first:
                 savegame.restore(self.engine, resume_state)
+                if self._resume_active:               # cold resume -> restore autosave identity
+                    self.active_key = self._resume_active.get("key")
+                    self.active_slot = self._resume_active.get("slot")
                 self.io.clear()
                 self.ch.send({"t": "screen", "kind": "game"})
                 self.engine.describe_room()          # cold resume redraws the room
@@ -152,7 +165,8 @@ class Session:
                 return ev
             if self.engine.restart:
                 resume_state = None
-                self.active = None                    # reincarnation restart -> no stale identity
+                self.active_key = None                 # reincarnation restart -> no stale identity
+                self.active_slot = None
                 continue
             self.io.write("\n" + self.engine.lex.ui("GAME_OVER") + "\n")
             return {"kind": "over"}

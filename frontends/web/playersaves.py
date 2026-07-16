@@ -116,8 +116,16 @@ class PlayerSaveStore:
         return bool(rec) and self._normalize_slot_key(slot) in (rec.get("slots") or {})
 
     def save(self, name, pin, slot, state, lang, hint="", now=None) -> str:
+        return self._save_with_key(self._key(name, pin), slot, state, lang, hint, now)
+
+    def save_by_key(self, key: str, slot, state, lang, hint="", now=None) -> str:
+        """Like `save`, but the identity is already a derived HMAC key (not a raw
+        name/PIN). Used to restore autosave after a cold resume, where only the key
+        (never the raw name/PIN) is persisted in the token snapshot."""
+        return self._save_with_key(key, slot, state, lang, hint, now)
+
+    def _save_with_key(self, key, slot, state, lang, hint="", now=None) -> str:
         now = time.time() if now is None else now
-        key = self._key(name, pin)
         rec = self._read(key) or {"slots": {}, "ts": now}
         slots = rec.setdefault("slots", {})
         original_slot = slot

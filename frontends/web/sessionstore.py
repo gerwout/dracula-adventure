@@ -1,9 +1,13 @@
 """Disk-backed snapshot store for resumable web sessions.
 
 One JSON file per opaque session token: {"state": <serialize(eng)>, "lang": <code>,
-"ts": <epoch seconds>}. Writes are atomic (tmp + os.replace). `reap` enforces the TTL and
-a hard file-count cap. Token filenames are sanitised so a hostile token can never escape
-the directory. All operations tolerate missing/corrupt files (return None / skip)."""
+"ts": <epoch seconds>, "active": <{"key":..., "slot":...} | None>}. `active` is the
+named-save identity (derived HMAC key + slot only -- never the raw name/PIN) so a cold
+resume can restore it and per-turn autosave re-engages; old records simply have no
+`active` key, and `.get("active")` returns None for them. Writes are atomic (tmp +
+os.replace). `reap` enforces the TTL and a hard file-count cap. Token filenames are
+sanitised so a hostile token can never escape the directory. All operations tolerate
+missing/corrupt files (return None / skip)."""
 from __future__ import annotations
 
 import json
@@ -47,12 +51,12 @@ class SessionStore:
             return None
         return data if isinstance(data, dict) else None
 
-    def save(self, token: str, state: dict, lang: str) -> None:
+    def save(self, token: str, state: dict, lang: str, active: dict | None = None) -> None:
         p = self._path(token)
         if p is None:
             return
         import time
-        rec = {"state": state, "lang": lang, "ts": time.time()}
+        rec = {"state": state, "lang": lang, "ts": time.time(), "active": active}
         tmp = p.with_suffix(".tmp")
         tmp.write_text(json.dumps(rec), encoding="utf-8")
         os.replace(tmp, p)

@@ -70,7 +70,7 @@ class Host:
     solely on the asyncio loop thread."""
 
     def __init__(self, loop, token, store, *, resume_state, resume_lang,
-                 player_store=None, limiter=None, ip=""):
+                 player_store=None, limiter=None, ip="", resume_active=None):
         self.loop = loop
         self.token = token
         self.store = store
@@ -86,7 +86,8 @@ class Host:
         self.channel = Channel(self._emit)
         self.session = Session(self.channel, token=token, snapshotter=self._snapshot,
                                resume_state=resume_state, resume_lang=resume_lang,
-                               player_store=player_store, limiter=limiter, ip=ip)
+                               player_store=player_store, limiter=limiter, ip=ip,
+                               resume_active=resume_active)
         self.worker = threading.Thread(target=self.session.run,
                                        name=f"dracula-{token[:8]}", daemon=True)
 
@@ -113,8 +114,8 @@ class Host:
         if self.outbox is not None:
             self.outbox.put_nowait(msg)
 
-    def _snapshot(self, state, lang):
-        self.store.save(self.token, state, lang)
+    def _snapshot(self, state, lang, active=None):
+        self.store.save(self.token, state, lang, active)
 
     def start(self):
         self.worker.start()
@@ -217,7 +218,8 @@ class Server:
             if rec is not None and rec.get("state") is not None:
                 host = Host(loop, token, self.store,
                             resume_state=rec.get("state"), resume_lang=rec.get("lang", "nl"),
-                            player_store=self.player_store, limiter=self.limiter, ip=ip)
+                            player_store=self.player_store, limiter=self.limiter, ip=ip,
+                            resume_active=rec.get("active"))
                 host.attach(ws, replay=False, redraw=True)
                 host.start()
         if host is None:

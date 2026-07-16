@@ -89,3 +89,20 @@ def test_save_triggers_amortized_cap(tmp_path):
     s.save("a", {"room": 0}, "nl")
     s.save("b", {"room": 0}, "nl")                                 # this save prunes down to 1
     assert len(list(Path(tmp_path).glob("*.json"))) <= 1
+
+
+# -- optional `active` field: the named-save identity (key+slot), persisted alongside the
+# per-turn snapshot so a cold resume can restore it and autosave re-engages --------------
+
+def test_save_round_trips_active_field(tmp_path):
+    s = SessionStore(tmp_path)
+    s.save("tok1", {"room": 5}, "nl", {"key": "abc", "slot": "Kasteel"})
+    rec = s.load("tok1")
+    assert rec["active"] == {"key": "abc", "slot": "Kasteel"}
+
+
+def test_save_without_active_loads_as_none(tmp_path):
+    s = SessionStore(tmp_path)
+    s.save("tok2", {"room": 5}, "nl")            # no `active` arg -> old-record shape
+    rec = s.load("tok2")
+    assert rec.get("active") is None
