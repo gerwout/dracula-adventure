@@ -179,14 +179,18 @@ class Server:
             if h.outbox is not None:
                 h.outbox.put_nowait(msg)
 
-    async def handle(self, ws):
-        loop = asyncio.get_running_loop()
-        ip = "?"
+    def _client_ip(self, ws) -> str:
         try:
             xff = ws.request.headers.get("X-Forwarded-For")
-            ip = xff.split(",")[0].strip() if xff else ws.remote_address[0]
+            if xff:
+                return xff.split(",")[0].strip()
+            return ws.remote_address[0]
         except Exception:
-            pass
+            return "?"
+
+    async def handle(self, ws):
+        loop = asyncio.get_running_loop()
+        ip = self._client_ip(ws)
         try:
             raw = await ws.recv()
         except Exception:
@@ -258,17 +262,22 @@ class Server:
         else:
             host.close()
 
+    def _reap_once(self, now=None) -> int:
+        now = time.time() if now is None else now
+        try:
+            n = self.store.reap(RESUME_TTL, MAX_SNAPSHOTS, now)
+            if self.player_store is not None:
+                n += self.player_store.reap(RESUME_TTL, now)
+            return n
+        except Exception:
+            return 0
+
     async def reaper(self):
         while True:
             await asyncio.sleep(REAP_INTERVAL)
-            try:
-                n = self.store.reap(RESUME_TTL, MAX_SNAPSHOTS, time.time())
-                if self.player_store is not None:
-                    n += self.player_store.reap(RESUME_TTL, time.time())
-                if n:
-                    print(f"[dracula] reaped {n} stale snapshot(s)/identity(ies)")
-            except Exception:
-                pass
+            n = self._reap_once()
+            if n:
+                print(f"[dracula] reaped {n} stale snapshot(s)/identity(ies)")
 
 
 async def main() -> None:

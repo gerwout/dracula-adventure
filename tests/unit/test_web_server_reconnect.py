@@ -262,3 +262,51 @@ def test_named_save_reaper_sweeps_players(tmp_path):
     n = ps.reap(ttl=1.0, now=1_000_000.0)
     assert n == 1
     assert srv.player_store is ps and srv.limiter is not None
+
+
+def test_reap_once_sweeps_expired_snapshot_and_identity(tmp_path):
+    from frontends.web.server import Server, RESUME_TTL, MAX_SNAPSHOTS
+    from frontends.web.sessionstore import SessionStore
+    from frontends.web.playersaves import PlayerSaveStore
+    from frontends.web.authlimiter import AuthLimiter
+    import time
+
+    store = SessionStore(tmp_path)
+    store.save("tok", {"room": 1}, "nl")           # token snapshot, ts ~ now
+
+    ps = PlayerSaveStore(tmp_path, b"pep")
+    ps.save("E", "123456", "a", {"room": 1}, "nl")  # identity, ts ~ now
+
+    srv = Server(store, player_store=ps, limiter=AuthLimiter())
+
+    n = srv._reap_once(now=time.time() + RESUME_TTL + 10)
+    assert n >= 2, "both the stale snapshot and the stale identity must be reaped"
+    assert ps.list_slots("E", "123456") is None, "the identity file must be gone"
+
+    # a fresh reap (now == now) removes nothing: nothing is older than TTL yet
+    store.save("tok2", {"room": 1}, "nl")
+    ps.save("E2", "654321", "a", {"room": 1}, "nl")
+    assert srv._reap_once(now=time.time()) == 0
+
+
+def test_client_ip_prefers_xff_then_remote_then_default(tmp_path):
+    import types
+    from frontends.web.server import Server
+    from frontends.web.sessionstore import SessionStore
+
+    srv = Server(SessionStore(tmp_path))
+
+    ws_xff = types.SimpleNamespace(
+        request=types.SimpleNamespace(headers={"X-Forwarded-For": "1.2.3.4, 5.6.7.8"}),
+        remote_address=("9.9.9.9", 1234),
+    )
+    assert srv._client_ip(ws_xff) == "1.2.3.4"
+
+    ws_remote = types.SimpleNamespace(
+        request=types.SimpleNamespace(headers={}),
+        remote_address=("9.9.9.9", 1234),
+    )
+    assert srv._client_ip(ws_remote) == "9.9.9.9"
+
+    ws_bare = object()
+    assert srv._client_ip(ws_bare) == "?"
