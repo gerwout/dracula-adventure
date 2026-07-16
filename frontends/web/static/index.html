@@ -118,7 +118,15 @@
     if (stick) scrollToBottom();
   }
   function rawSend(obj) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(obj)); return true; } return false; }
-  function send(obj) { if (!rawSend(obj)) { queued.push(obj); ensureConnected(); } }
+  function send(obj) {
+    if (!verified) { queued.push(obj); revive(); return; }
+    if (!rawSend(obj)) { queued.push(obj); ensureConnected(); }
+  }
+  // Flushes anything queued while the socket was down or unverified. Called both on a
+  // fresh connect (onopen) and when a revive() ping comes back (pong) proving the
+  // existing socket was alive all along -- otherwise a click queued during that narrow
+  // unverified window would sit unsent until the next real reconnect.
+  function flushQueue() { while (queued.length) rawSend(queued.shift()); }
 
   const LANG_KEY = "dracula_lang";
   function loadLang() { try { return localStorage.getItem(LANG_KEY) || ""; } catch (e) { return ""; } }
@@ -203,7 +211,7 @@
       case "out": append(msg.text, msg.cls); if (out.classList.contains("title")) fitTitle(); break;
       case "clear": out.textContent = ""; break;
       case "session": storeToken(msg.token); break;
-      case "pong": gotPong = true; break;
+      case "pong": gotPong = true; verified = true; clearTimeout(verifyTimer); flushQueue(); break;
       case "players": { const p = document.getElementById("players"); if (p) p.textContent = "👥 " + msg.count; break; }
       case "screen":
         out.classList.toggle("title", msg.kind === "title");
@@ -407,6 +415,23 @@
   }
   function clearReconnecting() { noticeShown = false; }
 
+  // Wake-verification: after standby the OS often leaves the WebSocket readyState
+  // stuck at OPEN (a zombie) even though the underlying connection is dead. `verified`
+  // is false while a just-woken socket is unproven, so send() queues instead of firing
+  // into the zombie; revive() proves the socket with a ping and reconnects if it's dead.
+  let verified = true;        // false while a just-woken socket is unproven (queue sends)
+  let verifyTimer = null;
+  function revive() {
+    if (!ws || ws.readyState === 2 || ws.readyState === 3) { connect(); return; }
+    if (ws.readyState === 0) return;                 // a connect is already in flight
+    // readyState === 1 (OPEN) but possibly a post-standby zombie: prove it with a ping.
+    verified = false; gotPong = false;
+    try { ws.send(JSON.stringify({ kind: "ping" })); } catch (e) { forceReconnect(); return; }
+    clearTimeout(verifyTimer);
+    verifyTimer = setTimeout(function () { if (!verified) forceReconnect(); }, 2000);
+  }
+  function forceReconnect() { try { ws.close(); } catch (e) {} verified = true; connect(); }
+
   function heartbeat() {
     clearInterval(hbTimer);
     hbTimer = setInterval(function () {
@@ -426,7 +451,7 @@
     ws = new WebSocket(url);
     ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
     ws.onopen = function () {
-      backoff = 500; gotPong = true; clearReconnecting(); heartbeat();
+      backoff = 500; gotPong = true; verified = true; clearReconnecting(); heartbeat();
       // Start in the player's remembered language (localStorage), else the browser
       // language, else Dutch. The server validates and falls back to Dutch for an
       // unknown code, then re-sends 'menu-labels' with the actual language (persisted).
@@ -437,7 +462,7 @@
       } else {
         send({ kind: "start", lang: want });
       }
-      while (queued.length) rawSend(queued.shift());
+      flushQueue();
     };
     ws.onclose = function () {
       clearInterval(hbTimer);
@@ -450,9 +475,10 @@
   }
 
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "visible") ensureConnected();
+    if (document.visibilityState === "visible") revive();
   });
-  window.addEventListener("online", ensureConnected);
+  window.addEventListener("online", revive);
+  window.addEventListener("pageshow", function (e) { if (e.persisted) revive(); });
 
   connect();
 })();
