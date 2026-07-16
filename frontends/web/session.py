@@ -215,4 +215,13 @@ class Session:
             "save": lex.ui("MENU_SAVE_GAME"), "load": lex.ui("MENU_LOAD_GAME"),
             "language": lex.ui("MENU_LANGUAGE"), "help": lex.ui("HELP_TITLE"),
             "players": lex.ui("PLAYERS_ONLINE"),
+        }, "dialog": {
+            "saveTitle": lex.ui("SAVE_TITLE"), "loadTitle": lex.ui("LOAD_TITLE"),
+            "name": lex.ui("FIELD_NAME"), "pin": lex.ui("FIELD_PIN"),
+            "slot": lex.ui("FIELD_SLOT"), "save": lex.ui("BTN_SAVE"),
+            "load": lex.ui("BTN_LOAD"), "cancel": lex.ui("BTN_CANCEL"),
+            "ok": lex.ui("SAVE_OK"), "exists": lex.ui("SAVE_EXISTS"),
+            "full": lex.ui("SAVE_FULL"), "authFail": lex.ui("AUTH_FAIL"),
+            "invalid": lex.ui("INPUT_INVALID"), "tooMany": lex.ui("TOO_MANY"),
+            "noSaves": lex.ui("NO_SAVES"), "ttlNote": lex.ui("SAVE_TTL_NOTE"),
         }, "lang": self.lang})

@@ -1735,6 +1735,22 @@ for example: go north . take lamp . i"
 answer:yes,answer,any,antwoord: yes,,J,Y
 answer:no,answer,any,antwoord: no,,N,N
 secret:word,secret,31,wachtwoord,,incoronium,incoronium
+ui:SAVE_TITLE,ui,any,engine-tekst,,Spel bewaren,Save game
+ui:LOAD_TITLE,ui,any,engine-tekst,,Spel laden,Load game
+ui:FIELD_NAME,ui,any,engine-tekst,,Naam,Name
+ui:FIELD_PIN,ui,any,engine-tekst,,PIN (minstens 6 cijfers),PIN (at least 6 digits)
+ui:FIELD_SLOT,ui,any,engine-tekst,,Naam voor dit spel,Name for this save
+ui:BTN_SAVE,ui,any,engine-tekst,,Bewaar,Save
+ui:BTN_LOAD,ui,any,engine-tekst,,Laad,Load
+ui:BTN_CANCEL,ui,any,engine-tekst,,Annuleer,Cancel
+ui:SAVE_OK,ui,any,engine-tekst,,Opgeslagen als '{slot}'.,Saved as '{slot}'.
+ui:SAVE_EXISTS,ui,any,engine-tekst,,Er bestaat al een spel met die naam. Overschrijven?,A save with that name exists. Overwrite?
+ui:SAVE_FULL,ui,any,engine-tekst,,Je hebt al 10 opgeslagen spellen. Kies een bestaande naam om te overschrijven.,You already have 10 saves. Reuse a name to overwrite.
+ui:AUTH_FAIL,ui,any,engine-tekst,,Verkeerde naam of PIN.,Wrong name or PIN.
+ui:INPUT_INVALID,ui,any,engine-tekst,,Naam 1-24 tekens, PIN 6-12 cijfers.,Name 1-24 chars, PIN 6-12 digits.
+ui:TOO_MANY,ui,any,engine-tekst,,Te veel pogingen, probeer het later nog eens.,Too many attempts, please try again later.
+ui:NO_SAVES,ui,any,engine-tekst,,Geen opgeslagen spellen voor die naam.,No saved games for that name.
+ui:SAVE_TTL_NOTE,ui,any,engine-tekst,,Opgeslagen spellen blijven 3 dagen bewaard na de laatste keer spelen.,Saves are kept for 3 days after you last play.
 intro:1,intro,-,titelscherm,,                   D R A C U L A   A V O N T U U R,                 D R A C U L A   A D V E N T U R E
 intro:3,intro,-,titelscherm,,       (c) 1982 Incore Automatisering / R.van Woensel produkties,       (c) 1982 Incore Automatisering / R.van Woensel produkties
 intro:5,intro,-,titelscherm,,   Gemoderniseerde versie door Gerwout van der Veen.,   Modernised version by Gerwout van der Veen.
