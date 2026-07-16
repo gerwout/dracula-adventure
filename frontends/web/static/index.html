@@ -424,6 +424,7 @@
   function revive() {
     if (!ws || ws.readyState === 2 || ws.readyState === 3) { connect(); return; }
     if (ws.readyState === 0) return;                 // a connect is already in flight
+    if (!verified) return;              // a verification is already pending -- don't re-arm the watchdog
     // readyState === 1 (OPEN) but possibly a post-standby zombie: prove it with a ping.
     verified = false; gotPong = false;
     try { ws.send(JSON.stringify({ kind: "ping" })); } catch (e) { forceReconnect(); return; }
@@ -451,6 +452,7 @@
     ws = new WebSocket(url);
     ws.onmessage = function (ev) { try { handle(JSON.parse(ev.data)); } catch (e) {} };
     ws.onopen = function () {
+      if (this !== ws) return;         // belated open from a socket superseded by forceReconnect()
       backoff = 500; gotPong = true; verified = true; clearReconnecting(); heartbeat();
       // Start in the player's remembered language (localStorage), else the browser
       // language, else Dutch. The server validates and falls back to Dutch for an
@@ -465,6 +467,7 @@
       flushQueue();
     };
     ws.onclose = function () {
+      if (this !== ws) return;         // belated close from a socket superseded by forceReconnect()
       clearInterval(hbTimer);
       reconnectTimer = setTimeout(function () {
         reconnectTimer = null; showReconnecting(); ensureConnected();
