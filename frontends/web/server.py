@@ -21,6 +21,8 @@ from websockets.asyncio.server import serve
 from websockets.datastructures import Headers
 from websockets.http11 import Response
 
+from .authlimiter import AuthLimiter
+from .playersaves import PlayerSaveStore, load_or_create_pepper
 from .session import Session
 from .sessionstore import SessionStore
 from .webio import Channel
@@ -67,7 +69,8 @@ class Host:
     on this object (outbox, sender_task, ws, expire_handle, the replay buffer) is touched
     solely on the asyncio loop thread."""
 
-    def __init__(self, loop, token, store, *, resume_state, resume_lang):
+    def __init__(self, loop, token, store, *, resume_state, resume_lang,
+                 player_store=None, limiter=None, ip=""):
         self.loop = loop
         self.token = token
         self.store = store
@@ -82,7 +85,8 @@ class Host:
         self._screen: list[str] = []
         self.channel = Channel(self._emit)
         self.session = Session(self.channel, token=token, snapshotter=self._snapshot,
-                               resume_state=resume_state, resume_lang=resume_lang)
+                               resume_state=resume_state, resume_lang=resume_lang,
+                               player_store=player_store, limiter=limiter, ip=ip)
         self.worker = threading.Thread(target=self.session.run,
                                        name=f"dracula-{token[:8]}", daemon=True)
 
@@ -160,8 +164,10 @@ class Host:
 
 
 class Server:
-    def __init__(self, store: SessionStore):
+    def __init__(self, store: SessionStore, player_store=None, limiter=None):
         self.store = store
+        self.player_store = player_store
+        self.limiter = limiter
         self.parked: dict[str, Host] = {}
         self.live: set[Host] = set()          # hosts with a currently-attached socket = "players online"
 
@@ -175,6 +181,12 @@ class Server:
 
     async def handle(self, ws):
         loop = asyncio.get_running_loop()
+        ip = "?"
+        try:
+            xff = ws.request.headers.get("X-Forwarded-For")
+            ip = xff.split(",")[0].strip() if xff else ws.remote_address[0]
+        except Exception:
+            pass
         try:
             raw = await ws.recv()
         except Exception:
@@ -200,14 +212,16 @@ class Server:
             rec = self.store.load(token)
             if rec is not None and rec.get("state") is not None:
                 host = Host(loop, token, self.store,
-                            resume_state=rec.get("state"), resume_lang=rec.get("lang", "nl"))
+                            resume_state=rec.get("state"), resume_lang=rec.get("lang", "nl"),
+                            player_store=self.player_store, limiter=self.limiter, ip=ip)
                 host.attach(ws, replay=False, redraw=True)
                 host.start()
         if host is None:
             # Fresh game: mint a new opaque token and drive the worker with a synthetic start.
             token = secrets.token_urlsafe(24)
             lang = first.get("lang") if isinstance(first.get("lang"), str) else "nl"
-            host = Host(loop, token, self.store, resume_state=None, resume_lang=lang)
+            host = Host(loop, token, self.store, resume_state=None, resume_lang=lang,
+                        player_store=self.player_store, limiter=self.limiter, ip=ip)
             host.attach(ws, replay=False, redraw=False)
             host.start()
             host.feed({"kind": "start", "lang": lang})
@@ -249,8 +263,10 @@ class Server:
             await asyncio.sleep(REAP_INTERVAL)
             try:
                 n = self.store.reap(RESUME_TTL, MAX_SNAPSHOTS, time.time())
+                if self.player_store is not None:
+                    n += self.player_store.reap(RESUME_TTL, time.time())
                 if n:
-                    print(f"[dracula] reaped {n} stale session snapshot(s)")
+                    print(f"[dracula] reaped {n} stale snapshot(s)/identity(ies)")
             except Exception:
                 pass
 
@@ -259,7 +275,10 @@ async def main() -> None:
     host = os.environ.get("DRACULA_WEB_HOST", "127.0.0.1")
     port = int(os.environ.get("DRACULA_WEB_PORT", "8765"))
     state_dir = os.environ.get("DRACULA_WEB_STATE_DIR", str(Path(".web-sessions")))
-    srv = Server(SessionStore(state_dir, max_files=MAX_SNAPSHOTS))
+    srv_store = SessionStore(state_dir, max_files=MAX_SNAPSHOTS)
+    pepper = load_or_create_pepper(state_dir)
+    player_store = PlayerSaveStore(state_dir, pepper)
+    srv = Server(srv_store, player_store=player_store, limiter=AuthLimiter())
     async with serve(srv.handle, host, port, process_request=_process_request,
                      origins=_allowed_origins(), max_size=MAX_MESSAGE_SIZE,
                      ping_interval=20, ping_timeout=20):

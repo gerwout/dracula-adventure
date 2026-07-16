@@ -249,3 +249,16 @@ def test_stateless_snapshot_does_not_soft_lock_falls_through_to_fresh(tmp_path):
 def test_warm_grace_constant_is_sane():
     # A guard so the grace window can't silently drift to 0/negative.
     assert WARM_GRACE > 0
+
+
+def test_named_save_reaper_sweeps_players(tmp_path):
+    from frontends.web.playersaves import PlayerSaveStore
+    from frontends.web.authlimiter import AuthLimiter
+    from frontends.web.sessionstore import SessionStore
+    ps = PlayerSaveStore(tmp_path, b"pep")
+    ps.save("E", "123456", "a", {"room": 1}, "nl", now=1000.0)
+    srv = Server(SessionStore(tmp_path), player_store=ps, limiter=AuthLimiter())
+    # reap with a tiny TTL and a far-future now -> the identity file is removed
+    n = ps.reap(ttl=1.0, now=1_000_000.0)
+    assert n == 1
+    assert srv.player_store is ps and srv.limiter is not None
