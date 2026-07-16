@@ -7,21 +7,31 @@ from engine import savegame
 from engine.game import new_game
 from engine.i18n import AVAILABLE_LANGUAGES
 
-from .webio import Channel, WebIO, WebSaveStore
+from .webio import Channel, WebIO
+from .namedsave import NamedWebSaveStore
 
 
 class Session:
     def __init__(self, channel, token=None, snapshotter=None,
-                 resume_state=None, resume_lang=None):
+                 resume_state=None, resume_lang=None,
+                 player_store=None, limiter=None, ip=""):
         self.ch = channel
         self.io = WebIO(channel)
-        self.store = WebSaveStore(channel)
         self.engine = None
         self.lang = resume_lang or "nl"
         self.token = token
         self._snapshotter = snapshotter
         self._resume_state = resume_state
         self._resume_lang = resume_lang
+        self._player_store = player_store
+        self._limiter = limiter
+        self._ip = ip
+        self.active = None                       # (name, pin, slot) for autosave; memory only
+        self.store = NamedWebSaveStore(
+            channel, player_store, limiter, ip,
+            on_identity=self._set_identity,
+            hint_fn=self._room_hint,
+            lang_fn=lambda: self.lang) if player_store is not None else None
 
     # -- entry point (worker thread) --------------------------------------- #
     def run(self) -> None:
@@ -74,6 +84,25 @@ class Session:
             except Exception:
                 pass   # snapshotting must never break play
 
+    def _set_identity(self, name, pin, slot) -> None:
+        self.active = (name, pin, slot)
+
+    def _room_hint(self) -> str:
+        try:
+            return self.engine.world.rooms[self.engine.room].lines[0][:60]
+        except Exception:
+            return ""
+
+    def _autosave_named(self) -> None:
+        if self._player_store is None or self.active is None or self.engine is None:
+            return
+        name, pin, slot = self.active
+        try:
+            self._player_store.save(name, pin, slot, savegame.serialize(self.engine),
+                                    self.lang, self._room_hint())
+        except Exception:
+            pass   # autosave must never break play
+
     def _safe_engine(self, fn, *args) -> bool:
         """Run an engine action so that an exception can NEVER kill this worker thread
         (which would silently hang the client). A malformed save is already rejected up
@@ -86,6 +115,11 @@ class Session:
             return False
 
     def _play_one_game(self, resume_state=None):
+        if self.store is None:
+            class _NoStore:
+                def save(self, data): return False
+                def load(self): return None
+            self.store = _NoStore()
         self.engine = new_game(self.io, explore=True, lang=self.lang,
                                store=self.store, sandboxed=True)
         self._send_menu_labels()
@@ -151,9 +185,11 @@ class Session:
                 self.ch.send({"t": "out", "text": "\n→ " + text + "\n", "cls": "cmd"})
                 if self._safe_engine(self.engine.submit, text):
                     self._snapshot_now()          # snapshot only a clean turn (never poisoned state)
+                    self._autosave_named()
             elif kind == "menu":
                 if self._safe_engine(self._menu, ev.get("action"), ev.get("arg")):
                     self._snapshot_now()
+                    self._autosave_named()
             elif kind == "start":
                 return ev
             elif kind == "eof":
@@ -163,9 +199,9 @@ class Session:
     # -- menu (top level only, mirrors the GUI's flag-guarded menu) --------- #
     def _menu(self, action, arg=None) -> None:
         if action == "save":
-            self.engine.do_bewaar(None)              # calls WebSaveStore.save
+            self.engine.do_bewaar(None)              # calls NamedWebSaveStore.save (blocks for the dialog)
         elif action == "load":
-            self.engine.do_laad(None)                # calls WebSaveStore.load (blocks for reply)
+            self.engine.do_laad(None)                # calls NamedWebSaveStore.load (blocks for the dialog)
         elif action == "help":
             self._send_help()
         # "new" / "lang" are the client re-sending 'start' — handled by the loops above.

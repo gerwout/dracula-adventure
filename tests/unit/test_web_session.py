@@ -5,6 +5,8 @@ import time
 
 from frontends.web.webio import Channel
 from frontends.web.session import Session
+from frontends.web.playersaves import PlayerSaveStore
+from frontends.web.authlimiter import AuthLimiter
 from tests.unit.test_full_playthrough import WALKTHROUGH
 from tests.unit.i18n_walkthrough import render_walkthrough
 
@@ -123,13 +125,21 @@ def test_help_menu_works_at_the_title_screen():
     ch.close(); t.join(timeout=5)
 
 
-def test_worker_terminates_on_disconnect_during_menu_load():
-    session, sent, ch, t = run_session([
-        {"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
-        {"kind": "menu", "action": "load"},      # -> do_laad -> WebSaveStore.load() blocks for 'loaded'
-    ])
-    # wait until the worker is actually blocked waiting for the client's save data
-    assert wait_until(lambda: any(m.get("t") == "load" for m in sent))
-    ch.close()                                    # disconnect BEFORE the client replies 'loaded'
+def test_worker_terminates_on_disconnect_during_menu_load(tmp_path):
+    # A player_store is required here: without one Session falls back to a no-op store
+    # whose load() returns None immediately (no dialog, no block) — this test needs the
+    # real NamedWebSaveStore dialog to actually be in-flight when the client disconnects.
+    ps = PlayerSaveStore(tmp_path, b"pep")
+    sent = []
+    ch = Channel(sent.append)
+    session = Session(ch, player_store=ps, limiter=AuthLimiter(), ip="ip")
+    t = threading.Thread(target=session.run, daemon=True)
+    t.start()
+    for ev in [{"kind": "start", "lang": "nl"}, {"kind": "key", "ch": " "},
+               {"kind": "menu", "action": "load"}]:   # -> do_laad -> NamedWebSaveStore.load() blocks for a reply
+        ch.put(ev)
+    # wait until the worker is actually blocked waiting for the client's reply
+    assert wait_until(lambda: any(m.get("t") == "load-dialog" for m in sent))
+    ch.close()                                    # disconnect BEFORE the client replies
     t.join(timeout=5)
     assert not t.is_alive(), "worker must terminate after a disconnect during a menu Load"

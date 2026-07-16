@@ -1,5 +1,5 @@
-"""WebIO / WebSaveStore turn engine IO into channel messages and block for replies."""
-from frontends.web.webio import Channel, WebIO, WebSaveStore
+"""WebIO turns engine IO into channel messages and blocks for replies."""
+from frontends.web.webio import Channel, WebIO
 
 
 def make():
@@ -41,23 +41,6 @@ def test_read_command_ignores_out_of_turn_events():
     assert io.read_command() == "ga noord"
 
 
-def test_savestore_round_trip():
-    ch, sent = make()
-    store = WebSaveStore(ch)
-    store.save({"room": 7})
-    assert {"t": "save", "data": {"room": 7}} in sent
-    ch.put({"kind": "loaded", "data": {"room": 7}})
-    assert store.load() == {"room": 7}
-    assert any(m.get("t") == "load" for m in sent)
-
-
-def test_savestore_load_returns_none_on_empty_slot():
-    ch, sent = make()
-    store = WebSaveStore(ch)
-    ch.put({"kind": "loaded", "data": None})
-    assert store.load() is None
-
-
 def test_close_is_sticky_and_unblocks_repeated_reads():
     ch, sent = make()
     ch.close()
@@ -66,4 +49,3 @@ def test_close_is_sticky_and_unblocks_repeated_reads():
     io = WebIO(ch)
     assert io.read_command() == "stop"
     assert io.read_key() == "stop"
-    assert WebSaveStore(ch).load() is None       # a nested load read also sees EOF

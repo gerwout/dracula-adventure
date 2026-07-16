@@ -1,7 +1,7 @@
 """Web frontend IO: bridge the synchronous engine to a per-connection message channel.
 
-Everything here is per-connection — a Channel owns one inbound queue, and a WebIO /
-WebSaveStore wrap exactly one Channel. Nothing is shared between sessions.
+Everything here is per-connection — a Channel owns one inbound queue, and a WebIO wraps
+exactly one Channel. Nothing is shared between sessions.
 """
 from __future__ import annotations
 
@@ -83,25 +83,3 @@ class WebIO(IO):
 
     def pause(self) -> None:
         self.read_key()
-
-
-class WebSaveStore:
-    """SaveStore backed by the browser: save() ships the blob to the client (localStorage),
-    load() requests it and blocks for the reply."""
-
-    def __init__(self, channel: Channel):
-        self.ch = channel
-
-    def save(self, data: dict) -> bool:
-        self.ch.send({"t": "save", "data": data})
-        return True
-
-    def load(self):
-        self.ch.send({"t": "load"})
-        while True:
-            ev = self.ch.get()
-            kind = ev.get("kind")
-            if kind == "loaded":
-                return ev.get("data")           # dict or None
-            if kind == "eof":
-                return None
