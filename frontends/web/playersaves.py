@@ -55,6 +55,10 @@ class PlayerSaveStore:
         msg = (norm + "\x00" + pin).encode("utf-8")
         return hmac.new(self._pepper, msg, hashlib.sha256).hexdigest()
 
+    def key_for(self, name: str, pin: str) -> str:
+        """Public identity-key accessor for callers that key a limiter by identity."""
+        return self._key(name, pin)
+
     def _normalize_slot_key(self, slot: str) -> str:
         """Normalize and case-fold slot for matching (internal use only)."""
         return _v.normalize_slot(slot).casefold()

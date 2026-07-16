@@ -66,7 +66,7 @@ class NamedWebSaveStore:
         if not (v.valid_name(name) and v.valid_pin(pin)):
             self.ch.send({"t": "load-result", "status": "invalid"})
             return
-        key = self.ps._key(name, pin)
+        key = self.ps.key_for(name, pin)
         wait = self.limiter.locked_for(key, self.ip, time.time())
         if wait > 0:
             self.ch.send({"t": "load-result", "status": "locked", "secs": int(wait)})
@@ -83,10 +83,17 @@ class NamedWebSaveStore:
         if not (v.valid_name(name) and v.valid_pin(pin) and v.valid_slot(slot)):
             self.ch.send({"t": "load-result", "status": "invalid"})
             return None
+        key = self.ps.key_for(name, pin)
+        wait = self.limiter.locked_for(key, self.ip, time.time())
+        if wait > 0:
+            self.ch.send({"t": "load-result", "status": "locked", "secs": int(wait)})
+            return None
         state = self.ps.load(name, pin, slot)
         if not isinstance(state, dict):
+            self.limiter.record_failure(key, self.ip, time.time())
             self.ch.send({"t": "load-result", "status": "no-slot"})
             return None
+        self.limiter.record_success(key)
         self.on_identity(name, pin, slot)
         self.ch.send({"t": "clear"})
         self.ch.send({"t": "screen", "kind": "game"})
