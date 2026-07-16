@@ -44,11 +44,20 @@ def load_or_create_pepper(state_dir) -> bytes:
 
 
 class PlayerSaveStore:
-    def __init__(self, directory, pepper: bytes, max_slots: int = MAX_SLOTS):
+    def __init__(self, directory, pepper: bytes, max_slots: int = MAX_SLOTS,
+                 max_identities: int = 50_000, cap_check_every: int = 256):
         self.dir = Path(directory) / "players"
         self.dir.mkdir(parents=True, exist_ok=True)
         self._pepper = pepper
         self._max_slots = max_slots
+        # Amortized write-time cap: the reaper enforces the identity-count cap, but a burst
+        # of new (name,pin) identities between sweeps could exhaust disk/inodes — so every
+        # _cap_check_every writes we cheaply prune down to _max_identities (oldest first).
+        # Keeps the cost off the hot path while bounding the directory to
+        # ~max_identities + cap_check_every. Mirrors SessionStore's count cap.
+        self._max_identities = max_identities
+        self._cap_check_every = max(1, cap_check_every)
+        self._writes_since_cap = 0
 
     def _key(self, name: str, pin: str) -> str:
         norm = unicodedata.normalize("NFKC", name).strip().casefold()
@@ -118,7 +127,30 @@ class PlayerSaveStore:
         slots[slot_key] = {"state": state, "lang": lang, "ts": now, "hint": hint, "orig": original_slot}
         rec["ts"] = now
         self._write(key, rec)
+        self._writes_since_cap += 1
+        if self._writes_since_cap >= self._cap_check_every:
+            self._writes_since_cap = 0
+            self._enforce_count_cap()
         return "ok"
+
+    def _enforce_count_cap(self) -> None:
+        """Prune players/ down to _max_identities (oldest by mtime first). Cheap: uses
+        stat, not JSON reads. Missing/racing files are skipped. Called amortized from save."""
+        entries = []
+        for p in self.dir.glob("*.json"):
+            try:
+                entries.append((p.stat().st_mtime, p))
+            except OSError:
+                continue
+        excess = len(entries) - self._max_identities
+        if excess <= 0:
+            return
+        entries.sort()                       # oldest mtime first
+        for _mtime, p in entries[:excess]:
+            try:
+                p.unlink()
+            except OSError:
+                pass
 
     def delete(self, name, pin, slot) -> None:
         key = self._key(name, pin)
@@ -138,6 +170,7 @@ class PlayerSaveStore:
 
     def reap(self, ttl: float, now: float) -> int:
         deleted = 0
+        keep = []
         for p in self.dir.glob("*.json"):
             try:
                 data = json.loads(p.read_text(encoding="utf-8"))
@@ -146,6 +179,16 @@ class PlayerSaveStore:
                 ts = 0
             ts = ts if isinstance(ts, (int, float)) else 0
             if now - ts > ttl:
+                try:
+                    p.unlink()
+                    deleted += 1
+                except OSError:
+                    pass
+            else:
+                keep.append((ts, p))
+        if len(keep) > self._max_identities:
+            keep.sort()  # oldest ts first
+            for ts, p in keep[: len(keep) - self._max_identities]:
                 try:
                     p.unlink()
                     deleted += 1

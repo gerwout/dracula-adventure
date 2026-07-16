@@ -60,3 +60,28 @@ def test_hostile_name_stays_inside_dir(tmp_path):
     files = list(s.dir.glob("*.json"))
     assert len(files) == 1
     assert files[0].parent == s.dir                      # key is hex -> no traversal
+
+
+# -- hardening: identity-count cap bounds players/ against disk exhaustion --------------
+
+def test_reap_enforces_identity_count_cap(tmp_path):
+    s = PlayerSaveStore(tmp_path, PEP, max_identities=3)
+    now = 1_000_000.0
+    for i in range(5):
+        s.save(f"player{i}", "123456", "a", {"room": i}, "nl", now=now + i)
+    assert s.reap(ttl=10**9, now=now + 100) == 2          # TTL deletes nothing; cap deletes 2
+    assert len(list(s.dir.glob("*.json"))) == 3
+    # the 2 oldest identities are gone; the 3 newest survive
+    assert s.list_slots("player0", "123456") is None
+    assert s.list_slots("player1", "123456") is None
+    assert s.list_slots("player2", "123456") is not None
+    assert s.list_slots("player3", "123456") is not None
+    assert s.list_slots("player4", "123456") is not None
+
+
+def test_amortized_cap_bounds_directory(tmp_path):
+    s = PlayerSaveStore(tmp_path, PEP, max_identities=3, cap_check_every=2)
+    for i in range(10):
+        s.save(f"player{i}", "123456", "a", {"room": i}, "nl", now=1_000_000.0 + i)
+    # bounded near max_identities (+ up to cap_check_every-1 slack), never the full 10 saved
+    assert len(list(s.dir.glob("*.json"))) <= 3 + 1
