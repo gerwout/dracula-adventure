@@ -528,8 +528,8 @@ class Engine:
     # locations + the DGROUP flags) to SAVE_PATH; see engine/savegame.py and
     # docs/savegame.md. Messages are the original's DRACULA.SAV lines.
     def do_bewaar(self, cmd: Command) -> None:
-        self.store.save(savegame.serialize(self))
-        self.io.writeln(self.world.message_text(185))   # "Ik zet nu alle gegevens in DRACULA.SAV....."
+        if self.store.save(savegame.serialize(self)):
+            self.io.writeln(self.world.message_text(185))   # "Ik zet nu alle gegevens in DRACULA.SAV....."
 
     def do_laad(self, cmd: Command) -> None:
         data = self.store.load()

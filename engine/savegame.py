@@ -110,9 +110,10 @@ def load(eng, path) -> bool:
 
 
 class SaveStore(Protocol):
-    """Where a saved game is written to / read from. Desktop uses a file; the web
-    frontend routes this to the browser's localStorage."""
-    def save(self, data: dict) -> None: ...
+    """Where a saved game is written to / read from. `save` returns True when the
+    save was persisted, False when it was declined/cancelled (so the caller does not
+    print a false confirmation)."""
+    def save(self, data: dict) -> bool: ...
     def load(self) -> dict | None: ...
 
 
@@ -121,8 +122,9 @@ class FileSaveStore:
     def __init__(self, path):
         self.path = Path(path)
 
-    def save(self, data: dict) -> None:
+    def save(self, data: dict) -> bool:
         self.path.write_text(json.dumps(data), encoding="utf-8")
+        return True
 
     def load(self) -> dict | None:
         if not self.path.exists():

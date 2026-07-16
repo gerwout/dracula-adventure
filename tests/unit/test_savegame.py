@@ -140,3 +140,18 @@ def test_do_laad_rejects_hostile_saves_without_crashing(hostile):
     eng.do_laad(None)                           # must not raise (would crash the web worker)
     assert w.message_text(188) in eng.io.text   # the load-fail message
     assert eng.room == 0                        # engine state untouched
+
+
+def test_do_bewaar_skips_confirmation_when_store_declines():
+    from engine.game import Engine
+    from engine.io import ScriptedIO
+
+    class DeclineStore:
+        def save(self, data): return False
+        def load(self): return None
+
+    w = load_file()
+    io = ScriptedIO([])
+    eng = Engine(w, io, store=DeclineStore(), sandboxed=True)
+    eng.do_bewaar(None)
+    assert w.message_text(185) not in eng.io.text   # no false "saved" line
